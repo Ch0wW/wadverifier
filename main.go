@@ -1,31 +1,34 @@
 package main
 
 import (
-	"fmt"
-	"strings"
-	"os"
 	"bufio"
-	"io"
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
+	"io"
+	"os"
 	"path/filepath"
+	"strings"
+
+	"github.com/fatih/color"
+	ansi "github.com/k0kubun/go-ansi"
 )
 
 // WadInfo : all WAD data returned from the program
 type WadInfo struct {
-	MD5Hash string
-	Version string
-	IsFinal bool
-	PWADRequires string			// If the official PWAD requires an IWAD to run
+	MD5Hash      string
+	Version      string
+	IsFinal      bool
+	PWADRequires string // If the official PWAD requires an IWAD to run
 }
 
 var (
-	IWADInfo_Doom []WadInfo	
-	IWADInfo_Doom2 []WadInfo
+	IWADInfo_Doom      []WadInfo
+	IWADInfo_Doom2     []WadInfo
 	IWADInfo_FinalDoom []WadInfo
-	IWADInfo_Heretic []WadInfo
-	IWADInfo_Hexen []WadInfo
-	IWADInfo_Misc []WadInfo
+	IWADInfo_Heretic   []WadInfo
+	IWADInfo_Hexen     []WadInfo
+	IWADInfo_Misc      []WadInfo
 
 	bNeedsPatching = false
 )
@@ -75,21 +78,23 @@ func main() {
 
 	// Initialize IWAD/Addon lists
 	PopulateIWADInfos()
-	
+
+	color.Output = ansi.NewAnsiStdout()
+
 	//==============================
 	// HEADER OF THE PROGRAM
 	//==============================
-	fmt.Println("IWAD Verifier", m_version," - By Ch0wW")
-	fmt.Println("https://github.com/ch0ww/iwadverifier")
-	fmt.Println("---------------------------------------")
+	color.Cyan("IWAD Verifier %s - By Ch0wW", m_version)
+	color.Cyan("https://github.com/ch0ww/iwadverifier")
+	color.Cyan("---------------------------------------")
 	fmt.Println("")
 
 	// Get the arguments
 	args := os.Args[1:]
 
-	if (len(args) == 0) {
-		fmt.Println("No argument specified.");
-		fmt.Println("Usage: iwadverifier <wad.wad[ wad2.wad ...]>")
+	if len(args) == 0 {
+		color.Yellow("No argument specified.")
+		color.Yellow("Usage: iwadverifier <wad.wad[ wad2.wad ...]>")
 		return
 	}
 
@@ -97,22 +102,22 @@ func main() {
 
 		// Check if the user omitted the extension.
 		// If so, assume the file is a .wad
-		if (filepath.Ext(strings.ToLower(args[i])) == "") {
+		if filepath.Ext(strings.ToLower(args[i])) == "" {
 			args[i] = fmt.Sprintf("%s.wad", args[i])
 			fmt.Println(args[i])
 		}
 
 		// Try to check if file is a .wad
-		if ( filepath.Ext(strings.ToLower(args[i])) != ".wad"){
-			fmt.Println(args[i], "is not a .wad file ! Ignoring...")
+		if filepath.Ext(strings.ToLower(args[i])) != ".wad" {
+			color.Yellow("%s is not a .wad file ! Ignoring...", args[i])
 			fmt.Println("")
 			continue
 		}
 
 		// Now, try to get the MD5 hash from the file
 		hash, err := hash_file_md5(args[i])
-		if (err != nil) {
-			fmt.Println("Error getting the MD5 hash: Skipping... (",err,")")
+		if err != nil {
+			color.Yellow("Error getting the MD5 hash: Skipping... (%s)", err)
 			fmt.Println("")
 			continue
 		}
@@ -121,14 +126,16 @@ func main() {
 	}
 
 	// If there's some patching needed, warn the user how to do it.
-	if (bNeedsPatching) {
-		fmt.Println("==================================================================================")
-		fmt.Println("")
-		fmt.Println("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Phenex :")
-		fmt.Println("Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
-		fmt.Println("Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
-		fmt.Println("")
-		fmt.Println("==================================================================================")
+	if bNeedsPatching {
+		color.Cyan("==================================================================================")
+		color.Cyan("")
+		color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Phenex :")
+		color.Cyan("• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
+		color.Cyan("• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
+		color.Cyan("")
+		color.Cyan("==================================================================================")
+	} else {
+		color.Green("Everything looks fine. Happy gaming !")
 	}
 
 	PressEnter()
