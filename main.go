@@ -114,6 +114,7 @@ func main() {
 		// Try to check if file is a .wad
 		if filepath.Ext(strings.ToLower(args[i])) != ".wad" {
 			color.Yellow("%s is not a .wad file ! Ignoring...", args[i])
+			iErrors = iErrors + 1
 			fmt.Println("")
 			continue
 		}
@@ -122,6 +123,7 @@ func main() {
 		hash, err := hash_file_md5(args[i])
 		if err != nil {
 			color.Yellow("Error getting the MD5 hash: Skipping... (%s)", err)
+			iErrors = iErrors + 1
 			fmt.Println("")
 			continue
 		}
