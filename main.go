@@ -19,6 +19,7 @@ type WadInfo struct {
 	MD5Hash      string
 	Version      string
 	IsFinal      bool
+	IsFreedoom   bool   // If FreeDOOM, link for the upgrade to the latest version
 	PWADRequires string // If the official PWAD requires an IWAD to run
 }
 
@@ -28,9 +29,12 @@ var (
 	IWADInfo_FinalDoom []WadInfo
 	IWADInfo_Heretic   []WadInfo
 	IWADInfo_Hexen     []WadInfo
-	IWADInfo_Misc      []WadInfo
+	IWADInfo_FreeDoom  []WadInfo
 
-	bNeedsPatching = false
+	bNeedsPatching   = false
+	bUpgradeIWAD     = false
+	bUpgradeFreeDoom = false
+	iErrors          = 0
 )
 
 const (
@@ -126,14 +130,28 @@ func main() {
 	}
 
 	// If there's some patching needed, warn the user how to do it.
-	if bNeedsPatching {
+	if bNeedsPatching && (bUpgradeFreeDoom || bUpgradeIWAD) {
 		color.Cyan("==================================================================================")
 		color.Cyan("")
-		color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Phenex :")
-		color.Cyan("• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
-		color.Cyan("• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
-		color.Cyan("")
+
+		if bUpgradeIWAD {
+			color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Phenex :")
+			color.Cyan("• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
+			color.Cyan("• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
+			color.Cyan("")
+		}
+		if bUpgradeFreeDoom {
+			color.Cyan("Your version of FreeDOOM/FreeDM seems outdated. Please get the latest one below :")
+			color.Cyan("|-> https://github.com/freedoom/freedoom/releases")
+			color.Cyan("")
+		}
 		color.Cyan("==================================================================================")
+	}
+
+	if iErrors == 1 {
+		color.Red("1 error has been found. Check it !")
+	} else if iErrors > 1 {
+		color.Red("%d errors have been found. Check them !", iErrors)
 	} else {
 		color.Green("Everything looks fine. Happy gaming !")
 	}

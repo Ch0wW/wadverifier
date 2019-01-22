@@ -18,6 +18,7 @@ func PopulateIWADInfos() {
 	Populate_DoomII()
 	Populate_FinalDOOM()
 	Populate_HereticHexen()
+	Populate_FreeDoom()
 }
 
 func Populate_Doom() {
@@ -214,6 +215,175 @@ func Populate_HereticHexen() {
 	}
 }
 
+func Populate_FreeDoom() {
+	IWADInfo_FreeDoom = []WadInfo{
+
+		//---------------
+		// First, the latest IWADs
+		WadInfo{
+			MD5Hash:    "ea471a3d38fcee0fb3a69bcd3221e335",
+			Version:    "Freedoom: Phase 1 0.11.3",
+			IsFinal:    true,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "984f99af08f085e38070f51095ab7c31",
+			Version:    "Freedoom: Phase 2 0.11.3",
+			IsFreedoom: true,
+			IsFinal:    true,
+		},
+		WadInfo{
+			MD5Hash:    "87ee2494d921633420ce9bdb418127c4",
+			Version:    "FreeDM 0.11.3",
+			IsFreedoom: true,
+			IsFinal:    true,
+		},
+
+		//----------------
+		// Now, list the outdated ones.
+
+		// 0.11.2
+		WadInfo{
+			MD5Hash:    "9352b09ae878dc52c6c18aa38acda6eb",
+			Version:    "FreeDM 0.11.2",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "6d00c49520be26f08a6bd001814a32ab",
+			Version:    "Freedoom: Phase 1 0.11.2",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "90832a872b5bb0aca4ca0b20419aad5d",
+			Version:    "Freedoom: Phase 2 0.11.2",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+
+		// 0.11.1
+		WadInfo{
+			MD5Hash:    "77ba9c0f75c32e4a729490688bb99241",
+			Version:    "FreeDM 0.11.1",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "35312e99d2473297aabe0602700bee8a",
+			Version:    "Freedoom: Phase 1 0.11.1",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "ec5b38b30ba2b70e278205776af3fbb5",
+			Version:    "Freedoom: Phase 2 0.11.1",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+
+		// 0.11
+		WadInfo{
+			MD5Hash:    "d76d3973c075b069ecb4e16dc9eacbb4",
+			Version:    "FreeDM 0.11",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "21a4707fc25d29edf4b098bd400c5c42",
+			Version:    "Freedoom: Phase 1 0.11",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "b1018017c61b06e33c11102d8bafaad0",
+			Version:    "Freedoom: Phase 2 0.11",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+
+		// 0.10.1
+		WadInfo{
+			MD5Hash:    "bd4f359f1963e388beda014c5548b420",
+			Version:    "FreeDM 0.10.1",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "91de79621a393a08c39a9ab2c034b766",
+			Version:    "Freedoom: Phase 1 0.10.1",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "dd9c9e73f5f50d3778c85573cd08d9a4",
+			Version:    "Freedoom: Phase 2 0.10.1",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+
+		// 0.10.0
+		WadInfo{
+			MD5Hash:    "9b8d72b59fd93b2b3e116149baa1b142",
+			Version:    "Freedoom: Phase 1 0.10",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "c5a4f2d38d78b251d8557cb2d93e40ee",
+			Version:    "Freedoom: Phase 2 0.10",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "f37b8b70e1394289a7ec404f67cdec1a",
+			Version:    "FreeDM 0.10",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+
+		// 0.9
+		WadInfo{
+			MD5Hash:    "aca90cf5ac36e996edc58bd0329b979a",
+			Version:    "Freedoom: Phase 1 0.9",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "8fa57dbc7687f84528eba39dde3a20e0",
+			Version:    "Freedoom: Phase 2 0.9",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "cbb27c5f3c2c44d34843cf63daa627f6",
+			Version:    "FreeDM 0.9",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+
+		// 0.8
+		WadInfo{
+			MD5Hash:    "30095b256dd3a1566bbc30286f72bc47",
+			Version:    "Ultimate Freedoom 0.8",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "e3668912fc37c479b2840516c887018b",
+			Version:    "Freedoom 0.8",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+		WadInfo{
+			MD5Hash:    "05859098bf191899903ef343afba369d",
+			Version:    "FreeDM 0.8",
+			IsFinal:    false,
+			IsFreedoom: true,
+		},
+	}
+}
+
 func CompIWADData(data []WadInfo, hash string) (WadInfo, bool) {
 	for i := range data {
 		if hash == data[i].MD5Hash {
@@ -264,6 +434,11 @@ func CheckIWAD(filename string, hash string) {
 		IWAD, bFound = CompIWADData(IWADInfo_Hexen, hash)
 	}
 
+	// Check FreeDoom/FreeDM
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_FreeDoom, hash)
+	}
+
 	if bFound {
 		fmt.Println("MD5:", IWAD.MD5Hash)
 		ansi.Println("Version:", yellow(IWAD.Version))
@@ -272,6 +447,18 @@ func CheckIWAD(filename string, hash string) {
 		if !bNeedsPatching {
 			bNeedsPatching = !IWAD.IsFinal
 		}
+
+		if !bUpgradeIWAD && !IWAD.IsFreedoom {
+			bUpgradeIWAD = !IWAD.IsFinal
+		} else if !bUpgradeFreeDoom && IWAD.IsFreedoom {
+			bUpgradeFreeDoom = !IWAD.IsFinal
+		}
+
+		// Add an error count if it's not the final version of a wad.
+		if !IWAD.IsFinal {
+			iErrors = iErrors + 1
+		}
+
 		ansi.Println("Needs patching ?", YesorNo(!IWAD.IsFinal))
 		fmt.Println("")
 	} else {
@@ -279,6 +466,7 @@ func CheckIWAD(filename string, hash string) {
 		// At this point, we should dissect the first bytes of the WAD to make sure it's a PWAD.
 		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
 		// Yet, we only assume this WAD is a PWAD or invalid.
+		iErrors = iErrors + 1
 		color.Cyan("%s seems unknown. Make sure it's not a modified file or not a PWAD file. (hash:%s)", filename, hash)
 		fmt.Println("")
 	}
