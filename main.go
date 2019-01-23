@@ -21,6 +21,7 @@ type WadInfo struct {
 	IsFinal      bool
 	IsFreedoom   bool   // If FreeDOOM, link for the upgrade to the latest version
 	PWADRequires string // If the official PWAD requires an IWAD to run
+	Additionnal  string // If I need to display an additionnal message for this IWAD.
 }
 
 var (
@@ -29,6 +30,7 @@ var (
 	IWADInfo_FinalDoom []WadInfo
 	IWADInfo_Heretic   []WadInfo
 	IWADInfo_Hexen     []WadInfo
+	IWADInfo_Strife    []WadInfo
 	IWADInfo_FreeDoom  []WadInfo
 
 	bNeedsPatching   = false

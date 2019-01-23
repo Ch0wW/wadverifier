@@ -1,11 +1,8 @@
 # IWADverifier
 
-This tool was created, as the original project by Russell has disappeared from the surface of the Internet.
+This tool was created, as the original project by Russell has disappeared from the surface of the Internet. 
 
-IWADverifier is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM IWAD is valid or not. <br />
-It supports Drag & Drop support for Windows (and probably other systems, if it allows it)<br />
-It can quickly also check if your IWADs are outdated or not. 
-If so, it'll redirect you to another open-source tool called IWADPatcher 1.2, written by Phenex2, or, for the case of FreeDOOM, to the official Github repository.
+`IWADverifier` is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM-Engine based IWAD is valid or not. 
 
 # Usage
 ### Windows
@@ -13,24 +10,40 @@ If so, it'll redirect you to another open-source tool called IWADPatcher 1.2, wr
 ### Linux/Mac
 `./IWADverifier <wad.wad[ wad2.wad ...]>`
 
-# IWAD Support
-IWADverifier currently supports these IWADs:
+# Features
+`IWADverifier currently supports these features :
+
+### IWAD Identification
+IWADverifier can identify these IWADs:
 * DOOM v1.0 up to 1.9
 * DOOM II v1.6 up to 1.9
 * Final DOOM (Plutonia & TNT)
 * Heretic v1.0 up to 1.3
 * Hexen v1.0 & v1.1 (minus Dark Citadel's Addon)
+* Strife v1.0 up to 1.31
 * DOOM 3 XBOX IWADs
 * DOOM/DOOM2 XBLA IWADs
 * DOOM 3 BFG Edition IWADs (minus NERVE.WAD)
 * FreeDOOM v0.8 up to 0.11.3
 
+### Latest version detection
+IWADverifier looks up if your IWAD is the latest version or not. If it's not, a message tells you what to do to get the latest version of your file !
+
+### Drag & Drop (Windows only ?)
+To make it easier for everyone, you can directly drag your IWAD files to IWADverifier !
+
+### Color support
+Because having a white-only text in a commandline application is boring, IWADVerifier uses ANSI to color messages. It works perfectly on Windows, Linux and technically on every system !
+
 # Pre-Requisites for compilation
 - Golang 1.10 or newer (previous versions weren't tested)
-- Package "Color" from user Fatih (`go get github.com/fatih/color`)
-- Package "go-ansi" from user k0kubun (`go get github.com/k0kubun/go-ansi`)
+- Package "`color`" from user Fatih (`go get github.com/fatih/color`)
+- Package "`go-ansi`" from user k0kubun (`go get github.com/k0kubun/go-ansi`)
 
 Then, inside the project folder, write `go build`, and that should be it.
+
+# Screenshot
+![ProgramSS](https://i.imgur.com/tviS1Gr.png)
 
 # ToDo:
 - [ ] Open the WAD to check if it's a IWAD or PWAD before doing the checks

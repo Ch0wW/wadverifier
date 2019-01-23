@@ -18,6 +18,7 @@ func PopulateIWADInfos() {
 	Populate_DoomII()
 	Populate_FinalDOOM()
 	Populate_HereticHexen()
+	Populate_Strife()
 	Populate_FreeDoom()
 }
 
@@ -211,6 +212,29 @@ func Populate_HereticHexen() {
 			MD5Hash: "abb033caf81e26f12a2103e1fa25453f",
 			Version: "Hexen 1.1",
 			IsFinal: true,
+		},
+	}
+}
+
+func Populate_Strife() {
+
+	// DOOM/UDOOM population
+	IWADInfo_Doom2 = []WadInfo{
+		WadInfo{
+			MD5Hash: "8f2d3a6a289f5d2f2f9c1eec02b47299",
+			Version: "Strife 1.0 Registered",
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "bb545b9c4eca0ff92c14d466b3294023",
+			Version: "Strife 1.1 Shareware",
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash:     "2fed2031a5b03892106e0f117f17901f",
+			Version:     "Strife 1.2 - 1.31 Registered",
+			IsFinal:     true,
+			Additionnal: "This IWAD is the latest version of Strife. However, the latest updates of Strife modify the executable. Please make sure it is the latest version.",
 		},
 	}
 }
@@ -434,6 +458,11 @@ func CheckIWAD(filename string, hash string) {
 		IWAD, bFound = CompIWADData(IWADInfo_Hexen, hash)
 	}
 
+	// Check Strife
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_Strife, hash)
+	}
+
 	// Check FreeDoom/FreeDM
 	if bFound == false {
 		IWAD, bFound = CompIWADData(IWADInfo_FreeDoom, hash)
@@ -460,6 +489,12 @@ func CheckIWAD(filename string, hash string) {
 		}
 
 		ansi.Println("Needs patching ?", YesorNo(!IWAD.IsFinal))
+
+		// If the IWAD has an additionnal message, please write it so.
+		if IWAD.Additionnal != "" {
+			color.Cyan(IWAD.Additionnal)
+		}
+
 		fmt.Println("")
 	} else {
 
