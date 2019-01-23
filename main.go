@@ -21,6 +21,8 @@ type WadInfo struct {
 	Version      string
 	IsFinal      bool
 	IsFreedoom   bool   // If FreeDOOM, link for the upgrade to the latest version
+	IsHacX       bool   // If HacX, link for the latest version
+	IsChexQuest3 bool   // If Chex Quest 3, you know the drill...
 	PWADRequires string // If the official PWAD requires an IWAD to run
 	Additionnal  string // If I need to display an additionnal message for this IWAD.
 }
@@ -33,11 +35,16 @@ var (
 	IWADInfo_Hexen     []WadInfo
 	IWADInfo_Strife    []WadInfo
 	IWADInfo_FreeDoom  []WadInfo
+	IWADInfo_Misc      []WadInfo // PWAD and addons
 
+	// Patching messages
 	bNeedsPatching   = false
 	bUpgradeIWAD     = false
 	bUpgradeFreeDoom = false
-	iErrors          = 0
+	bUpgradeHacX     = false
+	bUpgradeCQ3      = false
+
+	iErrors = 0
 )
 
 const (
@@ -188,6 +195,16 @@ func main() {
 		if bUpgradeFreeDoom {
 			color.Cyan("Your version of FreeDOOM/FreeDM seems outdated. Please get the latest one below :")
 			color.Cyan("|-> https://github.com/freedoom/freedoom/releases")
+			color.Cyan("")
+		}
+		if bUpgradeHacX {
+			color.Cyan("Your version of HacX seems outdated. Please get the latest one below :")
+			color.Cyan("|-> http://www.drnostromo.com/hacx/page.php?content=download")
+			color.Cyan("")
+		}
+		if bUpgradeCQ3 {
+			color.Cyan("Your version of Chex Quest 3 seems outdated. Please get the latest one below :")
+			color.Cyan("|-> http://www.chucktropolis.com/gamers.htm")
 			color.Cyan("")
 		}
 		color.Cyan("==================================================================================")

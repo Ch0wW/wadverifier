@@ -20,6 +20,7 @@ func PopulateIWADInfos() {
 	Populate_HereticHexen()
 	Populate_Strife()
 	Populate_FreeDoom()
+	Populate_Misc()
 }
 
 func Populate_Doom() {
@@ -191,27 +192,58 @@ func Populate_HereticHexen() {
 	// Heretic population
 	IWADInfo_Heretic = []WadInfo{
 		WadInfo{
-			MD5Hash: "3117e399cdb4298eaa3941625f4b2923",
-			Version: "Heretic 1.0",
-			IsFinal: false,
-		},
-		WadInfo{
 			MD5Hash: "66d686b1ed6d35ff103f15dbd30e0341",
 			Version: "Heretic: Shadow of the Serpent Riders (1.3)",
 			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "3117e399cdb4298eaa3941625f4b2923",
+			Version: "Heretic 1.0",
+			IsFinal: false,
 		},
 	}
 
 	IWADInfo_Hexen = []WadInfo{
 		WadInfo{
+			MD5Hash: "abb033caf81e26f12a2103e1fa25453f",
+			Version: "Hexen 1.1",
+			IsFinal: true,
+		},
+		WadInfo{
 			MD5Hash: "b2543a03521365261d0a0f74d5dd90f0",
 			Version: "Hexen 1.0",
 			IsFinal: false,
 		},
+
+		// MAC versions
 		WadInfo{
-			MD5Hash: "abb033caf81e26f12a2103e1fa25453f",
-			Version: "Hexen 1.1",
+			MD5Hash:     "b68140a796f6fd7f3a5d3226a32b93be",
+			Version:     "Hexen 1.1 (MAC VERSION)",
+			IsFinal:     true,
+			Additionnal: "All existing servers use the Windows version of the WAD !",
+		},
+		WadInfo{
+			MD5Hash:     "b68140a796f6fd7f3a5d3226a32b93be",
+			Version:     "Hexen Demo (MAC VERSION)",
+			IsFinal:     false,
+			Additionnal: "All existing servers use the Windows version of the WAD !",
+		},
+
+		// OTHER IRREVELENT THINGS
+		WadInfo{
+			MD5Hash: "876a5a44c7b68f04b3bb9bc7a5bd69d6",
+			Version: "Hexen Demo 1.0",
 			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "9178a32a496ff5befebfe6c47dac106c",
+			Version: "Hexen Demo Beta",
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "c88a2bb3d783e2ad7b599a8e301e099e",
+			Version: "Hexen Beta",
+			IsFinal: false,
 		},
 	}
 }
@@ -408,6 +440,65 @@ func Populate_FreeDoom() {
 	}
 }
 
+func Populate_Misc() {
+
+	// DOOM/UDOOM population
+	IWADInfo_Misc = []WadInfo{
+		WadInfo{
+			MD5Hash:     "967d5ae23daf45196212ae1b605da3b0",
+			Version:     "No Rest for the Living",
+			IsFinal:     true,
+			Additionnal: "Requires DooM II v1.9 and a decent source port",
+		},
+		WadInfo{
+			MD5Hash:     "78d5898e99e220e4de64edaa0e479593",
+			Version:     "Hexen: Deathkings of the Dark Citadel",
+			IsFinal:     true,
+			Additionnal: "Requires Hexen 1.1",
+		},
+		WadInfo{
+			MD5Hash:     "25485721882b050afa96a56e5758dd52",
+			Version:     "Chex Quest",
+			IsFinal:     true,
+			Additionnal: "May require the DEHacked file if playing on a source port, available here : https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
+		},
+
+		// HACX
+		WadInfo{
+			MD5Hash: "65ed74d522bdf6649c2831b13b9e02b4",
+			Version: "HacX 1.2",
+			IsFinal: true,
+			IsHacX:  true,
+		},
+		WadInfo{
+			MD5Hash: "b7fd2f43f3382cf012dc6b097a3cb182",
+			Version: "HacX 1.1",
+			IsFinal: false,
+			IsHacX:  true,
+		},
+		WadInfo{
+			MD5Hash: "1511a7032ebc834a3884cf390d7f186e",
+			Version: "HacX 1.0",
+			IsFinal: true,
+			IsHacX:  true,
+		},
+
+		// Chex Quest 3
+		WadInfo{
+			MD5Hash:      "bce163d06521f9d15f9686786e64df13",
+			Version:      "Chex Quest 3 1.4",
+			IsFinal:      true,
+			IsChexQuest3: true,
+		},
+		WadInfo{
+			MD5Hash:      "59c985995db55cd2623c1893550d82b3",
+			Version:      "Chex Quest 3 1.0",
+			IsFinal:      false,
+			IsChexQuest3: true,
+		},
+	}
+}
+
 func CompIWADData(data []WadInfo, hash string) (WadInfo, bool) {
 	for i := range data {
 		if hash == data[i].MD5Hash {
@@ -468,6 +559,11 @@ func CheckIWAD(filename string, hash string) {
 		IWAD, bFound = CompIWADData(IWADInfo_FreeDoom, hash)
 	}
 
+	// Check the other mods
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_Misc, hash)
+	}
+
 	if bFound {
 		fmt.Println("MD5:", IWAD.MD5Hash)
 		ansi.Println("Version:", yellow(IWAD.Version))
@@ -477,10 +573,15 @@ func CheckIWAD(filename string, hash string) {
 			bNeedsPatching = !IWAD.IsFinal
 		}
 
-		if !bUpgradeIWAD && !IWAD.IsFreedoom {
-			bUpgradeIWAD = !IWAD.IsFinal
-		} else if !bUpgradeFreeDoom && IWAD.IsFreedoom {
-			bUpgradeFreeDoom = !IWAD.IsFinal
+		// Now, flag our messages if our IWAD is older
+		if !bUpgradeFreeDoom && IWAD.IsFreedoom {
+			bUpgradeFreeDoom = !IWAD.IsFinal // FreeDOOM IWAD is older
+		} else if !bUpgradeHacX && IWAD.IsHacX {
+			bUpgradeHacX = !IWAD.IsFinal // HacX IWAD is older
+		} else if !bUpgradeCQ3 && IWAD.IsChexQuest3 {
+			bUpgradeCQ3 = !IWAD.IsFinal // Chex Quest 3 is older
+		} else {
+			bUpgradeIWAD = !IWAD.IsFinal // Standard IWAD is older
 		}
 
 		// Add an error count if it's not the final version of a wad.

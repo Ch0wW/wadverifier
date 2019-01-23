@@ -46,8 +46,11 @@ Then, inside the project folder, write `go build`, and that should be it.
 ![ProgramSS](https://i.imgur.com/tviS1Gr.png)
 
 # ToDo List
-- [x] Open the WAD to check if it's a IWAD or PWAD before doing the checks
-- [ ] Add support for NERVE.WAD, DOOM2 Master levels, and the Hexen Addon.
+- [x] Open the WAD to check if it's a IWAD or PWAD before doing the checks.
+- [x] Add support for NERVE.WAD, and the Hexen Addon.
+- [x] Add support for HacX and Chex Quest.
+- [ ] Add support for Master levels for Doom II.
+- [ ] Add support for GZDoom .pk3 IWADs.
 - [ ] Probably a few fixes here and there.
 - [x] Color support for better readability.
 
