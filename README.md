@@ -19,12 +19,16 @@ IWADverifier can identify these IWADs:
 * DOOM II v1.6 up to 1.9
 * Final DOOM (Plutonia & TNT)
 * Heretic v1.0 up to 1.3
-* Hexen v1.0 & v1.1 (minus Dark Citadel's Addon)
+* Hexen v1.0 & v1.1 (Dark Citadel's Addon included)
 * Strife v1.0 up to 1.31
+* HacX v1.0 up to 1.2
+* Chex Quest 1
+* Chex Quest 3 v1.0 & 1.4
 * DOOM 3 XBOX IWADs
 * DOOM/DOOM2 XBLA IWADs
-* DOOM 3 BFG Edition IWADs (minus NERVE.WAD)
+* DOOM 3 BFG Edition IWADs (NERVE.WAD included)
 * FreeDOOM v0.8 up to 0.11.3
+* And many many more !
 
 ### Latest version detection
 IWADverifier looks up if your IWAD is the latest version or not. If it's not, a message tells you what to do to get the latest version of your file !
