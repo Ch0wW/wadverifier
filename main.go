@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"crypto/md5"
+	"encoding/binary"
 	"encoding/hex"
 	"fmt"
 	"io"
@@ -41,6 +42,8 @@ var (
 
 const (
 	m_version = "0.1"
+	IWADbytes = 1145132873
+	PWADbytes = 1145132880
 )
 
 // Just a quick function to require the user to press ENTER.
@@ -78,6 +81,37 @@ func hash_file_md5(filePath string) (string, error) {
 
 	return returnMD5String, nil
 
+}
+
+// Adapted from https://github.com/XerTheSquirrel/go2it/blob/master/wad.go
+// We only need the first Long.
+func isWADvalid(filepath string) bool {
+
+	// Opening it AGAIN
+	file, err := os.Open(filepath)
+	if err != nil {
+		return false
+	}
+
+	// And AGAIN, don't forget to close it !
+	defer file.Close()
+
+	data := make([]byte, 4)
+	_, err = io.ReadFull(file, data)
+	if err != nil {
+		return false
+	}
+
+	// Close the file as it is not needed anymore
+	file.Close()
+
+	// Need the magic number
+	magic := binary.LittleEndian.Uint32(data[0:4])
+	if magic != IWADbytes && magic != PWADbytes {
+		return false
+	}
+
+	return true
 }
 
 func main() {
@@ -118,6 +152,13 @@ func main() {
 			color.Yellow("%s is not a .wad file ! Ignoring...", args[i])
 			iErrors = iErrors + 1
 			fmt.Println("")
+			continue
+		}
+
+		valid := isWADvalid(args[i])
+		if !valid {
+			color.Yellow("%s is not a valid WAD file !", args[i])
+			iErrors = iErrors + 1
 			continue
 		}
 

@@ -219,7 +219,7 @@ func Populate_HereticHexen() {
 func Populate_Strife() {
 
 	// DOOM/UDOOM population
-	IWADInfo_Doom2 = []WadInfo{
+	IWADInfo_Strife = []WadInfo{
 		WadInfo{
 			MD5Hash: "8f2d3a6a289f5d2f2f9c1eec02b47299",
 			Version: "Strife 1.0 Registered",

@@ -11,7 +11,7 @@ This tool was created, as the original project by Russell has disappeared from t
 `./IWADverifier <wad.wad[ wad2.wad ...]>`
 
 # Features
-`IWADverifier currently supports these features :
+`IWADverifier` currently supports these features :
 
 ### IWAD Identification
 IWADverifier can identify these IWADs:
@@ -37,16 +37,19 @@ Because having a white-only text in a commandline application is boring, IWADVer
 
 # Pre-Requisites for compilation
 - Golang 1.10 or newer (previous versions weren't tested)
-- Package "`color`" from user Fatih (`go get github.com/fatih/color`)
-- Package "`go-ansi`" from user k0kubun (`go get github.com/k0kubun/go-ansi`)
+- Package `color` from user Fatih (`go get github.com/fatih/color`)
+- Package `go-ansi` from user k0kubun (`go get github.com/k0kubun/go-ansi`)
 
 Then, inside the project folder, write `go build`, and that should be it.
 
 # Screenshot
 ![ProgramSS](https://i.imgur.com/tviS1Gr.png)
 
-# ToDo:
-- [ ] Open the WAD to check if it's a IWAD or PWAD before doing the checks
+# ToDo List
+- [x] Open the WAD to check if it's a IWAD or PWAD before doing the checks
 - [ ] Add support for NERVE.WAD, DOOM2 Master levels, and the Hexen Addon.
 - [ ] Probably a few fixes here and there.
 - [x] Color support for better readability.
+
+# Licence
+This program is licenced under GPLv3.
