@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"crypto/md5"
 	"encoding/binary"
 	"encoding/hex"
@@ -52,12 +51,6 @@ const (
 	IWADbytes = 1145132873
 	PWADbytes = 1145132880
 )
-
-// Just a quick function to require the user to press ENTER.
-func PressEnter() {
-	fmt.Print("Press 'Enter' to continue...")
-	bufio.NewReader(os.Stdin).ReadBytes('\n')
-}
 
 func hash_file_md5(filePath string) (string, error) {
 	//Initialize variable returnMD5String now in case an error has to be returned
@@ -217,6 +210,4 @@ func main() {
 	} else {
 		color.Green("Everything looks fine. Happy gaming !")
 	}
-
-	PressEnter()
 }
