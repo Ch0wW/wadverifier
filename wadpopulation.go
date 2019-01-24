@@ -224,6 +224,22 @@ func Populate_HereticHexen() {
 	// Heretic population
 	IWADInfo_Heretic = []WadInfo{
 		WadInfo{
+			MD5Hash: "fc7eab659f6ee522bb57acc1a946912f",
+			Version: "Heretic Wide-Area Beta",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "023b52175d2f260c3bdc5528df5d0a8c",
+			Version: "Heretic 1.0 Shareware",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "ae779722390ec32fa37b0d361f7d82f8",
+			Version: "Heretic 1.2 Shareware",
+			IsFinal: true,
+		},
+
+		WadInfo{
 			MD5Hash: "66d686b1ed6d35ff103f15dbd30e0341",
 			Version: "Heretic: Shadow of the Serpent Riders (1.3)",
 			IsFinal: true,
@@ -304,6 +320,12 @@ func Populate_Strife() {
 	// Strife population
 	IWADInfo_Strife = []WadInfo{
 		WadInfo{
+			MD5Hash:    "de2c8dcad7cca206292294bdab524292",
+			Version:    "Strife 1.0 Shareware",
+			IsFinal:    false,
+			Additional: "Download the latest shareware of Strife at https://www.doomworld.com/idgames/roguestuff/strife11",
+		},
+		WadInfo{
 			MD5Hash: "8f2d3a6a289f5d2f2f9c1eec02b47299",
 			Version: "Strife 1.0 Registered",
 			IsFinal: false,
@@ -311,7 +333,7 @@ func Populate_Strife() {
 		WadInfo{
 			MD5Hash: "bb545b9c4eca0ff92c14d466b3294023",
 			Version: "Strife 1.1 Shareware",
-			IsFinal: false,
+			IsFinal: true,
 		},
 		WadInfo{
 			MD5Hash:    "2fed2031a5b03892106e0f117f17901f",
