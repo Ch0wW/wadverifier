@@ -98,6 +98,11 @@ func Populate_Doom() {
 			IsFinal: false,
 		},
 		WadInfo{
+			MD5Hash: "dae77aff77a0491e3b7254c9c8401aa8",
+			Version: "DOOM for Pocket PC (1.9)",
+			IsFinal: true,
+		},
+		WadInfo{
 			MD5Hash: "c4fe9fd920207691a9f493668e0a2083",
 			Version: "The Ultimate DOOM (v1.9)",
 			IsFinal: true,
@@ -105,17 +110,17 @@ func Populate_Doom() {
 		WadInfo{
 			MD5Hash: "0c8758f102ccafe26a3040bee8ba5021",
 			Version: "The Ultimate DOOM (1.9) - Xbox Version",
-			IsFinal: false,
+			IsFinal: true,
 		},
 		WadInfo{
 			MD5Hash: "72286ddc680d47b9138053dd944b2a3d",
 			Version: "The Ultimate DOOM (1.9) - XBLA Version",
-			IsFinal: false,
+			IsFinal: true,
 		},
 		WadInfo{
 			MD5Hash: "fb35c4a5a9fd49ec29ab6e900572c524",
 			Version: "The Ultimate DOOM (1.9) - BFG Edition",
-			IsFinal: false,
+			IsFinal: true,
 		},
 	}
 }
@@ -150,6 +155,11 @@ func Populate_DoomII() {
 			IsFinal: false,
 		},
 		WadInfo{
+			MD5Hash: "3cb02349b3df649c86290907eed64e7b",
+			Version: "DOOM II 1.8 (French Edition)",
+			IsFinal: false,
+		},
+		WadInfo{
 			MD5Hash: "25e1459ca71d321525f84628f45ca8cd",
 			Version: "DOOM II 1.9",
 			IsFinal: true,
@@ -157,17 +167,27 @@ func Populate_DoomII() {
 		WadInfo{
 			MD5Hash: "a793ebcdd790afad4a1f39cc39a893bd",
 			Version: "DOOM II 1.9 - Xbox Version",
-			IsFinal: false,
+			IsFinal: true,
 		},
 		WadInfo{
 			MD5Hash: "43c2df32dc6c740cb11f34dc5ab693fa",
 			Version: "DOOM II 1.9 - XBLA Version",
-			IsFinal: false,
+			IsFinal: true,
 		},
 		WadInfo{
 			MD5Hash: "c3bea40570c23e511a7ed3ebcd9865f7",
 			Version: "DOOM II 1.9 - BFG Edition",
-			IsFinal: false,
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "f617591a6c5d07037eb716dc4863e26b",
+			Version: "DOOM II 1.9 - Xbox 360 BFG Edition",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "9640fc4b2c8447bbd28f2080725d5c51",
+			Version: "DOOM II 1.9 - Tapwave Zodiac Version",
+			IsFinal: true,
 		},
 	}
 }
@@ -181,9 +201,21 @@ func Populate_FinalDOOM() {
 			IsFinal: true,
 		},
 		WadInfo{
+			MD5Hash:    "3493be7e1e2588bc9c8b31eab2587a04",
+			Version:    "Final DOOM: The Plutonia Experiment 1.9 (id Anthology Version)",
+			IsFinal:    true,
+			Additional: "May not be fully compatible with online servers or demos",
+		},
+		WadInfo{
 			MD5Hash: "4e158d9953c79ccf97bd0663244cc6b6",
-			Version: "Final DOOM: Evilution 1.9",
+			Version: "Final DOOM: TNT: Evilution 1.9",
 			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash:    "1d39e405bf6ee3df69a8d2646c8d5c49",
+			Version:    "Final DOOM: TNT: Evilution 1.9 (id Anthology Version)",
+			IsFinal:    true,
+			Additional: "May not be fully compatible with online servers or demos",
 		},
 	}
 }
@@ -199,6 +231,11 @@ func Populate_HereticHexen() {
 		WadInfo{
 			MD5Hash: "3117e399cdb4298eaa3941625f4b2923",
 			Version: "Heretic 1.0",
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "1e4cb4ef075ad344dd63971637307e04",
+			Version: "Heretic 1.2",
 			IsFinal: false,
 		},
 	}
@@ -217,16 +254,31 @@ func Populate_HereticHexen() {
 
 		// MAC versions
 		WadInfo{
-			MD5Hash:     "b68140a796f6fd7f3a5d3226a32b93be",
-			Version:     "Hexen 1.1 (MAC VERSION)",
-			IsFinal:     true,
-			Additionnal: "All existing servers use the Windows version of the WAD !",
+			MD5Hash:    "b68140a796f6fd7f3a5d3226a32b93be",
+			Version:    "Hexen 1.1 (MAC VERSION)",
+			IsFinal:    true,
+			Additional: "All existing servers use the Windows version of the WAD !",
 		},
 		WadInfo{
-			MD5Hash:     "b68140a796f6fd7f3a5d3226a32b93be",
-			Version:     "Hexen Demo (MAC VERSION)",
-			IsFinal:     false,
-			Additionnal: "All existing servers use the Windows version of the WAD !",
+			MD5Hash:    "b68140a796f6fd7f3a5d3226a32b93be",
+			Version:    "Hexen Demo (MAC VERSION)",
+			IsFinal:    false,
+			Additional: "All existing servers use the Windows version of the WAD !",
+		},
+
+		// hexdd.wad
+		// Steam only distributes version 1.0
+		WadInfo{
+			MD5Hash:    "1077432e2690d390c256ac908b5f4efa",
+			Version:    "Hexen: Deathkings of the Dark Citadel 1.0",
+			IsFinal:    false,
+			Additional: "Requires Hexen 1.1",
+		},
+		WadInfo{
+			MD5Hash:    "78d5898e99e220e4de64edaa0e479593",
+			Version:    "Hexen: Deathkings of the Dark Citadel 1.1",
+			IsFinal:    true,
+			Additional: "Requires Hexen 1.1",
 		},
 
 		// OTHER IRREVELENT THINGS
@@ -249,8 +301,7 @@ func Populate_HereticHexen() {
 }
 
 func Populate_Strife() {
-
-	// DOOM/UDOOM population
+	// Strife population
 	IWADInfo_Strife = []WadInfo{
 		WadInfo{
 			MD5Hash: "8f2d3a6a289f5d2f2f9c1eec02b47299",
@@ -263,10 +314,36 @@ func Populate_Strife() {
 			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:     "2fed2031a5b03892106e0f117f17901f",
-			Version:     "Strife 1.2 - 1.31 Registered",
-			IsFinal:     true,
-			Additionnal: "This IWAD is the latest version of Strife. However, the latest updates of Strife modify the executable. Please make sure it is the latest version.",
+			MD5Hash:    "2fed2031a5b03892106e0f117f17901f",
+			Version:    "Strife 1.2 - 1.31 Registered",
+			IsFinal:    true,
+			Additional: "This IWAD is the latest version of Strife. However, the latest updates of Strife modify the executable. Please make sure it is the latest version.",
+		},
+		WadInfo{
+			MD5Hash: "082234d6a3f7086424856478b5aa9e95",
+			Version: "Strife voice acting samples",
+			IsFinal: true,
+		},
+	}
+
+	// Strife: Veteran Edition
+	IWADInfo_SVE = []WadInfo{
+		WadInfo{
+			MD5Hash:    "06a8f99b9b756ac908917c3868b8e3bc",
+			Version:    "Strife: Veteran Edition 1.0",
+			IsFinal:    false,
+			Additional: "Download the latest version via Steam or GOG.com",
+		},
+		WadInfo{
+			MD5Hash:    "2c0a712d3e39b010519c879f734d79ae",
+			Version:    "Strife: Veteran Edition 1.1",
+			IsFinal:    false,
+			Additional: "Download the latest version via Steam or GOG.com",
+		},
+		WadInfo{
+			MD5Hash: "47958a4fea8a54116e4b51fc155799c0",
+			Version: "Strife: Veteran Edition 1.2",
+			IsFinal: true,
 		},
 	}
 }
@@ -445,22 +522,16 @@ func Populate_Misc() {
 	// DOOM/UDOOM population
 	IWADInfo_Misc = []WadInfo{
 		WadInfo{
-			MD5Hash:     "967d5ae23daf45196212ae1b605da3b0",
-			Version:     "No Rest for the Living",
-			IsFinal:     true,
-			Additionnal: "Requires DooM II v1.9 and a decent source port",
+			MD5Hash:    "967d5ae23daf45196212ae1b605da3b0",
+			Version:    "No Rest for the Living",
+			IsFinal:    true,
+			Additional: "Requires DOOM II v1.9 and a decent source port",
 		},
 		WadInfo{
-			MD5Hash:     "78d5898e99e220e4de64edaa0e479593",
-			Version:     "Hexen: Deathkings of the Dark Citadel",
-			IsFinal:     true,
-			Additionnal: "Requires Hexen 1.1",
-		},
-		WadInfo{
-			MD5Hash:     "25485721882b050afa96a56e5758dd52",
-			Version:     "Chex Quest",
-			IsFinal:     true,
-			Additionnal: "May require the DEHacked file if playing on a source port, available here : https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
+			MD5Hash:    "25485721882b050afa96a56e5758dd52",
+			Version:    "Chex Quest",
+			IsFinal:    true,
+			Additional: "May require the DEHacked file if playing on a source port, available here : https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
 		},
 
 		// HACX
@@ -495,6 +566,119 @@ func Populate_Misc() {
 			Version:      "Chex Quest 3 1.0",
 			IsFinal:      false,
 			IsChexQuest3: true,
+		},
+	}
+
+	// Master Levels for DOOM II
+	IWADInfo_MasterLevels = []WadInfo{
+		// Standard PWADs
+		WadInfo{
+			MD5Hash: "cb03fd0cd84b10579c2b2b313199d4c1",
+			Version: "Attack (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "a421ca18cea00a2696162f8d2a2beeca",
+			Version: "Black Tower (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "18eb4ffb3094ddb690e62211dc6169a1",
+			Version: "Bloodsea Keep (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "33493942592d764e7787fb0ad7d03044",
+			Version: "Canyon (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "e7c273033376824edf95e1328261e7de",
+			Version: "The Catwalk (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "77c179948df47a7a613bd1181c959892",
+			Version: "The Combine (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "cbf714b499ebdef2682990eaf93fdb5f",
+			Version: "The Fistula (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "f000701a3ed1f49249ee08550c03dfa5",
+			Version: "The Garrison (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "a1efff02df6d873762ebac6b12358bbc",
+			Version: "Geryon: 6th Canto of Inferno (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "787fa80fe9665c322f853b74838e77cc",
+			Version: "Titan Manor (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "b4eaf844b135cc2a0058c6e0149b4408",
+			Version: "Mephisto’s Maosoleum (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "aea597159dee96bcc58f3f9e3e586182",
+			Version: "Minos’ Judgement: 4th Canto of Inferno (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "46f58580e7792f486c747cf1117c4ca1",
+			Version: "Nessus: 5th Canto of Inferno (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "d560abb6d5719d46ebb47b27d7813a4b",
+			Version: "Paradox (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "b572d518d564c7d7b6b259a726538cbb",
+			Version: "Subspace (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "bb417f07804373415a6ed8e533242c3c",
+			Version: "Subterra (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "65b4abcb74e7a386d5c024cf250d6336",
+			Version: "“The Express Elevator to Hell” and “Bad Dream” (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "8474f6d663f04630de05ecac36b574d1",
+			Version: "Trapped on Titan (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "a49dccebb5f32307246b7f32da121cf7",
+			Version: "Vesperas: 7th Canto of Inferno (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "3c0874f2df3c06a002ee2a18aba0f0e8",
+			Version: "Virgil’s Lead: 3rd Canto of Inferno (Master Levels for DOOM II)",
+			IsFinal: true,
+		},
+
+		// Aggregate WAD from the Xbox 360 and PlayStation 3 BFG Edition
+		WadInfo{
+			MD5Hash:    "84cb8640f599c4a17c8eb526f90d2b7a",
+			Version:    "Master Levels for DOOM II - Xbox 360+PlayStation 3 BFG Edition",
+			IsFinal:    true,
+			Additional: "Not generally compatible with demo files or source port multiplayer",
 		},
 	}
 }
@@ -554,6 +738,11 @@ func CheckIWAD(filename string, hash string) {
 		IWAD, bFound = CompIWADData(IWADInfo_Strife, hash)
 	}
 
+	// Check SVE
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_SVE, hash)
+	}
+
 	// Check FreeDoom/FreeDM
 	if bFound == false {
 		IWAD, bFound = CompIWADData(IWADInfo_FreeDoom, hash)
@@ -562,6 +751,11 @@ func CheckIWAD(filename string, hash string) {
 	// Check the other mods
 	if bFound == false {
 		IWAD, bFound = CompIWADData(IWADInfo_Misc, hash)
+	}
+
+	// Check Master Levels
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_MasterLevels, hash)
 	}
 
 	if bFound {
@@ -592,8 +786,8 @@ func CheckIWAD(filename string, hash string) {
 		ansi.Println("Needs patching ?", YesorNo(!IWAD.IsFinal))
 
 		// If the IWAD has an additionnal message, please write it so.
-		if IWAD.Additionnal != "" {
-			color.Cyan(IWAD.Additionnal)
+		if IWAD.Additional != "" {
+			color.Cyan(IWAD.Additional)
 		}
 
 		fmt.Println("")

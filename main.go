@@ -24,18 +24,20 @@ type WadInfo struct {
 	IsHacX       bool   // If HacX, link for the latest version
 	IsChexQuest3 bool   // If Chex Quest 3, you know the drill...
 	PWADRequires string // If the official PWAD requires an IWAD to run
-	Additionnal  string // If I need to display an additionnal message for this IWAD.
+	Additional   string // If I need to display an additionnal message for this IWAD.
 }
 
 var (
-	IWADInfo_Doom      []WadInfo
-	IWADInfo_Doom2     []WadInfo
-	IWADInfo_FinalDoom []WadInfo
-	IWADInfo_Heretic   []WadInfo
-	IWADInfo_Hexen     []WadInfo
-	IWADInfo_Strife    []WadInfo
-	IWADInfo_FreeDoom  []WadInfo
-	IWADInfo_Misc      []WadInfo // PWAD and addons
+	IWADInfo_Doom         []WadInfo
+	IWADInfo_Doom2        []WadInfo
+	IWADInfo_FinalDoom    []WadInfo
+	IWADInfo_Heretic      []WadInfo
+	IWADInfo_Hexen        []WadInfo
+	IWADInfo_MasterLevels []WadInfo
+	IWADInfo_Strife       []WadInfo
+	IWADInfo_SVE          []WadInfo
+	IWADInfo_FreeDoom     []WadInfo
+	IWADInfo_Misc         []WadInfo // PWAD and addons
 
 	// Patching messages
 	bNeedsPatching   = false
