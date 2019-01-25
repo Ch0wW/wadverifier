@@ -117,10 +117,9 @@ func Populate_Doom() {
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash:    "0c8758f102ccafe26a3040bee8ba5021",
-			Version:    "The Ultimate DOOM (1.9) - Xbox Version",
-			IsFinal:    true,
-			Additional: "If you want to use it online, you'll need to downgrade it using Phenex2's tool.",
+			MD5Hash: "0c8758f102ccafe26a3040bee8ba5021",
+			Version: "The Ultimate DOOM (1.9) - Xbox Version",
+			IsFinal: true,
 		},
 		WadInfo{
 			MD5Hash: "72286ddc680d47b9138053dd944b2a3d",
