@@ -64,7 +64,7 @@ var (
 )
 
 const (
-	m_version = "0.2"
+	m_version = "0.3"
 	IWADbytes = 1145132873
 	PWADbytes = 1145132880
 )

@@ -25,9 +25,9 @@ IWADverifier can identify these IWADs:
 * HacX v1.0 up to 1.2
 * Chex Quest 1
 * Chex Quest 3 v1.0 & 1.4
-* DOOM 3 XBOX IWADs
-* DOOM/DOOM2 XBLA IWADs
-* DOOM 3 BFG Edition IWADs (+ NERVE.WAD)
+* DOOM 3 XBOX
+* DOOM/DOOM2 XBLA
+* DOOM 3 BFG (+ NERVE.WAD)
 * FreeDOOM v0.8 up to 0.11.3
 * And many many more !
 
@@ -59,6 +59,8 @@ Then, inside the project folder, write `go build`, and that should be it.
 - [ ] Probably a few code optimizations here and there.
 - [x] Color support for better readability.
 
+# Huge thanks to 
+* Mike Swanson (Chungy) for adding several IWADs to the list !
 
 # Licence
 This program is licenced under GPLv3.
