@@ -9,20 +9,33 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 
 	"github.com/fatih/color"
 	ansi "github.com/k0kubun/go-ansi"
 )
 
+//--------------------------
+type GPatch int
+
+const (
+	GAME_IWAD      GPatch = iota // i.e. for Doom, DooM 2, Heretic, Hexen, HexenDD, Plutonia, TNT, Strife
+	GAME_SHAREWARE               // All the Doom 1 sharewares.
+	GAME_FREEDOOM                // i.e. for Freedoom Phase 1/2 and FreeDM
+	GAME_HACX                    // i.e. for HacX 1.0 - 1.2 (no support for 2.0 yet as it's still not released)
+	GAME_CHEX_QUEST_3
+	GAME_STRIFE_VE // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
+)
+
+//--------------------------
+
 // WadInfo : all WAD data returned from the program
 type WadInfo struct {
 	MD5Hash      string
 	Version      string
 	IsFinal      bool
-	IsFreedoom   bool   // If FreeDOOM, link for the upgrade to the latest version
-	IsHacX       bool   // If HacX, link for the latest version
-	IsChexQuest3 bool   // If Chex Quest 3, you know the drill...
+	Game         GPatch
 	PWADRequires string // If the official PWAD requires an IWAD to run
 	Additional   string // If I need to display an additionnal message for this IWAD.
 }
@@ -42,21 +55,28 @@ var (
 	// Patching messages
 	bNeedsPatching   = false
 	bUpgradeIWAD     = false
+	bUpgradeDoomSW   = false
 	bUpgradeFreeDoom = false
 	bUpgradeHacX     = false
+	bUpgradeSVE      = false
 	bUpgradeCQ3      = false
-
-	iErrors = 0
+	iErrors          = 0
 )
 
 const (
-	m_version = "0.1"
+	m_version = "0.2"
 	IWADbytes = 1145132873
 	PWADbytes = 1145132880
 )
 
 // Just a quick function to require the user to press ENTER.
+// Now, it only happens on Windows. (for the drag & drop feature)
 func PressEnter() {
+
+	if runtime.GOOS != "windows" {
+		return
+	}
+
 	fmt.Print("Press 'Enter' to continue...")
 	bufio.NewReader(os.Stdin).ReadBytes('\n')
 }
@@ -128,12 +148,10 @@ func main() {
 	// Initialize IWAD/Addon lists
 	PopulateIWADInfos()
 
+	// Put the colors
 	color.Output = ansi.NewAnsiStdout()
 
-	//==============================
-	// HEADER OF THE PROGRAM
-	//==============================
-	color.Cyan("IWAD Verifier %s - By Ch0wW", m_version)
+	color.Cyan("IWAD Verifier %s", m_version)
 	color.Cyan("https://github.com/ch0ww/iwadverifier")
 	color.Cyan("---------------------------------------")
 	fmt.Println("")
@@ -151,6 +169,7 @@ func main() {
 
 		// Check if the user omitted the extension.
 		// If so, assume the file is a .wad
+		// ToDo: Check later for .pk3 files !
 		if filepath.Ext(strings.ToLower(args[i])) == "" {
 			args[i] = fmt.Sprintf("%s.wad", args[i])
 			fmt.Println(args[i])
@@ -183,8 +202,9 @@ func main() {
 		CheckIWAD(args[i], hash)
 	}
 
+	// This is ugly, but I have to find a way to make
 	// If there's some patching needed, warn the user how to do it.
-	if bNeedsPatching && (bUpgradeFreeDoom || bUpgradeIWAD) {
+	if bNeedsPatching {
 		color.Cyan("==================================================================================")
 		color.Cyan("")
 
@@ -192,6 +212,11 @@ func main() {
 			color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Phenex :")
 			color.Cyan("• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
 			color.Cyan("• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
+			color.Cyan("")
+		}
+		if bUpgradeDoomSW {
+			color.Cyan("Your Shareware version of Doom is outdated. Please get the latest version below :")
+			color.Cyan("|-> https://www.doomworld.com/idgames/idstuff/doom/doom19s")
 			color.Cyan("")
 		}
 		if bUpgradeFreeDoom {
@@ -209,6 +234,12 @@ func main() {
 			color.Cyan("|-> http://www.chucktropolis.com/gamers.htm")
 			color.Cyan("")
 		}
+		if bUpgradeSVE {
+			color.Cyan("Your version of Strife: Veteran Edition seems outdated.")
+			color.Cyan("• If you bought it on Steam, S:VE should be updated automatically.")
+			color.Cyan("• If you bought it on GOG, you will need to redownload it (Latest version is 1.2) or to use GOG Galaxy")
+			color.Cyan("")
+		}
 		color.Cyan("==================================================================================")
 	}
 
@@ -217,7 +248,7 @@ func main() {
 	} else if iErrors > 1 {
 		color.Red("%d errors have been found. Check them !", iErrors)
 	} else {
-		color.Green("Everything looks fine. Happy gaming !")
+		color.Green("Everything looks fine. Happy fragging !")
 	}
 
 	PressEnter()

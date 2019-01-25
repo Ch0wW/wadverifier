@@ -30,11 +30,13 @@ func Populate_Doom() {
 		WadInfo{
 			MD5Hash: "90facab21eede7981be10790e3f82da2",
 			Version: "DOOM 1.0 Shareware",
+			Game:    GAME_SHAREWARE,
 			IsFinal: false,
 		},
 		WadInfo{
 			MD5Hash: "52cbc8882f445573ce421fa5453513c1",
 			Version: "DOOM 1.1 Shareware",
+			Game:    GAME_SHAREWARE,
 			IsFinal: false,
 		},
 		WadInfo{
@@ -45,6 +47,7 @@ func Populate_Doom() {
 		WadInfo{
 			MD5Hash: "30aa5beb9e5ebfbbe1e1765561c08f38",
 			Version: "DOOM 1.2 Shareware",
+			Game:    GAME_SHAREWARE,
 			IsFinal: false,
 		},
 		WadInfo{
@@ -55,22 +58,26 @@ func Populate_Doom() {
 		WadInfo{
 			MD5Hash: "a21ae40c388cb6f2c3cc1b95589ee693",
 			Version: "DOOM 1.4 Shareware Beta",
+			Game:    GAME_SHAREWARE,
 			IsFinal: false,
 		},
 		WadInfo{
 			MD5Hash: "e280233d533dcc28c1acd6ccdc7742d4",
 			Version: "DOOM 1.5 Shareware Beta",
+			Game:    GAME_SHAREWARE,
 			IsFinal: false,
 		},
 		WadInfo{
 			MD5Hash: "762fd6d4b960d4b759730f01387a50a1",
 			Version: "DOOM 1.6 Shareware Beta",
+			Game:    GAME_SHAREWARE,
 			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash: "c428ea394dc52835f2580d5bfd50d76f",
-			Version: "DOOM 1.666 Shareware",
-			IsFinal: false,
+			MD5Hash:    "c428ea394dc52835f2580d5bfd50d76f",
+			Game:       GAME_SHAREWARE,
+			IsFinal:    false,
+			Additional: "Get the latest shareware version of DooM at https://www.doomworld.com/idgames/idstuff/doom/doom19s",
 		},
 		WadInfo{
 			MD5Hash: "54978d12de87f162b9bcc011676cb3c0",
@@ -78,9 +85,11 @@ func Populate_Doom() {
 			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash: "5f4eb849b1af12887dec04a2a12e5e62",
-			Version: "DOOM 1.8 Shareware",
-			IsFinal: false,
+			MD5Hash:    "5f4eb849b1af12887dec04a2a12e5e62",
+			Version:    "DOOM 1.8 Shareware",
+			Game:       GAME_SHAREWARE,
+			IsFinal:    false,
+			Additional: "Get the latest shareware version of DooM at https://www.doomworld.com/idgames/idstuff/doom/doom19s",
 		},
 		WadInfo{
 			MD5Hash: "11e1cd216801ea2657723abc86ecb01f",
@@ -108,19 +117,26 @@ func Populate_Doom() {
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash: "0c8758f102ccafe26a3040bee8ba5021",
-			Version: "The Ultimate DOOM (1.9) - Xbox Version",
-			IsFinal: true,
+			MD5Hash:    "0c8758f102ccafe26a3040bee8ba5021",
+			Version:    "The Ultimate DOOM (1.9) - Xbox Version",
+			IsFinal:    true,
+			Additional: "If you want to use it online, you'll need to downgrade it using Phenex2's tool.",
 		},
 		WadInfo{
 			MD5Hash: "72286ddc680d47b9138053dd944b2a3d",
 			Version: "The Ultimate DOOM (1.9) - XBLA Version",
 			IsFinal: true,
+			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
+			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
+			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
 		},
 		WadInfo{
 			MD5Hash: "fb35c4a5a9fd49ec29ab6e900572c524",
 			Version: "The Ultimate DOOM (1.9) - BFG Edition",
 			IsFinal: true,
+			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
+			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
+			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
 		},
 	}
 }
@@ -173,11 +189,17 @@ func Populate_DoomII() {
 			MD5Hash: "43c2df32dc6c740cb11f34dc5ab693fa",
 			Version: "DOOM II 1.9 - XBLA Version",
 			IsFinal: true,
+			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
+			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
+			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
 		},
 		WadInfo{
 			MD5Hash: "c3bea40570c23e511a7ed3ebcd9865f7",
 			Version: "DOOM II 1.9 - BFG Edition",
 			IsFinal: true,
+			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
+			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
+			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
 		},
 		WadInfo{
 			MD5Hash: "f617591a6c5d07037eb716dc4863e26b",
@@ -224,19 +246,21 @@ func Populate_HereticHexen() {
 	// Heretic population
 	IWADInfo_Heretic = []WadInfo{
 		WadInfo{
-			MD5Hash: "fc7eab659f6ee522bb57acc1a946912f",
-			Version: "Heretic Wide-Area Beta",
-			IsFinal: true,
+			MD5Hash:    "fc7eab659f6ee522bb57acc1a946912f",
+			Version:    "Heretic Wide-Area Beta",
+			IsFinal:    true,
+			Additional: "This is the latest Beta version of Heretic.",
 		},
 		WadInfo{
 			MD5Hash: "023b52175d2f260c3bdc5528df5d0a8c",
 			Version: "Heretic 1.0 Shareware",
-			IsFinal: true,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash: "ae779722390ec32fa37b0d361f7d82f8",
-			Version: "Heretic 1.2 Shareware",
-			IsFinal: true,
+			MD5Hash:    "ae779722390ec32fa37b0d361f7d82f8",
+			Version:    "Heretic 1.2 Shareware",
+			IsFinal:    true,
+			Additional: "This is the latest Shareware version of Heretic.",
 		},
 
 		WadInfo{
@@ -278,7 +302,7 @@ func Populate_HereticHexen() {
 		WadInfo{
 			MD5Hash:    "b68140a796f6fd7f3a5d3226a32b93be",
 			Version:    "Hexen Demo (MAC VERSION)",
-			IsFinal:    false,
+			IsFinal:    true,
 			Additional: "All existing servers use the Windows version of the WAD !",
 		},
 
@@ -320,15 +344,10 @@ func Populate_Strife() {
 	// Strife population
 	IWADInfo_Strife = []WadInfo{
 		WadInfo{
-			MD5Hash:    "de2c8dcad7cca206292294bdab524292",
-			Version:    "Strife 1.0 Shareware",
-			IsFinal:    false,
-			Additional: "Download the latest shareware of Strife at https://www.doomworld.com/idgames/roguestuff/strife11",
-		},
-		WadInfo{
-			MD5Hash: "8f2d3a6a289f5d2f2f9c1eec02b47299",
-			Version: "Strife 1.0 Registered",
-			IsFinal: false,
+			MD5Hash:    "2fed2031a5b03892106e0f117f17901f",
+			Version:    "Strife 1.2 - 1.31 Registered",
+			IsFinal:    true,
+			Additional: "Your IWAD is up-to-date. However, the latest updates of Strife modify the executable. Please make sure it is the latest version.",
 		},
 		WadInfo{
 			MD5Hash: "bb545b9c4eca0ff92c14d466b3294023",
@@ -336,11 +355,18 @@ func Populate_Strife() {
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash:    "2fed2031a5b03892106e0f117f17901f",
-			Version:    "Strife 1.2 - 1.31 Registered",
-			IsFinal:    true,
-			Additional: "This IWAD is the latest version of Strife. However, the latest updates of Strife modify the executable. Please make sure it is the latest version.",
+			MD5Hash: "8f2d3a6a289f5d2f2f9c1eec02b47299",
+			Version: "Strife 1.0 Registered",
+			IsFinal: false,
 		},
+		WadInfo{
+			MD5Hash:    "de2c8dcad7cca206292294bdab524292",
+			Version:    "Strife 1.0 Shareware",
+			IsFinal:    false,
+			Additional: "Download the latest shareware of Strife at https://www.doomworld.com/idgames/roguestuff/strife11",
+		},
+
+		// Additionnal PWADs
 		WadInfo{
 			MD5Hash: "082234d6a3f7086424856478b5aa9e95",
 			Version: "Strife voice acting samples",
@@ -351,21 +377,22 @@ func Populate_Strife() {
 	// Strife: Veteran Edition
 	IWADInfo_SVE = []WadInfo{
 		WadInfo{
-			MD5Hash:    "06a8f99b9b756ac908917c3868b8e3bc",
-			Version:    "Strife: Veteran Edition 1.0",
-			IsFinal:    false,
-			Additional: "Download the latest version via Steam or GOG.com",
-		},
-		WadInfo{
-			MD5Hash:    "2c0a712d3e39b010519c879f734d79ae",
-			Version:    "Strife: Veteran Edition 1.1",
-			IsFinal:    false,
-			Additional: "Download the latest version via Steam or GOG.com",
-		},
-		WadInfo{
 			MD5Hash: "47958a4fea8a54116e4b51fc155799c0",
 			Version: "Strife: Veteran Edition 1.2",
+			Game:    GAME_STRIFE_VE,
 			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "2c0a712d3e39b010519c879f734d79ae",
+			Version: "Strife: Veteran Edition 1.1",
+			Game:    GAME_STRIFE_VE,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "06a8f99b9b756ac908917c3868b8e3bc",
+			Version: "Strife: Veteran Edition 1.0",
+			Game:    GAME_STRIFE_VE,
+			IsFinal: false,
 		},
 	}
 }
@@ -376,22 +403,22 @@ func Populate_FreeDoom() {
 		//---------------
 		// First, the latest IWADs
 		WadInfo{
-			MD5Hash:    "ea471a3d38fcee0fb3a69bcd3221e335",
-			Version:    "Freedoom: Phase 1 0.11.3",
-			IsFinal:    true,
-			IsFreedoom: true,
+			MD5Hash: "ea471a3d38fcee0fb3a69bcd3221e335",
+			Version: "Freedoom: Phase 1 0.11.3",
+			Game:    GAME_FREEDOOM,
+			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash:    "984f99af08f085e38070f51095ab7c31",
-			Version:    "Freedoom: Phase 2 0.11.3",
-			IsFreedoom: true,
-			IsFinal:    true,
+			MD5Hash: "984f99af08f085e38070f51095ab7c31",
+			Version: "Freedoom: Phase 2 0.11.3",
+			Game:    GAME_FREEDOOM,
+			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash:    "87ee2494d921633420ce9bdb418127c4",
-			Version:    "FreeDM 0.11.3",
-			IsFreedoom: true,
-			IsFinal:    true,
+			MD5Hash: "87ee2494d921633420ce9bdb418127c4",
+			Version: "FreeDM 0.11.3",
+			Game:    GAME_FREEDOOM,
+			IsFinal: true,
 		},
 
 		//----------------
@@ -399,142 +426,142 @@ func Populate_FreeDoom() {
 
 		// 0.11.2
 		WadInfo{
-			MD5Hash:    "9352b09ae878dc52c6c18aa38acda6eb",
-			Version:    "FreeDM 0.11.2",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "9352b09ae878dc52c6c18aa38acda6eb",
+			Version: "FreeDM 0.11.2",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "6d00c49520be26f08a6bd001814a32ab",
-			Version:    "Freedoom: Phase 1 0.11.2",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "6d00c49520be26f08a6bd001814a32ab",
+			Version: "Freedoom: Phase 1 0.11.2",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "90832a872b5bb0aca4ca0b20419aad5d",
-			Version:    "Freedoom: Phase 2 0.11.2",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "90832a872b5bb0aca4ca0b20419aad5d",
+			Version: "Freedoom: Phase 2 0.11.2",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 
 		// 0.11.1
 		WadInfo{
-			MD5Hash:    "77ba9c0f75c32e4a729490688bb99241",
-			Version:    "FreeDM 0.11.1",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "77ba9c0f75c32e4a729490688bb99241",
+			Version: "FreeDM 0.11.1",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "35312e99d2473297aabe0602700bee8a",
-			Version:    "Freedoom: Phase 1 0.11.1",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "35312e99d2473297aabe0602700bee8a",
+			Version: "Freedoom: Phase 1 0.11.1",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "ec5b38b30ba2b70e278205776af3fbb5",
-			Version:    "Freedoom: Phase 2 0.11.1",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "ec5b38b30ba2b70e278205776af3fbb5",
+			Version: "Freedoom: Phase 2 0.11.1",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 
-		// 0.11
+		// 0.11.0
 		WadInfo{
-			MD5Hash:    "d76d3973c075b069ecb4e16dc9eacbb4",
-			Version:    "FreeDM 0.11",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "d76d3973c075b069ecb4e16dc9eacbb4",
+			Version: "FreeDM 0.11",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "21a4707fc25d29edf4b098bd400c5c42",
-			Version:    "Freedoom: Phase 1 0.11",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "21a4707fc25d29edf4b098bd400c5c42",
+			Version: "Freedoom: Phase 1 0.11",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "b1018017c61b06e33c11102d8bafaad0",
-			Version:    "Freedoom: Phase 2 0.11",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "b1018017c61b06e33c11102d8bafaad0",
+			Version: "Freedoom: Phase 2 0.11",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 
 		// 0.10.1
 		WadInfo{
-			MD5Hash:    "bd4f359f1963e388beda014c5548b420",
-			Version:    "FreeDM 0.10.1",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "bd4f359f1963e388beda014c5548b420",
+			Version: "FreeDM 0.10.1",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "91de79621a393a08c39a9ab2c034b766",
-			Version:    "Freedoom: Phase 1 0.10.1",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "91de79621a393a08c39a9ab2c034b766",
+			Version: "Freedoom: Phase 1 0.10.1",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "dd9c9e73f5f50d3778c85573cd08d9a4",
-			Version:    "Freedoom: Phase 2 0.10.1",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "dd9c9e73f5f50d3778c85573cd08d9a4",
+			Version: "Freedoom: Phase 2 0.10.1",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 
 		// 0.10.0
 		WadInfo{
-			MD5Hash:    "9b8d72b59fd93b2b3e116149baa1b142",
-			Version:    "Freedoom: Phase 1 0.10",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "9b8d72b59fd93b2b3e116149baa1b142",
+			Version: "Freedoom: Phase 1 0.10",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "c5a4f2d38d78b251d8557cb2d93e40ee",
-			Version:    "Freedoom: Phase 2 0.10",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "c5a4f2d38d78b251d8557cb2d93e40ee",
+			Version: "Freedoom: Phase 2 0.10",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "f37b8b70e1394289a7ec404f67cdec1a",
-			Version:    "FreeDM 0.10",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "f37b8b70e1394289a7ec404f67cdec1a",
+			Version: "FreeDM 0.10",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 
 		// 0.9
 		WadInfo{
-			MD5Hash:    "aca90cf5ac36e996edc58bd0329b979a",
-			Version:    "Freedoom: Phase 1 0.9",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "aca90cf5ac36e996edc58bd0329b979a",
+			Version: "Freedoom: Phase 1 0.9",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "8fa57dbc7687f84528eba39dde3a20e0",
-			Version:    "Freedoom: Phase 2 0.9",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "8fa57dbc7687f84528eba39dde3a20e0",
+			Version: "Freedoom: Phase 2 0.9",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "cbb27c5f3c2c44d34843cf63daa627f6",
-			Version:    "FreeDM 0.9",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "cbb27c5f3c2c44d34843cf63daa627f6",
+			Version: "FreeDM 0.9",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 
 		// 0.8
 		WadInfo{
-			MD5Hash:    "30095b256dd3a1566bbc30286f72bc47",
-			Version:    "Ultimate Freedoom 0.8",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "30095b256dd3a1566bbc30286f72bc47",
+			Version: "Ultimate Freedoom 0.8",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "e3668912fc37c479b2840516c887018b",
-			Version:    "Freedoom 0.8",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "e3668912fc37c479b2840516c887018b",
+			Version: "Freedoom 0.8",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash:    "05859098bf191899903ef343afba369d",
-			Version:    "FreeDM 0.8",
-			IsFinal:    false,
-			IsFreedoom: true,
+			MD5Hash: "05859098bf191899903ef343afba369d",
+			Version: "FreeDM 0.8",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
 		},
 	}
 }
@@ -544,10 +571,11 @@ func Populate_Misc() {
 	// DOOM/UDOOM population
 	IWADInfo_Misc = []WadInfo{
 		WadInfo{
-			MD5Hash:    "967d5ae23daf45196212ae1b605da3b0",
-			Version:    "No Rest for the Living",
-			IsFinal:    true,
-			Additional: "Requires DOOM II v1.9 and a decent source port",
+			MD5Hash:      "967d5ae23daf45196212ae1b605da3b0",
+			Version:      "No Rest for the Living",
+			IsFinal:      true,
+			PWADRequires: "DOOM II v1.9",
+			Additional:   "You will need a decent source port to be able to run this.",
 		},
 		WadInfo{
 			MD5Hash:    "25485721882b050afa96a56e5758dd52",
@@ -560,34 +588,41 @@ func Populate_Misc() {
 		WadInfo{
 			MD5Hash: "65ed74d522bdf6649c2831b13b9e02b4",
 			Version: "HacX 1.2",
+			Game:    GAME_HACX,
 			IsFinal: true,
-			IsHacX:  true,
 		},
 		WadInfo{
 			MD5Hash: "b7fd2f43f3382cf012dc6b097a3cb182",
 			Version: "HacX 1.1",
+			Game:    GAME_HACX,
 			IsFinal: false,
-			IsHacX:  true,
 		},
 		WadInfo{
 			MD5Hash: "1511a7032ebc834a3884cf390d7f186e",
 			Version: "HacX 1.0",
-			IsFinal: true,
-			IsHacX:  true,
+			Game:    GAME_HACX,
+			IsFinal: false,
 		},
 
 		// Chex Quest 3
 		WadInfo{
-			MD5Hash:      "bce163d06521f9d15f9686786e64df13",
-			Version:      "Chex Quest 3 1.4",
-			IsFinal:      true,
-			IsChexQuest3: true,
+			MD5Hash: "bce163d06521f9d15f9686786e64df13",
+			Version: "Chex Quest 3 1.4",
+			Game:    GAME_CHEX_QUEST_3,
+			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash:      "59c985995db55cd2623c1893550d82b3",
-			Version:      "Chex Quest 3 1.0",
-			IsFinal:      false,
-			IsChexQuest3: true,
+			MD5Hash:    "cb001c34e424687191f299cc1dff4d68",
+			Version:    "Chex Quest 3 (ModDB - Unknown)",
+			Game:       GAME_CHEX_QUEST_3,
+			IsFinal:    false,
+			Additional: "This version of Chex Quest 3 has been released on ModDB. I have no other information about it.",
+		},
+		WadInfo{
+			MD5Hash: "59c985995db55cd2623c1893550d82b3",
+			Version: "Chex Quest 3 1.0",
+			Game:    GAME_CHEX_QUEST_3,
+			IsFinal: false,
 		},
 	}
 
@@ -725,6 +760,12 @@ func YesorNo(b bool) string {
 	}
 }
 
+func SetFlag(typegame *bool, IWAD WadInfo) {
+	if !*typegame {
+		*typegame = !IWAD.IsFinal
+	}
+}
+
 func CheckIWAD(filename string, hash string) {
 
 	yellow := color.New(color.FgYellow).SprintFunc()
@@ -743,6 +784,11 @@ func CheckIWAD(filename string, hash string) {
 	// Check TNT/Plutonia
 	if bFound == false {
 		IWAD, bFound = CompIWADData(IWADInfo_FinalDoom, hash)
+	}
+
+	// Check Master Levels
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_MasterLevels, hash)
 	}
 
 	// Check Heretic
@@ -775,11 +821,6 @@ func CheckIWAD(filename string, hash string) {
 		IWAD, bFound = CompIWADData(IWADInfo_Misc, hash)
 	}
 
-	// Check Master Levels
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_MasterLevels, hash)
-	}
-
 	if bFound {
 		fmt.Println("MD5:", IWAD.MD5Hash)
 		ansi.Println("Version:", yellow(IWAD.Version))
@@ -790,14 +831,21 @@ func CheckIWAD(filename string, hash string) {
 		}
 
 		// Now, flag our messages if our IWAD is older
-		if !bUpgradeFreeDoom && IWAD.IsFreedoom {
-			bUpgradeFreeDoom = !IWAD.IsFinal // FreeDOOM IWAD is older
-		} else if !bUpgradeHacX && IWAD.IsHacX {
-			bUpgradeHacX = !IWAD.IsFinal // HacX IWAD is older
-		} else if !bUpgradeCQ3 && IWAD.IsChexQuest3 {
-			bUpgradeCQ3 = !IWAD.IsFinal // Chex Quest 3 is older
-		} else {
-			bUpgradeIWAD = !IWAD.IsFinal // Standard IWAD is older
+		switch IWAD.Game {
+		case GAME_IWAD:
+			SetFlag(&bUpgradeIWAD, IWAD)
+			break
+		case GAME_FREEDOOM:
+			SetFlag(&bUpgradeFreeDoom, IWAD)
+			break
+		case GAME_HACX:
+			SetFlag(&bUpgradeHacX, IWAD)
+			break
+		case GAME_CHEX_QUEST_3:
+			SetFlag(&bUpgradeCQ3, IWAD)
+			break
+		case GAME_STRIFE_VE:
+			SetFlag(&bUpgradeSVE, IWAD)
 		}
 
 		// Add an error count if it's not the final version of a wad.

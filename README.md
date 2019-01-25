@@ -16,24 +16,25 @@ This tool was created, as the original project by Russell has disappeared from t
 ### IWAD Identification
 IWADverifier can identify these IWADs:
 * DOOM v1.0 up to 1.9
-* DOOM II v1.6 up to 1.9
+* DOOM II v1.666 up to 1.9
 * Final DOOM (Plutonia & TNT)
+* Master levels of DooM II
 * Heretic v1.0 up to 1.3
-* Hexen v1.0 & v1.1 (Dark Citadel's Addon included)
-* Strife v1.0 up to 1.31
+* Hexen v1.0 & v1.1 (+ Dark Citadel's Addon)
+* Strife v1.0 up to 1.31 (+ Veteran Edition)
 * HacX v1.0 up to 1.2
 * Chex Quest 1
 * Chex Quest 3 v1.0 & 1.4
 * DOOM 3 XBOX IWADs
 * DOOM/DOOM2 XBLA IWADs
-* DOOM 3 BFG Edition IWADs (NERVE.WAD included)
+* DOOM 3 BFG Edition IWADs (+ NERVE.WAD)
 * FreeDOOM v0.8 up to 0.11.3
 * And many many more !
 
 ### Latest version detection
 IWADverifier looks up if your IWAD is the latest version or not. If it's not, a message tells you what to do to get the latest version of your file !
 
-### Drag & Drop (Windows only ?)
+### Drag & Drop (Windows only)
 To make it easier for everyone, you can directly drag your IWAD files to IWADverifier !
 
 ### Color support
@@ -53,10 +54,11 @@ Then, inside the project folder, write `go build`, and that should be it.
 - [x] Open the WAD to check if it's a IWAD or PWAD before doing the checks.
 - [x] Add support for NERVE.WAD, and the Hexen Addon.
 - [x] Add support for HacX and Chex Quest.
-- [ ] Add support for Master levels for Doom II.
-- [ ] Add support for GZDoom .pk3 IWADs.
-- [ ] Probably a few fixes here and there.
+- [x] Add support for Master levels for Doom II.
+- [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
+- [ ] Probably a few code optimizations here and there.
 - [x] Color support for better readability.
+
 
 # Licence
 This program is licenced under GPLv3.
