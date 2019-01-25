@@ -185,7 +185,7 @@ func main() {
 
 		valid := isWADvalid(args[i])
 		if !valid {
-			color.Yellow("%s is not a valid WAD file !", args[i])
+			color.Yellow("%s is not a valid WAD file !", args[i]) // Need to call SPA 1-800-388-PIR8 ?! Memories...
 			iErrors = iErrors + 1
 			continue
 		}
