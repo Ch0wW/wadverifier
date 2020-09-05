@@ -58,6 +58,7 @@ Then, inside the project folder, write `go build`, and that should be it.
 - [x] Add support for HacX and Chex Quest.
 - [x] Add support for Master levels for Doom II.
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
+- [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
 - [ ] Probably a few code optimizations here and there.
 - [x] Color support for better readability.
 
