@@ -16,55 +16,8 @@ import (
 	ansi "github.com/k0kubun/go-ansi"
 )
 
-//--------------------------
-type GPatch int
-
 const (
-	GAME_IWAD      GPatch = iota // i.e. for Doom, DooM 2, Heretic, Hexen, HexenDD, Plutonia, TNT, Strife
-	GAME_SHAREWARE               // All the Doom 1 sharewares.
-	GAME_FREEDOOM                // i.e. for Freedoom Phase 1/2 and FreeDM
-	GAME_HACX                    // i.e. for HacX 1.0 - 1.2 (no support for 2.0 yet as it's still not released)
-	GAME_CHEX_QUEST_3
-	GAME_STRIFE_VE // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
-)
-
-//--------------------------
-
-// WadInfo : all WAD data returned from the program
-type WadInfo struct {
-	MD5Hash      string
-	Version      string
-	IsFinal      bool
-	Game         GPatch
-	PWADRequires string // If the official PWAD requires an IWAD to run
-	Additional   string // If I need to display an additionnal message for this IWAD.
-}
-
-var (
-	IWADInfo_Doom         []WadInfo
-	IWADInfo_Doom2        []WadInfo
-	IWADInfo_FinalDoom    []WadInfo
-	IWADInfo_Heretic      []WadInfo
-	IWADInfo_Hexen        []WadInfo
-	IWADInfo_MasterLevels []WadInfo
-	IWADInfo_Strife       []WadInfo
-	IWADInfo_SVE          []WadInfo
-	IWADInfo_FreeDoom     []WadInfo
-	IWADInfo_Misc         []WadInfo // PWAD and addons
-
-	// Patching messages
-	bNeedsPatching   = false
-	bUpgradeIWAD     = false
-	bUpgradeDoomSW   = false
-	bUpgradeFreeDoom = false
-	bUpgradeHacX     = false
-	bUpgradeSVE      = false
-	bUpgradeCQ3      = false
-	iErrors          = 0
-)
-
-const (
-	m_version = "0.3"
+	m_version = "0.4"
 	IWADbytes = 1145132873
 	PWADbytes = 1145132880
 )
@@ -141,6 +94,140 @@ func isWADvalid(filepath string) bool {
 	}
 
 	return true
+}
+
+func CompIWADData(data []WadInfo, hash string) (WadInfo, bool) {
+	for i := range data {
+		if hash == data[i].MD5Hash {
+			return data[i], true
+		}
+	}
+	return WadInfo{}, false
+}
+
+func YesorNo(b bool) string {
+	red := color.New(color.FgRed).SprintFunc()
+	green := color.New(color.FgGreen).SprintFunc()
+
+	if b == false {
+		return red("No")
+	}
+
+	return green("Yes")
+}
+
+func SetFlag(typegame *bool, IWAD WadInfo) {
+	if !*typegame {
+		*typegame = !IWAD.IsFinal
+	}
+}
+
+func CheckIWAD(filename string, hash string) {
+
+	yellow := color.New(color.FgYellow).SprintFunc()
+
+	bFound := false
+	fmt.Println("Checking file :", filename)
+
+	// Check DOOM
+	IWAD, bFound := CompIWADData(IWADInfo_Doom, hash)
+
+	// Check DOOM2
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_Doom2, hash)
+	}
+
+	// Check TNT/Plutonia
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_FinalDoom, hash)
+	}
+
+	// Check Master Levels
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_MasterLevels, hash)
+	}
+
+	// Check Heretic
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_Heretic, hash)
+	}
+
+	// Check Hexen
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_Hexen, hash)
+	}
+
+	// Check Strife
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_Strife, hash)
+	}
+
+	// Check SVE
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_SVE, hash)
+	}
+
+	// Check FreeDoom/FreeDM
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_FreeDoom, hash)
+	}
+
+	// Check the other mods
+	if bFound == false {
+		IWAD, bFound = CompIWADData(IWADInfo_Misc, hash)
+	}
+
+	if bFound {
+		fmt.Println("MD5:", IWAD.MD5Hash)
+		ansi.Println("Version:", yellow(IWAD.Version))
+
+		// Check only once if we need to warn the user, otherwise it'll mess up the final results
+		if !bNeedsPatching {
+			bNeedsPatching = !IWAD.IsFinal
+		}
+
+		// Now, flag our messages if our IWAD is older
+		switch IWAD.Game {
+		case GAME_IWAD:
+			SetFlag(&bUpgradeIWAD, IWAD)
+			break
+		case GAME_FREEDOOM:
+			SetFlag(&bUpgradeFreeDoom, IWAD)
+			break
+		case GAME_HACX:
+			SetFlag(&bUpgradeHacX, IWAD)
+			break
+		case GAME_CHEX_QUEST_3:
+			SetFlag(&bUpgradeCQ3, IWAD)
+			break
+		case GAME_STRIFE_VE:
+			SetFlag(&bUpgradeSVE, IWAD)
+		}
+
+		// Add an error count if it's not the final version of a wad.
+		if !IWAD.IsFinal {
+			iErrors = iErrors + 1
+		}
+
+		ansi.Println("Latest version?", YesorNo(IWAD.IsFinal))
+
+		// If the IWAD has an additionnal message, please write it so.
+		if IWAD.Additional != "" {
+			color.Cyan(IWAD.Additional)
+		}
+
+		fmt.Println("")
+	} else {
+
+		// At this point, we should dissect the first bytes of the WAD to make sure it's a PWAD.
+		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
+		// Yet, we only assume this WAD is a PWAD or invalid.
+		iErrors = iErrors + 1
+		color.Cyan("%s seems unknown. Make sure it's not a modified file or not a PWAD file. (hash:%s )", filename, hash)
+		color.Cyan("If this IWAD wasn't found, please write an issue on https://github.com/Ch0wW/iwadverifier/issues/", filename, hash)
+
+		fmt.Println("")
+	}
 }
 
 func main() {
@@ -244,11 +331,11 @@ func main() {
 	}
 
 	if iErrors == 1 {
-		color.Red("1 error has been found. Check it !")
+		color.Red("1 error has been found. Check it!")
 	} else if iErrors > 1 {
-		color.Red("%d errors have been found. Check them !", iErrors)
+		color.Red("%d errors have been found. Check them!", iErrors)
 	} else {
-		color.Green("Everything looks fine. Happy fragging !")
+		color.Green("Everything looks fine. Have fun!")
 	}
 
 	PressEnter()

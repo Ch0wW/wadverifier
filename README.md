@@ -17,18 +17,20 @@ This tool was created, as the original project by Russell has disappeared from t
 IWADverifier can identify these IWADs:
 * DOOM v1.0 up to 1.9
 * DOOM II v1.666 up to 1.9
+* DOOM & DOOM II - Unity versions
 * Final DOOM (Plutonia & TNT)
 * Master levels of DooM II
+* DOOM 3 XBOX
+* DOOM/DOOM2 XBLA
+* DOOM 3 BFG (+ NERVE.WAD)
+* FreeDOOM v0.8 up to 0.12.1
 * Heretic v1.0 up to 1.3
 * Hexen v1.0 & v1.1 (+ Dark Citadel's Addon)
 * Strife v1.0 up to 1.31 (+ Veteran Edition)
 * HacX v1.0 up to 1.2
 * Chex Quest 1
 * Chex Quest 3 v1.0 & 1.4
-* DOOM 3 XBOX
-* DOOM/DOOM2 XBLA
-* DOOM 3 BFG (+ NERVE.WAD)
-* FreeDOOM v0.8 up to 0.11.3
+
 * And many many more !
 
 ### Latest version detection

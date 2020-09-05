@@ -1,10 +1,19 @@
 package main
 
-import (
-	"fmt"
+const (
+	AddentumMPDowngrade = `If you want to use it on multiplayer source ports, you'll need to patch it using Phenex2's tool, available below:
+	• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
+	• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`
 
-	"github.com/fatih/color"
-	ansi "github.com/k0kubun/go-ansi"
+	AddentumDoomBethesda = `This IWAD won't work at all for multiplayer, as it contains several map differences.
+• You will need to use the original wad instead, found in the following directory:
+	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\DOOM.WAD" for the Steam version,
+	- "<bethesdafolder>\games\Ultimate Doom\base\DOOM.WAD" for the Bethesda Launcher version.`
+
+	AddentumDoomIIBethesda = `• This IWAD won't work at all for multiplayer, as it contains several map differences.
+• You will need to use the original wad instead, found in the following directory:
+	- "<yoursteamfolder>\steamapps\common\DOOM 2\base\DOOM2.WAD" for the Steam version,
+	- "<bethesdafolder>\games\Doom 2\base\DOOM2.WAD" for the Bethesda Launcher version.`
 )
 
 //
@@ -75,6 +84,7 @@ func Populate_Doom() {
 		},
 		WadInfo{
 			MD5Hash:    "c428ea394dc52835f2580d5bfd50d76f",
+			Version:    "DOOM 1.666 Shareware",
 			Game:       GAME_SHAREWARE,
 			IsFinal:    false,
 			Additional: "Get the latest shareware version of DooM at https://www.doomworld.com/idgames/idstuff/doom/doom19s",
@@ -122,20 +132,22 @@ func Populate_Doom() {
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash: "72286ddc680d47b9138053dd944b2a3d",
-			Version: "The Ultimate DOOM (1.9) - XBLA Version",
-			IsFinal: true,
-			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
-			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
-			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
+			MD5Hash:    "72286ddc680d47b9138053dd944b2a3d",
+			Version:    "The Ultimate DOOM (1.9) - XBLA Version",
+			IsFinal:    true,
+			Additional: AddentumMPDowngrade,
 		},
 		WadInfo{
-			MD5Hash: "fb35c4a5a9fd49ec29ab6e900572c524",
-			Version: "The Ultimate DOOM (1.9) - BFG Edition",
-			IsFinal: true,
-			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
-			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
-			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
+			MD5Hash:    "fb35c4a5a9fd49ec29ab6e900572c524",
+			Version:    "The Ultimate DOOM (1.9) - BFG Edition",
+			IsFinal:    true,
+			Additional: AddentumMPDowngrade,
+		},
+		WadInfo{
+			MD5Hash:    "8517c4e8f0eef90b82852667d345eb86",
+			Version:    "DOOM 1.9 - Bethesda version (Unity) - 2020_08_21 Build #13735 doom",
+			IsFinal:    true,
+			Additional: AddentumDoomBethesda,
 		},
 	}
 }
@@ -185,20 +197,16 @@ func Populate_DoomII() {
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash: "43c2df32dc6c740cb11f34dc5ab693fa",
-			Version: "DOOM II 1.9 - XBLA Version",
-			IsFinal: true,
-			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
-			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
-			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
+			MD5Hash:    "43c2df32dc6c740cb11f34dc5ab693fa",
+			Version:    "DOOM II 1.9 - XBLA Version",
+			IsFinal:    true,
+			Additional: AddentumMPDowngrade,
 		},
 		WadInfo{
-			MD5Hash: "c3bea40570c23e511a7ed3ebcd9865f7",
-			Version: "DOOM II 1.9 - BFG Edition",
-			IsFinal: true,
-			Additional: `If you want to use it on multiplayer source ports, you'll need to downgrade it using Phenex2's tool.
-			• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
-			• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`,
+			MD5Hash:    "c3bea40570c23e511a7ed3ebcd9865f7",
+			Version:    "DOOM II 1.9 - BFG Edition",
+			IsFinal:    true,
+			Additional: AddentumMPDowngrade,
 		},
 		WadInfo{
 			MD5Hash: "f617591a6c5d07037eb716dc4863e26b",
@@ -209,6 +217,12 @@ func Populate_DoomII() {
 			MD5Hash: "9640fc4b2c8447bbd28f2080725d5c51",
 			Version: "DOOM II 1.9 - Tapwave Zodiac Version",
 			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash:    "8ab6d0527a29efdc1ef200e5687b5cae",
+			Version:    "DOOM II 1.9 - Bethesda version (Unity) - 2020_08_21 Build #13736 doom2",
+			IsFinal:    true,
+			Additional: AddentumDoomIIBethesda,
 		},
 	}
 }
@@ -296,13 +310,13 @@ func Populate_HereticHexen() {
 			MD5Hash:    "b68140a796f6fd7f3a5d3226a32b93be",
 			Version:    "Hexen 1.1 (MAC VERSION)",
 			IsFinal:    true,
-			Additional: "All existing servers use the Windows version of the WAD !",
+			Additional: "All existing servers use the Windows version of the game!",
 		},
 		WadInfo{
 			MD5Hash:    "b68140a796f6fd7f3a5d3226a32b93be",
 			Version:    "Hexen Demo (MAC VERSION)",
 			IsFinal:    true,
-			Additional: "All existing servers use the Windows version of the WAD !",
+			Additional: "All existing servers use the Windows version of the game!",
 		},
 
 		// hexdd.wad
@@ -402,26 +416,66 @@ func Populate_FreeDoom() {
 		//---------------
 		// First, the latest IWADs
 		WadInfo{
-			MD5Hash: "ea471a3d38fcee0fb3a69bcd3221e335",
-			Version: "Freedoom: Phase 1 0.11.3",
+			MD5Hash: "b36aa44a23045e503c19af4b4c438a78",
+			Version: "Freedoom: Phase 1 0.12.1",
 			Game:    GAME_FREEDOOM,
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash: "984f99af08f085e38070f51095ab7c31",
-			Version: "Freedoom: Phase 2 0.11.3",
+			MD5Hash: "ca9a4159a7833544a89144c7f5053412",
+			Version: "Freedoom: Phase 2 0.12.1",
 			Game:    GAME_FREEDOOM,
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash: "87ee2494d921633420ce9bdb418127c4",
-			Version: "FreeDM 0.11.3",
+			MD5Hash: "d40c932a9183ded919afa89f4a729668",
+			Version: "FreeDM 0.12.1",
 			Game:    GAME_FREEDOOM,
 			IsFinal: true,
 		},
 
 		//----------------
 		// Now, list the outdated ones.
+
+		// 0.12.0
+		WadInfo{
+			MD5Hash: "0c5f8ff45cc3538d368a0f8d8fc11ce3",
+			Version: "Freedoom: Phase 1 0.12.0",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "83560b2963424fa4a2eb971194428bf8",
+			Version: "Freedoom: Phase 2 0.12.0",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "3250aad8b1d40fb7b25b7df6573eb29f",
+			Version: "FreeDM 0.12.0",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
+		},
+
+		// 0.11.3
+		WadInfo{
+			MD5Hash: "ea471a3d38fcee0fb3a69bcd3221e335",
+			Version: "Freedoom: Phase 1 0.11.3",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "984f99af08f085e38070f51095ab7c31",
+			Version: "Freedoom: Phase 2 0.11.3",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "87ee2494d921633420ce9bdb418127c4",
+			Version: "FreeDM 0.11.3",
+			Game:    GAME_FREEDOOM,
+			IsFinal: false,
+		},
 
 		// 0.11.2
 		WadInfo{
@@ -612,7 +666,7 @@ func Populate_Misc() {
 		},
 		WadInfo{
 			MD5Hash:    "cb001c34e424687191f299cc1dff4d68",
-			Version:    "Chex Quest 3 (ModDB - Unknown)",
+			Version:    "Chex Quest 3 (ModDB - Unknown version)",
 			Game:       GAME_CHEX_QUEST_3,
 			IsFinal:    false,
 			Additional: "This version of Chex Quest 3 has been released on ModDB. I have no other information about it.",
@@ -732,141 +786,9 @@ func Populate_Misc() {
 		// Aggregate WAD from the Xbox 360 and PlayStation 3 BFG Edition
 		WadInfo{
 			MD5Hash:    "84cb8640f599c4a17c8eb526f90d2b7a",
-			Version:    "Master Levels for DOOM II - Xbox 360+PlayStation 3 BFG Edition",
+			Version:    "Master Levels for DOOM II - Xbox 360 | PlayStation 3 BFG Edition",
 			IsFinal:    true,
 			Additional: "Not generally compatible with demo files or source port multiplayer",
 		},
-	}
-}
-
-func CompIWADData(data []WadInfo, hash string) (WadInfo, bool) {
-	for i := range data {
-		if hash == data[i].MD5Hash {
-			return data[i], true
-		}
-	}
-	return WadInfo{}, false
-}
-
-func YesorNo(b bool) string {
-	red := color.New(color.FgRed).SprintFunc()
-	green := color.New(color.FgGreen).SprintFunc()
-
-	if b == true {
-		return red("Yes")
-	} else {
-		return green("No")
-	}
-}
-
-func SetFlag(typegame *bool, IWAD WadInfo) {
-	if !*typegame {
-		*typegame = !IWAD.IsFinal
-	}
-}
-
-func CheckIWAD(filename string, hash string) {
-
-	yellow := color.New(color.FgYellow).SprintFunc()
-
-	bFound := false
-	fmt.Println("Checking file :", filename)
-
-	// Check DOOM
-	IWAD, bFound := CompIWADData(IWADInfo_Doom, hash)
-
-	// Check DOOM2
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_Doom2, hash)
-	}
-
-	// Check TNT/Plutonia
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_FinalDoom, hash)
-	}
-
-	// Check Master Levels
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_MasterLevels, hash)
-	}
-
-	// Check Heretic
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_Heretic, hash)
-	}
-
-	// Check Hexen
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_Hexen, hash)
-	}
-
-	// Check Strife
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_Strife, hash)
-	}
-
-	// Check SVE
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_SVE, hash)
-	}
-
-	// Check FreeDoom/FreeDM
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_FreeDoom, hash)
-	}
-
-	// Check the other mods
-	if bFound == false {
-		IWAD, bFound = CompIWADData(IWADInfo_Misc, hash)
-	}
-
-	if bFound {
-		fmt.Println("MD5:", IWAD.MD5Hash)
-		ansi.Println("Version:", yellow(IWAD.Version))
-
-		// Check only once if we need to warn the user, otherwise it'll mess up the final results
-		if !bNeedsPatching {
-			bNeedsPatching = !IWAD.IsFinal
-		}
-
-		// Now, flag our messages if our IWAD is older
-		switch IWAD.Game {
-		case GAME_IWAD:
-			SetFlag(&bUpgradeIWAD, IWAD)
-			break
-		case GAME_FREEDOOM:
-			SetFlag(&bUpgradeFreeDoom, IWAD)
-			break
-		case GAME_HACX:
-			SetFlag(&bUpgradeHacX, IWAD)
-			break
-		case GAME_CHEX_QUEST_3:
-			SetFlag(&bUpgradeCQ3, IWAD)
-			break
-		case GAME_STRIFE_VE:
-			SetFlag(&bUpgradeSVE, IWAD)
-		}
-
-		// Add an error count if it's not the final version of a wad.
-		if !IWAD.IsFinal {
-			iErrors = iErrors + 1
-		}
-
-		ansi.Println("Needs patching ?", YesorNo(!IWAD.IsFinal))
-
-		// If the IWAD has an additionnal message, please write it so.
-		if IWAD.Additional != "" {
-			color.Cyan(IWAD.Additional)
-		}
-
-		fmt.Println("")
-	} else {
-
-		// At this point, we should dissect the first bytes of the WAD to make sure it's a PWAD.
-		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
-		// Yet, we only assume this WAD is a PWAD or invalid.
-		iErrors = iErrors + 1
-		color.Cyan("%s seems unknown. Make sure it's not a modified file or not a PWAD file. (hash:%s)", filename, hash)
-		fmt.Println("")
 	}
 }
