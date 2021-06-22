@@ -2,4 +2,7 @@
 *.exe
 *.wad
 *.pk3
+*.zip
+*.7z
+*.rar
 wads/*

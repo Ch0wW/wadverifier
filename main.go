@@ -22,6 +22,10 @@ const (
 	PWADbytes = 1145132880
 )
 
+var (
+	patchflag GPatch
+)
+
 // Just a quick function to require the user to press ENTER.
 // Now, it only happens on Windows. (for the drag & drop feature)
 func PressEnter() {
@@ -105,21 +109,15 @@ func CompIWADData(data []WadInfo, hash string) (WadInfo, bool) {
 	return WadInfo{}, false
 }
 
-func YesorNo(b bool) string {
+func YesorNo(b GStatus) string {
 	red := color.New(color.FgRed).SprintFunc()
 	green := color.New(color.FgGreen).SprintFunc()
 
-	if b == false {
+	if b == NOT_FINAL {
 		return red("No")
 	}
 
 	return green("Yes")
-}
-
-func SetFlag(typegame *bool, IWAD WadInfo) {
-	if !*typegame {
-		*typegame = !IWAD.IsFinal
-	}
 }
 
 func CheckIWAD(filename string, hash string) {
@@ -183,37 +181,21 @@ func CheckIWAD(filename string, hash string) {
 
 		// Check only once if we need to warn the user, otherwise it'll mess up the final results
 		if !bNeedsPatching {
-			bNeedsPatching = !IWAD.IsFinal
-		}
-
-		// Now, flag our messages if our IWAD is older
-		switch IWAD.Game {
-		case GAME_IWAD:
-			SetFlag(&bUpgradeIWAD, IWAD)
-			break
-		case GAME_FREEDOOM:
-			SetFlag(&bUpgradeFreeDoom, IWAD)
-			break
-		case GAME_HACX:
-			SetFlag(&bUpgradeHacX, IWAD)
-			break
-		case GAME_CHEX_QUEST_3:
-			SetFlag(&bUpgradeCQ3, IWAD)
-			break
-		case GAME_STRIFE_VE:
-			SetFlag(&bUpgradeSVE, IWAD)
-			break
-		case GAME_SIGIL:
-			SetFlag(&bUpgradeSigil, IWAD)
-			break
+			if IWAD.Status == NOT_FINAL {
+				bNeedsPatching = true
+			}
 		}
 
 		// Add an error count if it's not the final version of a wad.
-		if !IWAD.IsFinal {
+		if IWAD.Status == NOT_FINAL {
 			iErrors = iErrors + 1
+			patchflag |= IWAD.Game // Now, flag our messages if our IWAD is older
 		}
 
-		ansi.Println("Latest version?", YesorNo(IWAD.IsFinal))
+		// Don't display this message in case of an alpha WAD.
+		if IWAD.Status != IS_ALPHA {
+			ansi.Println("Latest version?", YesorNo(IWAD.Status))
+		}
 
 		// If the IWAD has an additionnal message, please write it so.
 		if IWAD.Additional != "" {
@@ -295,43 +277,43 @@ func main() {
 
 	// This is ugly, but I have to find a way to make
 	// If there's some patching needed, warn the user how to do it.
-	if bNeedsPatching {
+	if patchflag != 0 {
 		color.Cyan("==================================================================================")
 		color.Cyan("")
 
-		if bUpgradeIWAD {
+		if (patchflag & GAME_IWAD) != 0 {
 			color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Peter Vaskovics:")
 			color.Cyan("• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
 			color.Cyan("• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
 			color.Cyan("")
 		}
-		if bUpgradeDoomSW {
+		if (patchflag & GAME_SHAREWARE) != 0 {
 			color.Cyan("Your Shareware version of Doom is outdated. Please get the latest version below :")
 			color.Cyan("|-> https://www.doomworld.com/idgames/idstuff/doom/doom19s")
 			color.Cyan("")
 		}
-		if bUpgradeFreeDoom {
+		if (patchflag & GAME_FREEDOOM) != 0 {
 			color.Cyan("Your version of FreeDOOM/FreeDM is outdated. Please get the latest one below :")
 			color.Cyan("|-> https://github.com/freedoom/freedoom/releases")
 			color.Cyan("")
 		}
-		if bUpgradeHacX {
+		if (patchflag & GAME_HACX) != 0 {
 			color.Cyan("Your version of HacX is outdated. Please get the latest one below :")
 			color.Cyan("|-> http://www.drnostromo.com/hacx/page.php?content=download")
 			color.Cyan("")
 		}
-		if bUpgradeCQ3 {
+		if (patchflag & GAME_CHEX_QUEST_3) != 0 {
 			color.Cyan("Your version of Chex Quest 3 is outdated. Please get the latest one below :")
 			color.Cyan("|-> http://www.chucktropolis.com/gamers.htm")
 			color.Cyan("")
 		}
-		if bUpgradeSVE {
+		if (patchflag & GAME_STRIFE_VE) != 0 {
 			color.Cyan("Your version of Strife: Veteran Edition is outdated.")
 			color.Cyan("• If you bought it on Steam, S:VE should be updated automatically.")
 			color.Cyan("• If you bought it on GOG, you will need to redownload it (Latest version is 1.2) or to use GOG Galaxy")
 			color.Cyan("")
 		}
-		if bUpgradeSigil {
+		if (patchflag & GAME_SIGIL) != 0 {
 			color.Cyan("Your version of SIGIL is outdated. Please get the latest one below :")
 			color.Cyan("|-> https://romero.com/")
 			color.Cyan("")

@@ -60,7 +60,6 @@ Then, inside the project folder, write `go build`, and that should be it.
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
 - [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
 - [ ] Probably a few code optimizations here and there.
-- [ ] Get SIGIL's Buckethead wad hash.
 - [x] Color support for better readability.
 
 # Huge thanks to 

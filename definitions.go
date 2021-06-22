@@ -4,13 +4,22 @@ package main
 type GPatch int
 
 const (
-	GAME_IWAD      GPatch = iota // i.e. for Doom, DooM 2, Heretic, Hexen, HexenDD, Plutonia, TNT, Strife
-	GAME_SHAREWARE               // All the Doom 1 sharewares.
-	GAME_FREEDOOM                // i.e. for Freedoom Phase 1/2 and FreeDM
-	GAME_HACX                    // i.e. for HacX 1.0 - 1.2 (no support for 2.0 yet as it's still not released)
-	GAME_CHEX_QUEST_3
-	GAME_STRIFE_VE // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
-	GAME_SIGIL     // SIGIL by John Romero
+	GAME_NONE         GPatch = iota
+	GAME_IWAD                = 1 << 0 // i.e. for Doom, DooM 2, Heretic, Hexen, HexenDD, Plutonia, TNT, Strife
+	GAME_SHAREWARE           = 1 << 1 // All the Doom 1 sharewares.
+	GAME_FREEDOOM            = 1 << 2 // i.e. for Freedoom Phase 1/2 and FreeDM
+	GAME_HACX                = 1 << 3 // i.e. for HacX 1.0 - 1.2 (no support for 2.0 yet as it's still not released)
+	GAME_CHEX_QUEST_3        = 1 << 4
+	GAME_STRIFE_VE           = 1 << 5 // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
+	GAME_SIGIL               = 1 << 6 // SIGIL by John Romero
+)
+
+type GStatus int
+
+const (
+	NOT_FINAL GStatus = iota // is not the final version, so display errors
+	IS_FINAL                 // Is final, is fine!
+	IS_ALPHA                 // Special case of Alpha WADs.
 )
 
 //--------------------------
@@ -19,10 +28,11 @@ const (
 type WadInfo struct {
 	MD5Hash      string
 	Version      string
-	IsFinal      bool
+	Status       GStatus
 	Game         GPatch
 	PWADRequires string // If the official PWAD requires an IWAD to run
 	Additional   string // If I need to display an additionnal message for this IWAD.
+
 }
 
 var (
@@ -38,13 +48,5 @@ var (
 	IWADInfo_Misc         []WadInfo // PWAD and addons
 
 	// Patching messages
-	bNeedsPatching   = false
-	bUpgradeIWAD     = false
-	bUpgradeDoomSW   = false
-	bUpgradeFreeDoom = false
-	bUpgradeHacX     = false
-	bUpgradeSVE      = false
-	bUpgradeCQ3      = false
-	bUpgradeSigil    = false
-	iErrors          = 0
+	iErrors = 0
 )
