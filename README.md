@@ -29,6 +29,7 @@ IWADverifier can identify these IWADs:
 * Strife v1.0 up to 1.31 (+ Veteran Edition)
 * HacX v1.0 up to 1.2
 * Chex Quest 1, 2, and 3 (v1.0 & 1.4)
+* SIGIL v1.0 up to 1.21 
 
 * And many many more !
 
@@ -59,6 +60,7 @@ Then, inside the project folder, write `go build`, and that should be it.
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
 - [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
 - [ ] Probably a few code optimizations here and there.
+- [ ] Get SIGIL's Buckethead wad hash.
 - [x] Color support for better readability.
 
 # Huge thanks to 

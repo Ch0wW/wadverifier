@@ -202,6 +202,10 @@ func CheckIWAD(filename string, hash string) {
 			break
 		case GAME_STRIFE_VE:
 			SetFlag(&bUpgradeSVE, IWAD)
+			break
+		case GAME_SIGIL:
+			SetFlag(&bUpgradeSigil, IWAD)
+			break
 		}
 
 		// Add an error count if it's not the final version of a wad.
@@ -307,24 +311,29 @@ func main() {
 			color.Cyan("")
 		}
 		if bUpgradeFreeDoom {
-			color.Cyan("Your version of FreeDOOM/FreeDM seems outdated. Please get the latest one below :")
+			color.Cyan("Your version of FreeDOOM/FreeDM is outdated. Please get the latest one below :")
 			color.Cyan("|-> https://github.com/freedoom/freedoom/releases")
 			color.Cyan("")
 		}
 		if bUpgradeHacX {
-			color.Cyan("Your version of HacX seems outdated. Please get the latest one below :")
+			color.Cyan("Your version of HacX is outdated. Please get the latest one below :")
 			color.Cyan("|-> http://www.drnostromo.com/hacx/page.php?content=download")
 			color.Cyan("")
 		}
 		if bUpgradeCQ3 {
-			color.Cyan("Your version of Chex Quest 3 seems outdated. Please get the latest one below :")
+			color.Cyan("Your version of Chex Quest 3 is outdated. Please get the latest one below :")
 			color.Cyan("|-> http://www.chucktropolis.com/gamers.htm")
 			color.Cyan("")
 		}
 		if bUpgradeSVE {
-			color.Cyan("Your version of Strife: Veteran Edition seems outdated.")
+			color.Cyan("Your version of Strife: Veteran Edition is outdated.")
 			color.Cyan("• If you bought it on Steam, S:VE should be updated automatically.")
 			color.Cyan("• If you bought it on GOG, you will need to redownload it (Latest version is 1.2) or to use GOG Galaxy")
+			color.Cyan("")
+		}
+		if bUpgradeSigil {
+			color.Cyan("Your version of SIGIL is outdated. Please get the latest one below :")
+			color.Cyan("|-> https://romero.com/")
 			color.Cyan("")
 		}
 		color.Cyan("==================================================================================")

@@ -688,6 +688,59 @@ func Populate_Misc() {
 			Game:    GAME_CHEX_QUEST_3,
 			IsFinal: false,
 		},
+
+		// SIGIL by John Romero
+		WadInfo{
+			MD5Hash: "f53ffc4fb89e966839bb8d20c632819a",
+			Version: "SIGIL v1.0",
+			Game:    GAME_SIGIL,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "a775262ca0e423468196803b71a57a43",
+			Version: "SIGIL v1.0 (Compatibility WAD)",
+			Game:    GAME_SIGIL,
+			IsFinal: false,
+		},
+
+		WadInfo{
+			MD5Hash: "1fe9daa0e837c7452eb2f91aac2cc983",
+			Version: "SIGIL v1.1",
+			Game:    GAME_SIGIL,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "c04912beab6aa82c114a19c976ec8c0d",
+			Version: "SIGIL v1.1 (Compatibility WAD)",
+			Game:    GAME_SIGIL,
+			IsFinal: false,
+		},
+
+		WadInfo{
+			MD5Hash: "427ca995600970abcd2efcc684a64c88",
+			Version: "SIGIL v1.2",
+			Game:    GAME_SIGIL,
+			IsFinal: false,
+		},
+		WadInfo{
+			MD5Hash: "9285e9cc2dbd87d238baab37d700c644",
+			Version: "SIGIL v1.2 (Compatibility WAD)",
+			Game:    GAME_SIGIL,
+			IsFinal: false,
+		},
+
+		WadInfo{
+			MD5Hash: "743d6323cb2b9be24c258ff0fc350883",
+			Version: "SIGIL v1.21",
+			Game:    GAME_SIGIL,
+			IsFinal: true,
+		},
+		WadInfo{
+			MD5Hash: "573f3f178c76709f512089ed15484391",
+			Version: "SIGIL v1.21 (Compatibility WAD)",
+			Game:    GAME_SIGIL,
+			IsFinal: true,
+		},
 	}
 
 	// Master Levels for DOOM II

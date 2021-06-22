@@ -10,6 +10,7 @@ const (
 	GAME_HACX                    // i.e. for HacX 1.0 - 1.2 (no support for 2.0 yet as it's still not released)
 	GAME_CHEX_QUEST_3
 	GAME_STRIFE_VE // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
+	GAME_SIGIL     // SIGIL by John Romero
 )
 
 //--------------------------
@@ -44,5 +45,6 @@ var (
 	bUpgradeHacX     = false
 	bUpgradeSVE      = false
 	bUpgradeCQ3      = false
+	bUpgradeSigil    = false
 	iErrors          = 0
 )
