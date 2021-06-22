@@ -179,7 +179,7 @@ func CheckIWAD(filename string, hash string) {
 
 	if bFound {
 		fmt.Println("MD5:", IWAD.MD5Hash)
-		ansi.Println("Version:", yellow(IWAD.Version))
+		ansi.Println("WAD File:", yellow(IWAD.Version))
 
 		// Check only once if we need to warn the user, otherwise it'll mess up the final results
 		if !bNeedsPatching {
@@ -224,7 +224,7 @@ func CheckIWAD(filename string, hash string) {
 		// Yet, we only assume this WAD is a PWAD or invalid.
 		iErrors = iErrors + 1
 		color.Cyan("%s seems unknown. Make sure it's not a modified file or not a PWAD file. (hash:%s )", filename, hash)
-		color.Cyan("If this IWAD wasn't found, please write an issue on https://github.com/Ch0wW/iwadverifier/issues/", filename, hash)
+		color.Cyan("If this IWAD wasn't found, please write an issue on https://github.com/Ch0wW/iwadverifier/issues/")
 
 		fmt.Println("")
 	}
@@ -296,7 +296,7 @@ func main() {
 		color.Cyan("")
 
 		if bUpgradeIWAD {
-			color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Phenex :")
+			color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Peter Vaskovics:")
 			color.Cyan("• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
 			color.Cyan("• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
 			color.Cyan("")

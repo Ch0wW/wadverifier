@@ -1,6 +1,6 @@
 # IWADverifier
 
-This tool was created, as the original project by Russell has disappeared from the surface of the Internet. 
+This tool was created as a replacement of Russell's tool, since it has disappeared from the surface of the Internet. 
 
 `IWADverifier` is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM-Engine based IWAD is valid or not, and up to date. 
 
@@ -28,8 +28,7 @@ IWADverifier can identify these IWADs:
 * Hexen v1.0 & v1.1 (+ Dark Citadel's Addon)
 * Strife v1.0 up to 1.31 (+ Veteran Edition)
 * HacX v1.0 up to 1.2
-* Chex Quest 1
-* Chex Quest 3 v1.0 & 1.4
+* Chex Quest 1, 2, and 3 (v1.0 & 1.4)
 
 * And many many more !
 
@@ -43,7 +42,7 @@ To make it easier for everyone, you can directly drag your IWAD files to IWADver
 Because having a white-only text in a commandline application is boring, IWADVerifier uses ANSI to color messages. It works perfectly on Windows, Linux and technically on every system !
 
 # Pre-Requisites for compilation
-- Golang 1.10 or newer (previous versions weren't tested)
+- Golang 1.12 or newer (previous versions weren't tested)
 - Package `color` from user Fatih (`go get github.com/fatih/color`)
 - Package `go-ansi` from user k0kubun (`go get github.com/k0kubun/go-ansi`)
 

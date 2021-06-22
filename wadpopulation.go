@@ -1,9 +1,9 @@
 package main
 
 const (
-	AddentumMPDowngrade = `If you want to use it on multiplayer source ports, you'll need to patch it using Phenex2's tool, available below:
+	AddentumMPDowngrade = `If you want to use it on multiplayer source ports, you'll need to patch it using Peter Vaskovics's tool, available below:
 	• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
-	• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip`
+	• Source code: https://github.com/petervas/iwadpatcher`
 
 	AddentumDoomBethesda = `This IWAD won't work at all for multiplayer, as it contains several map differences.
 • You will need to use the original wad instead, found in the following directory:
@@ -127,9 +127,10 @@ func Populate_Doom() {
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash: "0c8758f102ccafe26a3040bee8ba5021",
-			Version: "The Ultimate DOOM (1.9) - Xbox Version",
-			IsFinal: true,
+			MD5Hash:    "0c8758f102ccafe26a3040bee8ba5021",
+			Version:    "The Ultimate DOOM (1.9) - Xbox Version",
+			IsFinal:    true,
+			Additional: AddentumMPDowngrade,
 		},
 		WadInfo{
 			MD5Hash:    "72286ddc680d47b9138053dd944b2a3d",
@@ -162,9 +163,10 @@ func Populate_DoomII() {
 			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash: "d9153ced9fd5b898b36cc5844e35b520",
-			Version: "DOOM II 1.666 (German Edition)",
-			IsFinal: false,
+			MD5Hash:    "d9153ced9fd5b898b36cc5844e35b520",
+			Version:    "DOOM II 1.666 (German Edition)",
+			IsFinal:    true,
+			Additional: "It is the latest release of the German edition. However, please keep in mind this is not the latest official release widely used to play online.",
 		},
 		WadInfo{
 			MD5Hash: "ea74a47a791fdef2e9f2ea8b8a9da13b",
@@ -182,9 +184,10 @@ func Populate_DoomII() {
 			IsFinal: false,
 		},
 		WadInfo{
-			MD5Hash: "3cb02349b3df649c86290907eed64e7b",
-			Version: "DOOM II 1.8 (French Edition)",
-			IsFinal: false,
+			MD5Hash:    "3cb02349b3df649c86290907eed64e7b",
+			Version:    "DOOM II 1.8 (French Edition)",
+			IsFinal:    true,
+			Additional: "It is the latest release of the French edition. However, please keep in mind this is not the latest official release widely used to play online.",
 		},
 		WadInfo{
 			MD5Hash: "25e1459ca71d321525f84628f45ca8cd",
@@ -192,9 +195,10 @@ func Populate_DoomII() {
 			IsFinal: true,
 		},
 		WadInfo{
-			MD5Hash: "a793ebcdd790afad4a1f39cc39a893bd",
-			Version: "DOOM II 1.9 - Xbox Version",
-			IsFinal: true,
+			MD5Hash:    "a793ebcdd790afad4a1f39cc39a893bd",
+			Version:    "DOOM II 1.9 - Xbox Version",
+			IsFinal:    true,
+			Additional: AddentumMPDowngrade,
 		},
 		WadInfo{
 			MD5Hash:    "43c2df32dc6c740cb11f34dc5ab693fa",
@@ -379,7 +383,7 @@ func Populate_Strife() {
 			Additional: "Download the latest shareware of Strife at https://www.doomworld.com/idgames/roguestuff/strife11",
 		},
 
-		// Additionnal PWADs
+		// Additionnal IWADs
 		WadInfo{
 			MD5Hash: "082234d6a3f7086424856478b5aa9e95",
 			Version: "Strife voice acting samples",
@@ -630,13 +634,6 @@ func Populate_Misc() {
 			PWADRequires: "DOOM II v1.9",
 			Additional:   "You will need a decent source port to be able to run this.",
 		},
-		WadInfo{
-			MD5Hash:    "25485721882b050afa96a56e5758dd52",
-			Version:    "Chex Quest",
-			IsFinal:    true,
-			Additional: "May require the DEHacked file if playing on a source port, available here : https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
-		},
-
 		// HACX
 		WadInfo{
 			MD5Hash: "65ed74d522bdf6649c2831b13b9e02b4",
@@ -657,7 +654,21 @@ func Populate_Misc() {
 			IsFinal: false,
 		},
 
-		// Chex Quest 3
+		// Chex Quest
+		WadInfo{
+			MD5Hash:    "25485721882b050afa96a56e5758dd52",
+			Version:    "Chex Quest",
+			IsFinal:    true,
+			Additional: "May require the DEHacked file if playing on a source port, available at https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
+		},
+
+		WadInfo{
+			MD5Hash:    "fdc4ffa57e1983e30912c006284a3e01",
+			Version:    "Chex Quest 2",
+			IsFinal:    true,
+			Additional: "- Requires Chex.wad, as Chex Quest 2 is a PWAD.\n- May also require the DEHacked file if playing on a source port: https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
+		},
+
 		WadInfo{
 			MD5Hash: "bce163d06521f9d15f9686786e64df13",
 			Version: "Chex Quest 3 1.4",
