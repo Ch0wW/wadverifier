@@ -179,11 +179,8 @@ func CheckIWAD(filename string, hash string) {
 		fmt.Println("MD5:", IWAD.MD5Hash)
 		ansi.Println("WAD File:", yellow(IWAD.Version))
 
-		// Check only once if we need to warn the user, otherwise it'll mess up the final results
-		if !bNeedsPatching {
-			if IWAD.Status == NOT_FINAL {
-				bNeedsPatching = true
-			}
+		if IWAD.PWADRequires != "" {
+			ansi.Println("WAD Requires:", yellow(IWAD.PWADRequires))
 		}
 
 		// Add an error count if it's not the final version of a wad.
@@ -209,7 +206,7 @@ func CheckIWAD(filename string, hash string) {
 		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
 		// Yet, we only assume this WAD is a PWAD or invalid.
 		iErrors = iErrors + 1
-		color.Cyan("%s seems unknown. Make sure it's not a modified file or not a PWAD file. (hash:%s )", filename, hash)
+		color.Cyan("%s seems unknown. Make sure it's not a modified file or not a PWAD file. (hash: %s )", filename, hash)
 		color.Cyan("If this IWAD wasn't found, please write an issue on https://github.com/Ch0wW/iwadverifier/issues/")
 
 		fmt.Println("")
@@ -251,7 +248,6 @@ func main() {
 		// Try to check if file is a .wad
 		if filepath.Ext(strings.ToLower(args[i])) != ".wad" {
 			color.Yellow("%s is not a .wad file ! Ignoring...", args[i])
-			iErrors = iErrors + 1
 			fmt.Println("")
 			continue
 		}

@@ -180,7 +180,7 @@ func Populate_DoomII() {
 			Version:    "DOOM II 1.666 (German Edition)",
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
-			Additional: "It is the latest release of the German edition. However, please keep in mind this is not the latest official release widely used to play online.",
+			Additional: "Despite being the latest version for the German release, it is strongly recommended to update it to v1.9.",
 		},
 		WadInfo{
 			MD5Hash: "ea74a47a791fdef2e9f2ea8b8a9da13b",
@@ -204,7 +204,7 @@ func Populate_DoomII() {
 			MD5Hash:    "3cb02349b3df649c86290907eed64e7b",
 			Version:    "DOOM II 1.8 (French Edition)",
 			Game:       GAME_IWAD,
-			Status:     NOT_FINAL,
+			Status:     IS_FINAL,
 			Additional: "It is the latest release of the French edition. However, please keep in mind this is not the latest official release widely used to play online.",
 		},
 		WadInfo{
@@ -428,9 +428,10 @@ func Populate_Strife() {
 
 		// Additionnal IWADs
 		WadInfo{
-			MD5Hash: "082234d6a3f7086424856478b5aa9e95",
-			Version: "Strife voice acting samples",
-			Status:  IS_FINAL,
+			MD5Hash:      "082234d6a3f7086424856478b5aa9e95",
+			Version:      "Strife voice acting samples",
+			Status:       IS_FINAL,
+			PWADRequires: "Strife Registered",
 		},
 	}
 
@@ -706,10 +707,11 @@ func Populate_Misc() {
 		},
 
 		WadInfo{
-			MD5Hash:    "fdc4ffa57e1983e30912c006284a3e01",
-			Version:    "Chex Quest 2",
-			Status:     IS_FINAL,
-			Additional: "- Requires Chex.wad, as Chex Quest 2 is a PWAD.\n- May also require the DEHacked file if playing on a source port: https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
+			MD5Hash:      "fdc4ffa57e1983e30912c006284a3e01",
+			Version:      "Chex Quest 2",
+			Status:       IS_FINAL,
+			PWADRequires: "Chex Quest",
+			Additional:   "May require the DEHacked file if playing on a source port: https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
 		},
 
 		WadInfo{
@@ -734,68 +736,78 @@ func Populate_Misc() {
 
 		// SIGIL by John Romero
 		WadInfo{
-			MD5Hash: "f53ffc4fb89e966839bb8d20c632819a",
-			Version: "SIGIL v1.0",
-			Game:    GAME_SIGIL,
-			Status:  NOT_FINAL,
+			MD5Hash:      "f53ffc4fb89e966839bb8d20c632819a",
+			Version:      "SIGIL v1.0",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       NOT_FINAL,
 		},
 		WadInfo{
-			MD5Hash: "a775262ca0e423468196803b71a57a43",
-			Version: "SIGIL v1.0 (Compatibility WAD)",
-			Game:    GAME_SIGIL,
-			Status:  NOT_FINAL,
-		},
-
-		WadInfo{
-			MD5Hash: "1fe9daa0e837c7452eb2f91aac2cc983",
-			Version: "SIGIL v1.1",
-			Game:    GAME_SIGIL,
-			Status:  NOT_FINAL,
-		},
-		WadInfo{
-			MD5Hash: "c04912beab6aa82c114a19c976ec8c0d",
-			Version: "SIGIL v1.1 (Compatibility WAD)",
-			Game:    GAME_SIGIL,
-			Status:  NOT_FINAL,
+			MD5Hash:      "a775262ca0e423468196803b71a57a43",
+			Version:      "SIGIL v1.0 (Compatibility WAD)",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       NOT_FINAL,
 		},
 
 		WadInfo{
-			MD5Hash: "427ca995600970abcd2efcc684a64c88",
-			Version: "SIGIL v1.2",
-			Game:    GAME_SIGIL,
-			Status:  NOT_FINAL,
+			MD5Hash:      "1fe9daa0e837c7452eb2f91aac2cc983",
+			Version:      "SIGIL v1.1",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       NOT_FINAL,
 		},
 		WadInfo{
-			MD5Hash: "9285e9cc2dbd87d238baab37d700c644",
-			Version: "SIGIL v1.2 (Compatibility WAD)",
-			Game:    GAME_SIGIL,
-			Status:  NOT_FINAL,
-		},
-
-		WadInfo{
-			MD5Hash: "743d6323cb2b9be24c258ff0fc350883",
-			Version: "SIGIL v1.21",
-			Game:    GAME_SIGIL,
-			Status:  IS_FINAL,
-		},
-		WadInfo{
-			MD5Hash: "573f3f178c76709f512089ed15484391",
-			Version: "SIGIL v1.21 (Compatibility WAD)",
-			Game:    GAME_SIGIL,
-			Status:  IS_FINAL,
+			MD5Hash:      "c04912beab6aa82c114a19c976ec8c0d",
+			Version:      "SIGIL v1.1 (Compatibility WAD)",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       NOT_FINAL,
 		},
 
 		WadInfo{
-			MD5Hash: "b424dcf46ae55a496c34ac37cce32646",
-			Version: "SIGIL - BucketHead soundtrack",
-			Game:    GAME_SIGIL,
-			Status:  IS_FINAL,
+			MD5Hash:      "427ca995600970abcd2efcc684a64c88",
+			Version:      "SIGIL v1.2",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       NOT_FINAL,
 		},
 		WadInfo{
-			MD5Hash: "343faa815928c58faa08939a4502d5d2",
-			Version: "SIGIL - BucketHead soundtrack (Compatibility WAD)",
-			Game:    GAME_SIGIL,
-			Status:  IS_FINAL,
+			MD5Hash:      "9285e9cc2dbd87d238baab37d700c644",
+			Version:      "SIGIL v1.2 (Compatibility WAD)",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       NOT_FINAL,
+		},
+
+		WadInfo{
+			MD5Hash:      "743d6323cb2b9be24c258ff0fc350883",
+			Version:      "SIGIL v1.21",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       IS_FINAL,
+		},
+		WadInfo{
+			MD5Hash:      "573f3f178c76709f512089ed15484391",
+			Version:      "SIGIL v1.21 (Compatibility WAD)",
+			Game:         GAME_SIGIL,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       IS_FINAL,
+		},
+
+		WadInfo{
+			MD5Hash:      "b424dcf46ae55a496c34ac37cce32646",
+			Version:      "SIGIL - BucketHead soundtrack",
+			Game:         GAME_SIGIL,
+			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
+			Status:       IS_FINAL,
+		},
+		WadInfo{
+			MD5Hash:      "343faa815928c58faa08939a4502d5d2",
+			Version:      "SIGIL - BucketHead soundtrack (Compatibility WAD)",
+			Game:         GAME_SIGIL,
+			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
+			Status:       IS_FINAL,
 		},
 	}
 
