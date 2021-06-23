@@ -1,7 +1,5 @@
 # IWADverifier
 
-This tool was created as a replacement of Russell's tool, since it has disappeared from the surface of the Internet. 
-
 `IWADverifier` is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM-Engine based IWAD is valid or not, and up to date. 
 
 # Usage
@@ -53,14 +51,9 @@ Then, inside the project folder, write `go build`, and that should be it.
 ![ProgramSS](https://i.imgur.com/tviS1Gr.png)
 
 # ToDo List
-- [x] Open the WAD to check if it's a IWAD or PWAD before doing the checks.
-- [x] Add support for NERVE.WAD, and the Hexen Addon.
-- [x] Add support for HacX and Chex Quest.
-- [x] Add support for Master levels for Doom II.
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
 - [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
 - [ ] Probably a few code optimizations here and there.
-- [x] Color support for better readability.
 
 # Huge thanks to 
 * Mike Swanson (Chungy) for adding several IWADs to the list !
