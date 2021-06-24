@@ -3,10 +3,7 @@
 `IWADverifier` is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM-Engine based IWAD is valid or not, and up to date. 
 
 # Usage
-### Windows
-`iwadverifier <wad.wad[ wad2.wad ...]>`
-### Linux/Mac
-`./IWADverifier <wad.wad[ wad2.wad ...]>`
+```iwadverifier [-v] [-no-enter] <wad.wad[ wad2.wad ...]>``` 
 
 # Features
 `IWADverifier` currently supports these features :

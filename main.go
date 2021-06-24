@@ -5,6 +5,7 @@ import (
 	"crypto/md5"
 	"encoding/binary"
 	"encoding/hex"
+	"flag"
 	"fmt"
 	"io"
 	"os"
@@ -24,13 +25,15 @@ const (
 
 var (
 	patchflag GPatch
+	verbose   bool
+	noenter   bool
 )
 
 // Just a quick function to require the user to press ENTER.
 // Now, it only happens on Windows. (for the drag & drop feature)
 func PressEnter() {
 
-	if runtime.GOOS != "windows" {
+	if runtime.GOOS != "windows" || noenter {
 		return
 	}
 
@@ -226,12 +229,20 @@ func main() {
 	color.Cyan("---------------------------------------")
 	fmt.Println("")
 
+	flag.BoolVar(&verbose, "v", false, "Be more verbose")
+	flag.BoolVar(&noenter, "no-enter", false, "Remove the need to press ENTER at the end of the program.")
+	flag.Parse()
+
 	// Get the arguments
-	args := os.Args[1:]
+	args := flag.Args()
 
 	if len(args) == 0 {
-		color.Yellow("No argument specified.")
-		color.Yellow("Usage: iwadverifier <wad.wad[ wad2.wad ...]>")
+		color.Yellow("No wad file specified.")
+		color.Yellow("Usage: iwadverifier [-v] [-no-enter] <wad.wad[ wad2.wad ...]>")
+
+		fmt.Println("== Flags ==")
+		fmt.Println("-v : Be more verbose in case of warning messages")
+		fmt.Println("-no-enter : Removes the check to press ENTER at the end of the program")
 		return
 	}
 
@@ -247,8 +258,11 @@ func main() {
 
 		// Try to check if file is a .wad
 		if filepath.Ext(strings.ToLower(args[i])) != ".wad" {
-			color.Yellow("%s is not a .wad file ! Ignoring...", args[i])
-			fmt.Println("")
+
+			if verbose {
+				color.Yellow("%s is not a .wad file ! Ignoring...", args[i])
+				fmt.Println("")
+			}
 			continue
 		}
 
