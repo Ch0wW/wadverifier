@@ -809,6 +809,14 @@ func Populate_Misc() {
 			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
 			Status:       IS_FINAL,
 		},
+
+		// DOOM 64
+		WadInfo{
+			MD5Hash:    "e16e17f59afe7b3297f53ebe7e9de815",
+			Version:    "DOOM 64 v1.0",
+			Status:     IS_FINAL,
+			Additional: "This WAD can only be used with the NightDive Studios port of DOOM 64!",
+		},
 	}
 
 	// Master Levels for DOOM II
