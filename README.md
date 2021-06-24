@@ -28,7 +28,7 @@ IWADverifier can identify these IWADs:
 * HacX v1.0 up to 1.2
 * Chex Quest 1, 2, and 3 (v1.0 & 1.4)
 * SIGIL v1.0 up to 1.21 
-
+* DOOM 64 (NightDive Studios)
 * And many many more !
 
 ### Latest version detection
