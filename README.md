@@ -32,10 +32,10 @@ IWADverifier can identify these IWADs:
 IWADverifier looks up if your IWAD is the latest version or not. If it's not, a message tells you what to do to get the latest version of your file !
 
 ### Drag & Drop (Windows only)
-To make it easier for everyone, you can directly drag your IWAD files to IWADverifier !
+Windows users can directly drag their IWAD files to the IWADverifier executable to quickly verify its validity!
 
 ### Color support
-Because having a white-only text in a commandline application is boring, IWADVerifier uses ANSI to color messages. It works perfectly on Windows, Linux and technically on every system !
+Because having a white-only text in a commandline application is boring, IWADVerifier uses ANSI to color messages. All systems should support it without any issue.
 
 # Pre-Requisites for compilation
 - Golang 1.12 or newer (previous versions weren't tested)
