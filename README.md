@@ -15,9 +15,6 @@ IWADverifier can identify these IWADs:
 * DOOM & DOOM II - Unity versions
 * Final DOOM (Plutonia & TNT)
 * Master levels of DooM II
-* DOOM 3 XBOX
-* DOOM/DOOM2 XBLA
-* DOOM 3 BFG (+ NERVE.WAD)
 * FreeDOOM v0.8 up to 0.12.1
 * Heretic v1.0 up to 1.3
 * Hexen v1.0 & v1.1 (+ Dark Citadel's Addon)
@@ -25,6 +22,10 @@ IWADverifier can identify these IWADs:
 * HacX v1.0 up to 1.2
 * Chex Quest 1, 2, and 3 (v1.0 & 1.4)
 * SIGIL v1.0 up to 1.21 
+* REKKR (v1.16 only, both PWAD or Standalone formats)
+* DOOM 3 XBOX
+* DOOM/DOOM2 XBLA
+* DOOM 3 BFG (+ NERVE.WAD)
 * DOOM 64 (NightDive Studios)
 * And many many more !
 
@@ -38,7 +39,7 @@ Windows users can directly drag their IWAD files to the IWADverifier executable 
 Because having a white-only text in a commandline application is boring, IWADVerifier uses ANSI to color messages. All systems should support it without any issue.
 
 # Pre-Requisites for compilation
-- Golang 1.12 or newer (previous versions weren't tested)
+- Golang 1.17 or newer
 - Package `color` from user Fatih (`go get github.com/fatih/color`)
 - Package `go-ansi` from user k0kubun (`go get github.com/k0kubun/go-ansi`)
 
@@ -50,6 +51,7 @@ Then, inside the project folder, write `go build`, and that should be it.
 # ToDo List
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
 - [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
+- [ ] Add support for extern
 - [ ] Probably a few code optimizations here and there.
 
 # Huge thanks to 

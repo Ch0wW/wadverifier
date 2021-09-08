@@ -328,6 +328,11 @@ func main() {
 			color.Cyan("|-> https://romero.com/")
 			color.Cyan("")
 		}
+		if (patchflag & GAME_REKKR) != 0 {
+			color.Cyan("Your version of REKKR is outdated. Please get the latest one below at this address :")
+			color.Cyan("|-> http://manbitesshark.com/")
+			color.Cyan("")
+		}
 		color.Cyan("==================================================================================")
 	}
 
