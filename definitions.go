@@ -12,7 +12,7 @@ const (
 	GAME_CHEX_QUEST_3        = 1 << 4
 	GAME_STRIFE_VE           = 1 << 5 // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
 	GAME_SIGIL               = 1 << 6 // SIGIL by John Romero
-	GAME_REKKR               = 1 << 7 // REKKR by Tom Jensen
+	GAME_REKKR               = 1 << 7 // REKKR by Matthew "Revae" Little
 )
 
 type GStatus int
