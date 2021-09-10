@@ -46,7 +46,7 @@ WADverifier can identify these IWADs:
 * DOOM/DOOM2 XBLA
 * DOOM 3 BFG (+ NERVE.WAD)
 * DOOM 64 (NightDive Studios)
-* PWAD declarations (if usermade - check `pwaddata.json` for examples)
+* PWAD declarations (usermade only - check `pwaddata.json` for examples)
 * And many many more !
 
 ### Latest version detection
@@ -72,6 +72,7 @@ Then, inside the project folder, write `go build`.
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
 - [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
 - [ ] Probably a few code optimizations here and there.
+- [ ] A small database of PWADs with revision changes could be nice.
 
 # Huge thanks to 
 * Mike Swanson (Chungy) for adding several IWADs to the list !
