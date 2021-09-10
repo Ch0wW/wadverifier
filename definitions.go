@@ -12,7 +12,7 @@ const (
 	GAME_CHEX_QUEST_3        = 1 << 4
 	GAME_STRIFE_VE           = 1 << 5 // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
 	GAME_SIGIL               = 1 << 6 // SIGIL by John Romero
-	GAME_REKKR               = 1 << 7 // REKKR by Tom Jensen
+	GAME_REKKR               = 1 << 7 // REKKR by Revae
 )
 
 type GStatus int
@@ -25,15 +25,19 @@ const (
 
 //--------------------------
 
+type CustomData struct {
+	Name string    `json:"name"`
+	Data []WadInfo `json:"wadinfo"`
+}
+
 // WadInfo : all WAD data returned from the program
 type WadInfo struct {
-	MD5Hash      string
-	Version      string
-	Status       GStatus
-	Game         GPatch
-	PWADRequires string // If the official PWAD requires an IWAD to run
-	Additional   string // If I need to display an additionnal message for this IWAD.
-
+	MD5Hash      string  `json:"md5"`
+	Version      string  `json:"version"`
+	Status       GStatus `json:"status"`
+	Game         GPatch  `json:"game"`
+	PWADRequires string  `json:"pwad_requires"` // If the official PWAD requires an IWAD to run
+	Additional   string  `json:"additional"`    // If I need to display an additionnal message for this IWAD.
 }
 
 var (
@@ -47,6 +51,8 @@ var (
 	IWADInfo_SVE          []WadInfo
 	IWADInfo_FreeDoom     []WadInfo
 	IWADInfo_Misc         []WadInfo // PWAD and addons
+
+	IWADInfo_Custom []WadInfo
 
 	// Patching messages
 	iErrors = 0
