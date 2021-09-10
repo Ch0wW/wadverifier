@@ -5,6 +5,7 @@ import (
 	"crypto/md5"
 	"encoding/binary"
 	"encoding/hex"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
@@ -18,16 +19,34 @@ import (
 )
 
 const (
-	m_version = "0.4"
-	IWADbytes = 1145132873
-	PWADbytes = 1145132880
+	mRelease      = 0
+	mPointRelease = 5
+	IWADbytes     = 1145132873
+	PWADbytes     = 1145132880
 )
 
 var (
-	patchflag GPatch
-	verbose   bool
-	noenter   bool
+	patchflag  GPatch
+	noenter    bool
+	customdata CustomData
 )
+
+func CustomData_Init(filename string) (error, bool) {
+
+	cfg, err := os.Open(filename)
+	if err != nil {
+		return err, false
+	}
+
+	err = json.NewDecoder(cfg).Decode(&customdata)
+	if err != nil {
+		return err, true
+	}
+
+	cfg.Close()
+
+	return nil, false
+}
 
 // Just a quick function to require the user to press ENTER.
 // Now, it only happens on Windows. (for the drag & drop feature)
@@ -178,6 +197,13 @@ func CheckIWAD(filename string, hash string) {
 		IWAD, bFound = CompIWADData(IWADInfo_Misc, hash)
 	}
 
+	// Check the other mods
+	if bFound == false {
+		if len(PWADInfo_Custom) > 0 {
+			IWAD, bFound = CompIWADData(PWADInfo_Custom, hash)
+		}
+	}
+
 	if bFound {
 		fmt.Println("MD5:", IWAD.MD5Hash)
 		ansi.Println("WAD File:", yellow(IWAD.Version))
@@ -209,7 +235,7 @@ func CheckIWAD(filename string, hash string) {
 		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
 		// Yet, we only assume this WAD is a PWAD or invalid.
 		iErrors = iErrors + 1
-		color.Cyan("%s seems unknown. Make sure it's not a modified file or not a PWAD file. (hash: %s )", filename, hash)
+		color.Cyan("%s is unknown to the database. (hash: %s )", filename, hash)
 		color.Cyan("If this IWAD wasn't found, please write an issue on https://github.com/Ch0wW/iwadverifier/issues/")
 
 		fmt.Println("")
@@ -218,19 +244,18 @@ func CheckIWAD(filename string, hash string) {
 
 func main() {
 
-	// Initialize IWAD/Addon lists
-	PopulateIWADInfos()
-
-	// Put the colors
-	color.Output = ansi.NewAnsiStdout()
-
-	color.Cyan("IWAD Verifier %s", m_version)
+	color.Cyan("WAD Verifier %d.%d", mRelease, mPointRelease)
 	color.Cyan("https://github.com/ch0ww/iwadverifier")
 	color.Cyan("---------------------------------------")
 	fmt.Println("")
 
+	var nocheck, verbose bool
+	var filename string
+
 	flag.BoolVar(&verbose, "v", false, "Be more verbose")
 	flag.BoolVar(&noenter, "no-enter", false, "Remove the need to press ENTER at the end of the program.")
+	flag.BoolVar(&nocheck, "offline", false, "Check the Github project for the latest release")
+	flag.StringVar(&filename, "resfile", "pwaddata.json", "opens a custom WAD resources file.")
 	flag.Parse()
 
 	// Get the arguments
@@ -238,13 +263,28 @@ func main() {
 
 	if len(args) == 0 {
 		color.Yellow("No wad file specified.")
-		color.Yellow("Usage: iwadverifier [-v] [-no-enter] <wad.wad[ wad2.wad ...]>")
+		color.Yellow("Usage: iwadverifier [-v] [-no-enter] [-resfile file.json] <wad.wad[ wad2.wad ...]>")
 
 		fmt.Println("== Flags ==")
 		fmt.Println("-v : Be more verbose in case of warning messages")
 		fmt.Println("-no-enter : Removes the check to press ENTER at the end of the program")
+		fmt.Printf("\n\n== Arguments ==\n")
+		fmt.Println("-resfile <filename>: opens a custom WAD resources file.")
 		return
 	}
+
+	err, errtype := CustomData_Init(filename)
+	if err != nil {
+		if errtype == true {
+			color.Yellow("Unable to open or read %s. Make sure it's a properly formatted JSON file.", filename)
+		}
+	}
+
+	// Initialize IWAD/Addon lists
+	PopulateIWADInfos()
+
+	// Put the colors
+	color.Output = ansi.NewAnsiStdout()
 
 	for i := range args {
 
@@ -329,7 +369,7 @@ func main() {
 			color.Cyan("")
 		}
 		if (patchflag & GAME_REKKR) != 0 {
-			color.Cyan("Your version of REKKR is outdated. Please get the latest one below at this address :")
+			color.Cyan("Your version of REKKR is outdated. Please get the latest one below :")
 			color.Cyan("|-> http://manbitesshark.com/")
 			color.Cyan("")
 		}

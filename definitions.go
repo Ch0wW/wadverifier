@@ -36,8 +36,8 @@ type WadInfo struct {
 	Version      string  `json:"version"`
 	Status       GStatus `json:"status"`
 	Game         GPatch  `json:"game"`
-	PWADRequires string  `json:"pwad_requires"` // If the official PWAD requires an IWAD to run
-	Additional   string  `json:"additional"`    // If I need to display an additionnal message for this IWAD.
+	PWADRequires string  `json:"requires"`   // If the official PWAD requires an IWAD to run
+	Additional   string  `json:"additional"` // If I need to display an additionnal message for this IWAD.
 }
 
 var (
@@ -52,7 +52,7 @@ var (
 	IWADInfo_FreeDoom     []WadInfo
 	IWADInfo_Misc         []WadInfo // PWAD and addons
 
-	IWADInfo_Custom []WadInfo
+	PWADInfo_Custom []WadInfo
 
 	// Patching messages
 	iErrors = 0

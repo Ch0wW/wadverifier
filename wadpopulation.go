@@ -30,6 +30,11 @@ func PopulateIWADInfos() {
 	Populate_Strife()
 	Populate_FreeDoom()
 	Populate_Misc()
+
+	if len(customdata.Data) > 0 {
+		PWADInfo_Custom = customdata.Data
+	}
+
 }
 
 func Populate_Doom() {

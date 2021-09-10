@@ -1,15 +1,29 @@
-# IWADverifier
+# WADverifier
 
-`IWADverifier` is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM-Engine based IWAD is valid or not, and up to date. 
+`WADverifier` is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM-Engine based IWAD is valid or not, and up to date. 
+Optionally, WADVerifier can also check through a json file to check the validity of some PWAD files. You can create your own json database if desired!
 
 # Usage
-```iwadverifier [-v] [-no-enter] <wad.wad[ wad2.wad ...]>``` 
+```sh
+wadverifier [-v] [-no-enter] [-resfile <filename.json>] <wad.wad[ wad2.wad ...]>
+```
+
+```
+== Flags ==
+-v : Be more verbose in case of warning messages
+-no-enter : Removes the check to press ENTER at the end of the program
+
+== Arguments ==
+-resfile <filename>: opens a custom WAD resources file (.json format).
+``` 
+
+
 
 # Features
-`IWADverifier` currently supports these features :
+`WADverifier` currently supports these features :
 
 ### IWAD Identification
-IWADverifier can identify these IWADs:
+WADverifier can identify these IWADs:
 * DOOM v1.0 up to 1.9
 * DOOM II v1.666 up to 1.9
 * DOOM & DOOM II - Unity versions
@@ -22,28 +36,29 @@ IWADverifier can identify these IWADs:
 * HacX v1.0 up to 1.2
 * Chex Quest 1, 2, and 3 (v1.0 & 1.4)
 * SIGIL v1.0 up to 1.21 
-* REKKR (v1.16 only, both PWAD or Standalone formats)
+* REKKR (v1.16 only, both PWAD or Standalone)
 * DOOM 3 XBOX
 * DOOM/DOOM2 XBLA
 * DOOM 3 BFG (+ NERVE.WAD)
 * DOOM 64 (NightDive Studios)
+* PWAD declarations (if usermade - check `pwaddata.json` for examples)
 * And many many more !
 
 ### Latest version detection
-IWADverifier looks up if your IWAD is the latest version or not. If it's not, a message tells you what to do to get the latest version of your file !
+WADverifier looks up if your IWAD is the latest version or not. If it's not, a message tells you what to do to get the latest version of your file !
 
 ### Drag & Drop (Windows only)
-Windows users can directly drag their IWAD files to the IWADverifier executable to quickly verify its validity!
+Windows users can directly drag their IWAD files to the WADverifier executable to quickly verify its validity!
 
 ### Color support
-Because having a white-only text in a commandline application is boring, IWADVerifier uses ANSI to color messages. All systems should support it without any issue.
+Because having a white-only text in a commandline application is boring, WADVerifier uses ANSI to color messages. All systems should support it without any issue.
 
 # Pre-Requisites for compilation
 - Golang 1.17 or newer
 - Package `color` from user Fatih (`go get github.com/fatih/color`)
 - Package `go-ansi` from user k0kubun (`go get github.com/k0kubun/go-ansi`)
 
-Then, inside the project folder, write `go build`, and that should be it.
+Then, inside the project folder, write `go build`.
 
 # Screenshot
 ![ProgramSS](https://i.imgur.com/tviS1Gr.png)
@@ -51,7 +66,6 @@ Then, inside the project folder, write `go build`, and that should be it.
 # ToDo List
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
 - [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
-- [ ] Add support for extern
 - [ ] Probably a few code optimizations here and there.
 
 # Huge thanks to 

@@ -1,0 +1,32 @@
+{
+    "name": "Basic PWAD Checklist",
+    "wadinfo": [
+        {
+            "md5":"5600578a71f3453ee2ff3fc73d08f94f",
+            "version": "Alien Vendetta - First Release",
+            "status": 0,
+            "requires": "DOOM II",
+            "additional": "This is the original first release of Alien Vendetta, released on 24.12.2001."
+        },
+        {
+            "md5":"6006c3a370aa1dc0be04e0f3976f1ca4",
+            "version": "Alien Vendetta - Final Release",
+            "status": 1,
+            "requires": "DOOM II",
+            "additional": "Released on 24.12.2002 - Was named the COMPET-N edition."
+        },
+        {
+            "md5":"8b841a6de9869c793a8ceb34c175797c",
+            "version": "Alien Vendetta - AVMOVFIX.wad",
+            "status": 1,
+            "requires": "DOOM II",
+            "additional": "This PWAD was used to fix an issue on MAP20 for demo-recorders."
+        },
+        {
+            "md5":"35b330c08602a9647f486fd7e3dde22e",
+            "version": "Alien Vendetta - Black Label Expansion",
+            "status": 1,
+            "requires": "Alien Vendetta (Final Release)"
+        }
+    ]
+}
