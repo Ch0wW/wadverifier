@@ -185,7 +185,7 @@ func Populate_DoomII() {
 			Version:    "DOOM II 1.666 (German Edition)",
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
-			Additional: "Despite being the latest version for the German release, it is strongly recommended to update it to v1.9.",
+			Additional: "Despite being the latest version for the German release, it is strongly recommended to update it to v1.9 to restore censored contents and play online.",
 		},
 		{
 			MD5Hash: "ea74a47a791fdef2e9f2ea8b8a9da13b",
@@ -289,6 +289,13 @@ func Populate_FinalDOOM() {
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
 			Additional: "May not be fully compatible with online servers or demos",
+		},
+		{
+			MD5Hash:    "7a77ee148fd9ee5bc599356218f6f6b5",
+			Version:    "Final DOOM: TNT: Evilution 1.9 - Fix for TNT MAP31",
+			Game:       GAME_IWAD,
+			Status:     IS_HIDDEN,
+			Additional: "This PWAD fixes the yellow keycard not appearing on TNT MAP31.",
 		},
 	}
 }

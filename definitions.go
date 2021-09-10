@@ -21,6 +21,7 @@ const (
 	NOT_FINAL GStatus = iota // is not the final version, so display errors
 	IS_FINAL                 // Is final, is fine!
 	IS_ALPHA                 // Special case of Alpha WADs.
+	IS_HIDDEN                // Hidden - No need to display it
 )
 
 //--------------------------

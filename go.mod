@@ -1,4 +1,4 @@
-module iwadverifier
+module wadverifier
 
 go 1.17
 

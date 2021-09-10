@@ -1,3 +1,8 @@
+[![LICENSE](https://img.shields.io/github/license/ch0ww/wadverifier)](LICENSE)
+[![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/ch0ww/wadverifier)](https://github.com/ch0ww/wadverifier)
+[![GoReportCard example](https://goreportcard.com/badge/github.com/ch0ww/wadverifier)](https://goreportcard.com/report/github.com/ch0ww/wadverifier)
+
+
 # WADverifier
 
 `WADverifier` is a small Command Line Interface tool written in Golang. It is used to quickly check if a DOOM-Engine based IWAD is valid or not, and up to date. 
@@ -61,7 +66,7 @@ Because having a white-only text in a commandline application is boring, WADVeri
 Then, inside the project folder, write `go build`.
 
 # Screenshot
-![ProgramSS](https://i.imgur.com/tviS1Gr.png)
+![Testing Image](media/test.png)
 
 # ToDo List
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)

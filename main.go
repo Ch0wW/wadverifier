@@ -219,7 +219,7 @@ func CheckIWAD(filename string, hash string) {
 		}
 
 		// Don't display this message in case of an alpha WAD.
-		if IWAD.Status != IS_ALPHA {
+		if IWAD.Status != IS_ALPHA && IWAD.Status != IS_HIDDEN {
 			ansi.Println("Latest version?", YesorNo(IWAD.Status))
 		}
 
@@ -377,9 +377,9 @@ func main() {
 	}
 
 	if iErrors == 1 {
-		color.Red("1 error has been found. Check it!")
+		color.Red("1 error has been found.")
 	} else if iErrors > 1 {
-		color.Red("%d errors have been found. Check them!", iErrors)
+		color.Red("%d errors have been found.", iErrors)
 	} else {
 		color.Green("Everything looks fine. Have fun!")
 	}
