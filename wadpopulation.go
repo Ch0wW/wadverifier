@@ -16,12 +16,10 @@ const (
 	- "<bethesdafolder>\games\Doom 2\base\DOOM2.WAD" for the Bethesda Launcher version.`
 )
 
-//
-//=======================
+// =======================
 // PopulateIWADInfos
 // Populate the IWAD lists with their MD5 and versions
-//=======================
-//
+// =======================
 func PopulateIWADInfos() {
 	Populate_Doom()
 	Populate_DoomII()
@@ -476,26 +474,46 @@ func Populate_FreeDoom() {
 		//---------------
 		// First, the latest IWADs
 		{
-			MD5Hash: "b36aa44a23045e503c19af4b4c438a78",
-			Version: "Freedoom: Phase 1 0.12.1",
+			MD5Hash: "b93be13d05148dd01614bc205a03648e",
+			Version: "Freedoom: Phase 1 0.13.0",
 			Game:    GAME_FREEDOOM,
 			Status:  IS_FINAL,
 		},
 		{
-			MD5Hash: "ca9a4159a7833544a89144c7f5053412",
-			Version: "Freedoom: Phase 2 0.12.1",
+			MD5Hash: "cd666466759b5e5f63af93c5f0ffd0a1",
+			Version: "Freedoom: Phase 2 0.13.0",
 			Game:    GAME_FREEDOOM,
 			Status:  IS_FINAL,
 		},
 		{
-			MD5Hash: "d40c932a9183ded919afa89f4a729668",
-			Version: "FreeDM 0.12.1",
+			MD5Hash: "908dfd77a14cc490c4cea94b62d13449",
+			Version: "FreeDM 0.13.0",
 			Game:    GAME_FREEDOOM,
 			Status:  IS_FINAL,
 		},
 
 		//----------------
 		// Now, list the outdated ones.
+
+		// 0.12.1
+		{
+			MD5Hash: "b36aa44a23045e503c19af4b4c438a78",
+			Version: "Freedoom: Phase 1 0.12.1",
+			Game:    GAME_FREEDOOM,
+			Status:  NOT_FINAL,
+		},
+		{
+			MD5Hash: "ca9a4159a7833544a89144c7f5053412",
+			Version: "Freedoom: Phase 2 0.12.1",
+			Game:    GAME_FREEDOOM,
+			Status:  NOT_FINAL,
+		},
+		{
+			MD5Hash: "d40c932a9183ded919afa89f4a729668",
+			Version: "FreeDM 0.12.1",
+			Game:    GAME_FREEDOOM,
+			Status:  NOT_FINAL,
+		},
 
 		// 0.12.0
 		{
