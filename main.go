@@ -365,7 +365,12 @@ func main() {
 		}
 		if (patchflag & GAME_SIGIL) != 0 {
 			color.Cyan("Your version of SIGIL is outdated. Please get the latest one below :")
-			color.Cyan("|-> https://romero.com/")
+			color.Cyan("|-> https://romero.com/sigil")
+			color.Cyan("")
+		}
+		if (patchflag & GAME_SIGIL_2) != 0 {
+			color.Cyan("Your version of SIGIL II is outdated. Please get the latest one below :")
+			color.Cyan("|-> https://romero.com/sigil")
 			color.Cyan("")
 		}
 		if (patchflag & GAME_REKKR) != 0 {

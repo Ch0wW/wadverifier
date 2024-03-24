@@ -741,7 +741,7 @@ func Populate_Misc() {
 			Version:      "Chex Quest 2",
 			Status:       IS_FINAL,
 			PWADRequires: "Chex Quest",
-			Additional:   "May require the DEHacked file if playing on a source port: https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
+			Additional:   "May require the DEHacked file if playing on a source port, available at https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
 		},
 
 		{
@@ -755,7 +755,7 @@ func Populate_Misc() {
 			Version:    "Chex Quest 3 (ModDB - Unknown version)",
 			Game:       GAME_CHEX_QUEST_3,
 			Status:     NOT_FINAL,
-			Additional: "This version of Chex Quest 3 has been released on ModDB. I have no other information about it.",
+			Additional: "This version of Chex Quest 3 has been released on ModDB, and seems outdated.",
 		},
 		{
 			MD5Hash: "59c985995db55cd2623c1893550d82b3",
@@ -764,7 +764,7 @@ func Populate_Misc() {
 			Status:  NOT_FINAL,
 		},
 
-		// SIGIL by John Romero
+		// SIGIL 1 & 2 by John Romero
 		{
 			MD5Hash:      "f53ffc4fb89e966839bb8d20c632819a",
 			Version:      "SIGIL v1.0",
@@ -838,6 +838,16 @@ func Populate_Misc() {
 			Game:         GAME_SIGIL,
 			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
 			Status:       IS_FINAL,
+		},
+
+		// SIGIL II
+		{
+			MD5Hash:      "d0442f5a75f2faef3405c09a0c3acc58",
+			Version:      "SIGIL II v1.0",
+			Game:         GAME_SIGIL_2,
+			PWADRequires: "The Ultimate Doom v1.9",
+			Status:       IS_FINAL,
+			Additional:   "You will need a limit-removing source port to be able to run this.",
 		},
 
 		// DOOM 64

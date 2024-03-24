@@ -1,7 +1,7 @@
 package main
 
 //--------------------------
-type GPatch int
+type GPatch int64
 
 const (
 	GAME_NONE         GPatch = iota
@@ -12,7 +12,8 @@ const (
 	GAME_CHEX_QUEST_3        = 1 << 4
 	GAME_STRIFE_VE           = 1 << 5 // i.e. for Strife: Veteran Edition (heard that 1.0/1.1 are still around out there...)
 	GAME_SIGIL               = 1 << 6 // SIGIL by John Romero
-	GAME_REKKR               = 1 << 7 // REKKR by Revae
+	GAME_SIGIL_2             = 1 << 7 // SIGIL2 by John Romero
+	GAME_REKKR               = 1 << 8 // REKKR by Revae
 )
 
 type GStatus int

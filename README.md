@@ -2,6 +2,8 @@
 [![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/ch0ww/wadverifier)](https://github.com/ch0ww/wadverifier)
 [![GoReportCard example](https://goreportcard.com/badge/github.com/ch0ww/wadverifier)](https://goreportcard.com/report/github.com/ch0ww/wadverifier)
 
+[![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://patreon.baseq.fr)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P27UZHV)
 
 # WADverifier
 
@@ -22,14 +24,13 @@ wadverifier [-v] [-no-enter] [-resfile <filename.json>] <wad.wad[ wad2.wad ...]>
 -resfile <filename>: opens a custom WAD resources file (.json format).
 ``` 
 
-
-
 # Features
 `WADverifier` currently supports these features :
 
 ### IWAD Identification
 WADverifier can identify these IWADs:
 * DOOM v1.0 up to 1.9
+* The Ultimate Doom
 * DOOM II v1.666 up to 1.9
 * DOOM & DOOM II - Unity versions
 * Final DOOM (Plutonia & TNT)
@@ -41,12 +42,12 @@ WADverifier can identify these IWADs:
 * HacX v1.0 up to 1.2
 * Chex Quest 1, 2, and 3 (v1.0 & 1.4)
 * SIGIL v1.0 up to 1.21 
+* SIGIL II v1.0
 * REKKR (v1.16 only, both PWAD or Standalone)
 * DOOM 3 XBOX
 * DOOM/DOOM2 XBLA
 * DOOM 3 BFG (+ NERVE.WAD)
 * DOOM 64 (NightDive Studios)
-* PWAD declarations (usermade only - check `pwaddata.json` for examples)
 * And many many more !
 
 ### Latest version detection
@@ -56,7 +57,10 @@ WADverifier looks up if your IWAD is the latest version or not. If it's not, a m
 Windows users can directly drag their IWAD files to the WADverifier executable to quickly verify its validity!
 
 ### Color support
-Because having a white-only text in a commandline application is boring, WADVerifier uses ANSI to color messages. All systems should support it without any issue.
+Because having a white-only text in a commandline application is not friendly enough, WADVerifier uses ANSI to color messages. All systems should support it without any issue.
+
+### Custom declarations
+WadVerifier support custom lists (in `.json` format), that can be useful to declare PWAD declarations. Check `pwaddata.json` for an example.
 
 # Pre-Requisites for compilation
 - Golang 1.17 or newer
@@ -68,11 +72,16 @@ Then, inside the project folder, write `go build`.
 # Screenshot
 ![Testing Image](media/test.png)
 
+# Why are you using MD5 as a hash checking?
+MD5 is the hash format that is checked by all known DOOM sourceports. We might support SHA-1 hashings in the near future after all...
+
 # ToDo List
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
-- [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update.
+- [ ] Get the earlier "Unity Doom" wad versions from the September 2020 update, and its subwads. (1.0 to 1.4)
 - [ ] Probably a few code optimizations here and there.
 - [ ] A small database of PWADs with revision changes could be nice.
+- [ ] Support an online database that can be read upon launching the program.
+- [ ] Get missing entries of many, many IWADs.
 
 # Huge thanks to 
 * Mike Swanson (Chungy) for adding several IWADs to the list !
