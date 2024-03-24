@@ -34,7 +34,7 @@ WADverifier can identify these IWADs:
 * DOOM & DOOM II - Unity versions
 * Final DOOM (Plutonia & TNT)
 * Master levels of DooM II
-* FreeDOOM v0.8 up to 0.12.1
+* FreeDOOM v0.8 up to 0.13.0
 * Heretic v1.0 up to 1.3
 * Hexen v1.0 & v1.1 (+ Dark Citadel's Addon)
 * Strife v1.0 up to 1.31 (+ Veteran Edition)
