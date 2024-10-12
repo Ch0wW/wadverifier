@@ -20,7 +20,7 @@ import (
 
 const (
 	mRelease      = 0
-	mPointRelease = 5
+	mPointRelease = 6
 	IWADbytes     = 1145132873
 	PWADbytes     = 1145132880
 )
@@ -235,8 +235,9 @@ func CheckIWAD(filename string, hash string) {
 		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
 		// Yet, we only assume this WAD is a PWAD or invalid.
 		iErrors = iErrors + 1
-		color.Cyan("%s is unknown to the database. (hash: %s )", filename, hash)
-		color.Cyan("If this IWAD wasn't found, please write an issue on https://github.com/Ch0wW/iwadverifier/issues/")
+		color.Red("%s looks unknown to the database...", filename)
+		color.Red("MD5 Hash of file: %s", hash)
+		color.Red("If this IWAD wasn't found, please write an issue on https://github.com/Ch0wW/wadverifier/issues/")
 
 		fmt.Println("")
 	}
@@ -245,7 +246,7 @@ func CheckIWAD(filename string, hash string) {
 func main() {
 
 	color.Cyan("WAD Verifier %d.%d", mRelease, mPointRelease)
-	color.Cyan("https://github.com/ch0ww/iwadverifier")
+	color.Cyan("https://github.com/ch0ww/wadverifier")
 	color.Cyan("---------------------------------------")
 	fmt.Println("")
 
@@ -376,6 +377,10 @@ func main() {
 		if (patchflag & GAME_REKKR) != 0 {
 			color.Cyan("Your version of REKKR is outdated. Please get the latest one below :")
 			color.Cyan("|-> http://manbitesshark.com/")
+			color.Cyan("")
+		}
+		if (patchflag & GAME_KEXDOOM2024) != 0 {
+			color.Cyan("The wad used in Doom + Doom II looks outdated. Please update your binaries to the latest version on STEAM or GOG.")
 			color.Cyan("")
 		}
 		color.Cyan("==================================================================================")

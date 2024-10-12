@@ -5,15 +5,35 @@ const (
 	• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
 	• Source code: https://github.com/petervas/iwadpatcher`
 
-	AddentumDoomBethesda = `This IWAD won't work at all for multiplayer, as it contains several map differences.
+	AddentumDoomBethesda = `• This IWAD will work with "Doom Unity" releases, but will be incompatible with standard Doom sourceports.
 • You will need to use the original wad instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\DOOM.WAD" for the Steam version,
 	- "<bethesdafolder>\games\Ultimate Doom\base\DOOM.WAD" for the Bethesda Launcher version.`
 
-	AddentumDoomIIBethesda = `• This IWAD won't work at all for multiplayer, as it contains several map differences.
+	AddentumDoomIIBethesda = `• This IWAD will work with "Doom II Unity" releases, but will be incompatible with standard Doom sourceports.
 • You will need to use the original wad instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\DOOM 2\base\DOOM2.WAD" for the Steam version,
 	- "<bethesdafolder>\games\Doom 2\base\DOOM2.WAD" for the Bethesda Launcher version.`
+
+	AddentumDoomKexDoom = `• This IWAD will work with "Doom + Doom II" releases, but will be incompatible with standard Doom sourceports.
+• You will need to use the original wad instead, found in the following directory:
+	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\DOOM.WAD" for the Steam version,
+	- "<installfolder>\base\DOOM.WAD" for the GOG version.`
+
+	AddentumDoomIIKexDoom = `• This IWAD will work with "Doom + Doom II" releases, but will be incompatible with standard Doom sourceports.
+• You will need to use the original wad instead, found in the following directory:
+	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\doom2\DOOM2.WAD",
+	- "<installfolder>\base\doom2\DOOM2.WAD" for the GOG version`
+
+	AddentumTNTKexDoom = `• This IWAD will work with "Doom + Doom II" releases, but will be incompatible with standard Doom sourceports.
+• You will need to use the original wad instead, found in the following directory:
+	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\tnt\TNT.WAD",
+	- "<installfolder>\base\tnt\TNT.WAD" for the GOG version`
+
+	AddentumPLUTONIAKexDoom = `• This IWAD will work with "Doom + Doom II" releases, but will be incompatible with standard Doom sourceports.
+• You will need to use the original wad instead, found in the following directory:
+	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\plutonia\PLUTONIA.WAD",
+	- "<installfolder>\base\plutonia\PLUTONIA.WAD" for the GOG version`
 )
 
 // =======================
@@ -165,6 +185,13 @@ func Populate_Doom() {
 			Status:     IS_FINAL,
 			Additional: AddentumDoomBethesda,
 		},
+		{
+			MD5Hash:    "3b37188f6337f15718b617c16e6e7a9c",
+			Version:    "DOOM.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: AddentumDoomKexDoom,
+		},
 	}
 }
 
@@ -256,6 +283,13 @@ func Populate_DoomII() {
 			Status:     IS_FINAL,
 			Additional: AddentumDoomIIBethesda,
 		},
+		{
+			MD5Hash:    "64a4c88a871da67492aaa2020a068cd8",
+			Version:    "doom2.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: AddentumDoomKexDoom,
+		},
 	}
 }
 
@@ -294,6 +328,20 @@ func Populate_FinalDOOM() {
 			Game:       GAME_IWAD,
 			Status:     IS_HIDDEN,
 			Additional: "This PWAD fixes the yellow keycard not appearing on TNT MAP31.",
+		},
+		{
+			MD5Hash:    "ad7885c17a6b9b79b09d7a7634dd7e2c",
+			Version:    "tnt.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_IWAD,
+			Status:     IS_FINAL,
+			Additional: AddentumTNTKexDoom,
+		},
+		{
+			MD5Hash:    "e47cf6d82a0ccedf8c1c16a284bb5937",
+			Version:    "plutonia.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: AddentumPLUTONIAKexDoom,
 		},
 	}
 }
@@ -699,6 +747,126 @@ func Populate_FreeDoom() {
 
 func Populate_Misc() {
 
+	// Master Levels for DOOM II
+	IWADInfo_MasterLevels = []WadInfo{
+		// Standard PWADs
+		{
+			MD5Hash: "cb03fd0cd84b10579c2b2b313199d4c1",
+			Version: "Attack (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "a421ca18cea00a2696162f8d2a2beeca",
+			Version: "Black Tower (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "18eb4ffb3094ddb690e62211dc6169a1",
+			Version: "Bloodsea Keep (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "33493942592d764e7787fb0ad7d03044",
+			Version: "Canyon (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "e7c273033376824edf95e1328261e7de",
+			Version: "The Catwalk (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "77c179948df47a7a613bd1181c959892",
+			Version: "The Combine (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "cbf714b499ebdef2682990eaf93fdb5f",
+			Version: "The Fistula (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "f000701a3ed1f49249ee08550c03dfa5",
+			Version: "The Garrison (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "a1efff02df6d873762ebac6b12358bbc",
+			Version: "Geryon: 6th Canto of Inferno (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "787fa80fe9665c322f853b74838e77cc",
+			Version: "Titan Manor (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "b4eaf844b135cc2a0058c6e0149b4408",
+			Version: "Mephisto’s Maosoleum (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "aea597159dee96bcc58f3f9e3e586182",
+			Version: "Minos’ Judgement: 4th Canto of Inferno (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "46f58580e7792f486c747cf1117c4ca1",
+			Version: "Nessus: 5th Canto of Inferno (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "d560abb6d5719d46ebb47b27d7813a4b",
+			Version: "Paradox (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "b572d518d564c7d7b6b259a726538cbb",
+			Version: "Subspace (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "bb417f07804373415a6ed8e533242c3c",
+			Version: "Subterra (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "65b4abcb74e7a386d5c024cf250d6336",
+			Version: "“The Express Elevator to Hell” and “Bad Dream” (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "8474f6d663f04630de05ecac36b574d1",
+			Version: "Trapped on Titan (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "a49dccebb5f32307246b7f32da121cf7",
+			Version: "Vesperas: 7th Canto of Inferno (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+		{
+			MD5Hash: "3c0874f2df3c06a002ee2a18aba0f0e8",
+			Version: "Virgil’s Lead: 3rd Canto of Inferno (Master Levels for DOOM II)",
+			Status:  IS_FINAL,
+		},
+
+		// Aggregate WAD from the Xbox 360 and PlayStation 3 BFG Edition
+		{
+			MD5Hash:    "84cb8640f599c4a17c8eb526f90d2b7a",
+			Version:    "Master Levels for DOOM II - Xbox 360 | PlayStation 3 BFG Edition",
+			Status:     IS_FINAL,
+			Additional: "File is incompatible with demo files or multiplayer sourceports",
+		},
+		{
+			MD5Hash:    "ab3ce78e085e50a61f6dff46aabbfaeb",
+			Version:    "masterlevels.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "File is incompatible with demo files or multiplayer sourceports, all masterlevel files are available in <installfolder>/base/master/wads",
+		},
+	}
+
 	// DOOM/UDOOM population
 	IWADInfo_Misc = []WadInfo{
 		{
@@ -707,6 +875,13 @@ func Populate_Misc() {
 			Status:       IS_FINAL,
 			PWADRequires: "DOOM II v1.9",
 			Additional:   "You will need a limit-removing source port to be able to run this.",
+		},
+		{
+			MD5Hash:    "23422eb42833ac7b0dd59c0c7ae18a6f",
+			Version:    "nerve.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "File is not identical to the original release of No Rest for the Living and won't be compatible with multiplayer sourceports.",
 		},
 		// HACX
 		{
@@ -839,6 +1014,13 @@ func Populate_Misc() {
 			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
 			Status:       IS_FINAL,
 		},
+		{
+			MD5Hash:    "08ee05388c137db5f5d7996e89425b95",
+			Version:    "sigil.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "File is not identical to the original releases of SIGIL and won't be compatible with multiplayer sourceports.",
+		},
 
 		// SIGIL II
 		{
@@ -875,118 +1057,47 @@ func Populate_Misc() {
 			Status:     IS_FINAL,
 			Additional: "Requires the .deh file to properly play it. However, the batch included provides everything to play it immediately.",
 		},
-	}
-
-	// Master Levels for DOOM II
-	IWADInfo_MasterLevels = []WadInfo{
-		// Standard PWADs
 		{
-			MD5Hash: "cb03fd0cd84b10579c2b2b313199d4c1",
-			Version: "Attack (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "a421ca18cea00a2696162f8d2a2beeca",
-			Version: "Black Tower (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "18eb4ffb3094ddb690e62211dc6169a1",
-			Version: "Bloodsea Keep (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "33493942592d764e7787fb0ad7d03044",
-			Version: "Canyon (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "e7c273033376824edf95e1328261e7de",
-			Version: "The Catwalk (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "77c179948df47a7a613bd1181c959892",
-			Version: "The Combine (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "cbf714b499ebdef2682990eaf93fdb5f",
-			Version: "The Fistula (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "f000701a3ed1f49249ee08550c03dfa5",
-			Version: "The Garrison (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "a1efff02df6d873762ebac6b12358bbc",
-			Version: "Geryon: 6th Canto of Inferno (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "787fa80fe9665c322f853b74838e77cc",
-			Version: "Titan Manor (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "b4eaf844b135cc2a0058c6e0149b4408",
-			Version: "Mephisto’s Maosoleum (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "aea597159dee96bcc58f3f9e3e586182",
-			Version: "Minos’ Judgement: 4th Canto of Inferno (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "46f58580e7792f486c747cf1117c4ca1",
-			Version: "Nessus: 5th Canto of Inferno (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "d560abb6d5719d46ebb47b27d7813a4b",
-			Version: "Paradox (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "b572d518d564c7d7b6b259a726538cbb",
-			Version: "Subspace (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "bb417f07804373415a6ed8e533242c3c",
-			Version: "Subterra (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "65b4abcb74e7a386d5c024cf250d6336",
-			Version: "“The Express Elevator to Hell” and “Bad Dream” (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "8474f6d663f04630de05ecac36b574d1",
-			Version: "Trapped on Titan (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "a49dccebb5f32307246b7f32da121cf7",
-			Version: "Vesperas: 7th Canto of Inferno (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-		{
-			MD5Hash: "3c0874f2df3c06a002ee2a18aba0f0e8",
-			Version: "Virgil’s Lead: 3rd Canto of Inferno (Master Levels for DOOM II)",
-			Status:  IS_FINAL,
-		},
-
-		// Aggregate WAD from the Xbox 360 and PlayStation 3 BFG Edition
-		{
-			MD5Hash:    "84cb8640f599c4a17c8eb526f90d2b7a",
-			Version:    "Master Levels for DOOM II - Xbox 360 | PlayStation 3 BFG Edition",
+			MD5Hash:    "2e76d93d52ef64fb9db3cee2437c686b",
+			Version:    "extras.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
 			Status:     IS_FINAL,
-			Additional: "Not generally compatible with demo files or source port multiplayer",
+			Additional: "Used for shared graphics and contains Andrew Hulshult's IDKFA soundtrack in OGG format.",
+		},
+		{
+			MD5Hash:    "95f21547be5e0bff38d412017440f656",
+			Version:    "id1.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "Used for 'Legacy of Rust' addon.",
+		},
+		{
+			MD5Hash:    "f8fbab472230bfa090d6a9234d65fae6",
+			Version:    "id1-res.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "Used for 'Legacy of Rust' addon.",
+		},
+		{
+			MD5Hash:    "85d25c8c3d06a05a1283ae4afe749c9f",
+			Version:    "id1-weap.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "Used for 'Legacy of Rust' addon.",
+		},
+		{
+			MD5Hash:    "4f0651accebc007b853943ac12aa95b8",
+			Version:    "id1-weap.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "Resources added for ID24 standard.",
+		},
+		{
+			MD5Hash:    "5670fd8fe8eb6910ec28f9e27969d84f",
+			Version:    "iddm1.wad (Doom + Doom II release) - Update 1",
+			Game:       GAME_KEXDOOM2024,
+			Status:     IS_FINAL,
+			Additional: "Used as the exclusive Deathmatch WAD for Doom + Doom II.",
 		},
 	}
 }

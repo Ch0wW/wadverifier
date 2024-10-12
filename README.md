@@ -32,7 +32,6 @@ WADverifier can identify these IWADs:
 * DOOM v1.0 up to 1.9
 * The Ultimate Doom
 * DOOM II v1.666 up to 1.9
-* DOOM & DOOM II - Unity versions
 * Final DOOM (Plutonia & TNT)
 * Master levels of DooM II
 * FreeDOOM v0.8 up to 0.13.0
@@ -48,6 +47,8 @@ WADverifier can identify these IWADs:
 * DOOM/DOOM2 XBLA
 * DOOM 3 BFG (+ NERVE.WAD)
 * DOOM 64 (NightDive Studios)
+* DOOM & DOOM II - Unity versions
+* DOOM & DOOM II - OdaKEX/KexDoom re-release (2024)
 * And many many more !
 
 ### Latest version detection

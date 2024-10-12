@@ -14,6 +14,7 @@ const (
 	GAME_SIGIL               = 1 << 6 // SIGIL by John Romero
 	GAME_SIGIL_2             = 1 << 7 // SIGIL2 by John Romero
 	GAME_REKKR               = 1 << 8 // REKKR by Revae
+	GAME_KEXDOOM2024         = 1 << 9 // OdaKEX/KexDoom/Doom + Doom II (2024 re-release)
 )
 
 type GStatus int
