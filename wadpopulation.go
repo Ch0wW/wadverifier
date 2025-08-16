@@ -66,6 +66,46 @@ func Populate_Doom() {
 	// DOOM/UDOOM population
 	IWADInfo_Doom = []WadInfo{
 		{
+			MD5Hash: "740901119ba2953e3c7f3764eca6e128",
+			Name:    "DOOM (Press Release)",
+			Version: "0.2",
+			Game:    GAME_NONE,
+			Status:  IS_UNKNOWN,
+			Flags:   FL_PRERELEASE,
+		},
+		{
+			MD5Hash: "dae9b1eea1a8e090fdfa5707187f4a43",
+			Name:    "DOOM (Press Release)",
+			Version: "0.3",
+			Game:    GAME_NONE,
+			Status:  IS_UNKNOWN,
+			Flags:   FL_PRERELEASE,
+		},
+		{
+			MD5Hash: "b6afa12a8b22e2726a8ff5bd249223de",
+			Name:    "DOOM (Press Release)",
+			Version: "0.4",
+			Game:    GAME_NONE,
+			Status:  IS_UNKNOWN,
+			Flags:   FL_PRERELEASE,
+		},
+		{
+			MD5Hash: "9c877480b8ef33b7074f1f0c07ed6487",
+			Name:    "DOOM (Press Release)",
+			Version: "0.5",
+			Game:    GAME_NONE,
+			Status:  IS_UNKNOWN,
+			Flags:   FL_PRERELEASE,
+		},
+		{
+			MD5Hash: "049e32f18d9c9529630366cfc72726ea",
+			Name:    "DOOM (Press Release - DOOMPRES.WAD)",
+			Version: "October 4th, 1993",
+			Game:    GAME_NONE,
+			Status:  IS_UNKNOWN,
+			Flags:   FL_PRERELEASE,
+		},
+		{
 			MD5Hash: "90facab21eede7981be10790e3f82da2",
 			Name:    "DOOM (Shareware)",
 			Version: "1.0",
