@@ -31,7 +31,7 @@ wadverifier [-v] [-no-enter] [-resfile <filename.json>] <wad.wad[ wad2.wad ...]>
 
 | Game | Versions supported | Notes |
 | --- | --- | --- |
-| DOOM | `v1.0 ➡ v1.9` | Also supports Shareware & re-releases |
+| DOOM | `v1.0 ➡ v1.9` | Also supports Shareware, re-releases & some Press-Releases |
 | The Ultimate DOOM | `v1.9` | Also supports re-releases |
 | DOOM II | `v1.666 ➡ 1.9` | Also supports re-releases |
 | Final DOOM | `v1.9` | Supports iD Anthology & re-releases |
@@ -50,8 +50,8 @@ wadverifier [-v] [-no-enter] [-resfile <filename.json>] <wad.wad[ wad2.wad ...]>
 | No Rest For The Living | `v1.0` | |
 | DOOM 64 | `v1.0` | Supports the NightDive's Re-release from 2020. |
 | DOOM & DOOM II - Unity | `N/C` | Doesn't support all releases. |
-| DOOM & DOOM II - 2024 Re-Release | `N/C` | From NightDive Studios - Not all versions are supported |
-| Heretic + Hexen - 2025 Re-Release | `N/C` | From NightDive Studios - Only v1.0 is supported yet |
+| DOOM & DOOM II - 2024 Re-Release | `v1.1 ➡ v1.2` | From NightDive Studios - Not all versions are supported |
+| Heretic + Hexen - 2025 Re-Release | `v1.0` | From NightDive Studios |
 
 WADverifier can also identify many more wads, and you can even specify your own file list !
 
@@ -78,7 +78,7 @@ Then, inside the project folder, write `go build`.
 ![Testing Image](media/test.png)
 
 # Why are you using MD5 as a hash checking?
-MD5 is the hash format that is checked by all known DOOM sourceports. We might support SHA-1 hashings in the near future after all...
+MD5 is the hash format that has been used by all DOOM sourceports for a very long time. 
 
 # ToDo List
 - [ ] Add support for GZDoom .pk3 IWADs (Action DooM / AD2:UB / Adventures of Square / W:BoA / Harmony / Blasphemer / ...)
@@ -87,7 +87,7 @@ MD5 is the hash format that is checked by all known DOOM sourceports. We might s
 - [ ] A small database of PWADs with revision changes could be nice.
 - [ ] Support an online database that can be read upon launching the program.
 - [ ] Get missing entries of many, many IWADs.
-- [ ] DOOM + DOOM II - Check for WAD omissions ?
+- [ ] DOOM + DOOM II - Check for WAD omissions & Check updated files?
 
 # Huge thanks to 
 * Mike Swanson (Chungy) for adding several IWADs to the list !

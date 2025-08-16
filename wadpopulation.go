@@ -281,6 +281,7 @@ func Populate_DoomII() {
 			Version:    "1.666",
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
+			Flags:      FL_HIDDEN,
 			Additional: "This is the latest release officially released in Germany, but it is not the latest version of Doom II. It is strongly recommended to update it to v1.9 to restore censored contents and play online.",
 		},
 		{
@@ -310,6 +311,7 @@ func Populate_DoomII() {
 			Version:    "1.8",
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
+			Flags:      FL_HIDDEN,
 			Additional: "This is the latest release officially translated in french, but it is not the latest release of Doom II. It is strongly recommended to update it to v1.9 in order to play online.",
 		},
 		{
@@ -397,7 +399,7 @@ func Populate_FinalDOOM() {
 		},
 		{
 			MD5Hash: "4e158d9953c79ccf97bd0663244cc6b6",
-			Version: "Final DOOM: TNT: Evilution 1.9",
+			Name:    "Final DOOM: TNT: Evilution",
 			Game:    GAME_IWAD,
 			Status:  IS_FINAL,
 		},
@@ -412,10 +414,9 @@ func Populate_FinalDOOM() {
 		},
 		{
 			MD5Hash:    "7a77ee148fd9ee5bc599356218f6f6b5",
-			Name:       "Final DOOM: TNT: Evilution 1.9",
-			Version:    "Fix for TNT MAP31",
+			Name:       "Final DOOM: TNT: Evilution - Fix for MAP31",
 			Game:       GAME_IWAD,
-			Flags:      FL_RERELEASE | FL_HIDDEN,
+			Flags:      FL_HIDDEN,
 			Additional: "This PWAD fixes the yellow keycard not appearing on TNT MAP31.",
 		},
 		{
@@ -1159,6 +1160,7 @@ func Populate_Misc() {
 		{
 			MD5Hash:    "25485721882b050afa96a56e5758dd52",
 			Name:       "Chex Quest",
+			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
 			Additional: "May require the DEHacked file if playing on a source port, available at https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
 		},
