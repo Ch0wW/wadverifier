@@ -1395,7 +1395,7 @@ func Populate_Misc() {
 			Game:       GAME_KEXDOOM2024,
 			Status:     IS_FINAL,
 			Flags:      FL_RERELEASE,
-			Additional: "Resources from NightDive's proprietary ID24 standard.",
+			Additional: "Resources from *that* proprietary ID24 standard.",
 		},
 		{
 			MD5Hash:    "5670fd8fe8eb6910ec28f9e27969d84f",
