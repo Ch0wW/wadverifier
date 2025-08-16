@@ -28,9 +28,10 @@ const (
 )
 
 var (
-	patchflag  GPatch
-	noenter    bool
-	customdata CustomData
+	patchflag        GPatch
+	noenter          bool
+	customdata       CustomData
+	bFoundUnknownWAD bool
 )
 
 func CustomData_Init(filename string) (error, bool) {
@@ -153,7 +154,7 @@ func OutputVersion(b GStatus, f GFlags) string {
 	return magenta("❔ Unknown release")
 }
 
-func CheckIWAD(filename string, hash string) {
+func CheckIWAD(filename string, hash string) bool {
 
 	iwadOrder := [][]WadInfo{
 		IWADInfo_Doom,
@@ -197,12 +198,11 @@ func CheckIWAD(filename string, hash string) {
 		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
 		// If still nothing, we assume this WAD is unknown.
 		iErrors = iErrors + 1
-		color.Red("Unknown WAD: %s", filename)
+		color.Red("Wad is currently unknown to the database!")
 		color.Red("MD5 Hash of file: %s", hash)
-		//color.Red("If this WAD wasn't found, please write an issue on https://github.com/Ch0wW/wadverifier/issues/")
 
 		fmt.Println("")
-		return
+		return true
 	}
 
 	// However we are lucky
@@ -210,7 +210,7 @@ func CheckIWAD(filename string, hash string) {
 	if IWAD.Version != "" {
 		ansi.Println("WAD :", green(IWAD.Name), cyan(fmt.Sprintf("(%s)", IWAD.Version)))
 	} else {
-		ansi.Println("WAD :", cyan(IWAD.Name))
+		ansi.Println("WAD :", green(IWAD.Name))
 	}
 
 	if IWAD.PWADRequires != "" {
@@ -242,7 +242,7 @@ func CheckIWAD(filename string, hash string) {
 	}
 
 	fmt.Println("")
-
+	return false
 }
 
 func main() {
@@ -325,71 +325,51 @@ func main() {
 			continue
 		}
 
-		CheckIWAD(args[i], hash)
+		bValue := CheckIWAD(args[i], hash)
+
+		if !bFoundUnknownWAD && bValue {
+			bFoundUnknownWAD = true
+		}
 	}
 
 	// This is ugly, but I have to find a way to make
 	// If there's some patching needed, warn the user how to do it.
 	if patchflag != 0 {
+
+		type flagMessage struct {
+			flag GPatch
+			msg  string
+		}
+
+		// Define all flag-message pairs
+		messages := []flagMessage{
+			{GAME_IWAD, "To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Peter Vaskovics:\n• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip\n• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip"},
+			{GAME_SHAREWARE, "Your Shareware version of Doom is outdated. Please get the latest version below :\n|-> https://www.doomworld.com/idgames/idstuff/doom/doom19s"},
+			{GAME_FREEDOOM, "Your version of FreeDOOM/FreeDM is outdated. Please get the latest one below :\n|-> https://github.com/freedoom/freedoom/releases"},
+			{GAME_HACX, "Your version of HacX is outdated. Please get the latest one below :\n|-> http://www.drnostromo.com/hacx/page.php?content=download"},
+			{GAME_CHEX_QUEST_3, "Your version of Chex Quest 3 is outdated. Please get the latest one below :\n|-> http://www.chucktropolis.com/gamers.htm"},
+			{GAME_STRIFE_VE, "Your version of Strife: Veteran Edition is outdated.\n• If you bought it on Steam, S:VE should be updated automatically.\n• If you bought it on GOG, you will need to redownload it (Latest version is 1.2) or to use GOG Galaxy"},
+			{GAME_SIGIL, "Your version of SIGIL is outdated. Please get the latest one below :\n|-> https://romero.com/sigil"},
+			{GAME_SIGIL_2, "Your version of SIGIL II is outdated. Please get the latest one below :\n|-> https://romero.com/sigil"},
+			{GAME_REKKR, "Your version of REKKR is outdated. Please get the latest one below :\n|-> http://manbitesshark.com/"},
+			{GAME_KEXDOOM2024, "The wad used in Doom + Doom II looks outdated. Please update your binaries to the latest version on STEAM or GOG."},
+			{GAME_KEXHEREXEN2025, "The wad used in Heretic + Hexen looks outdated. Please update your binaries to the latest version on STEAM or GOG."},
+		}
 		color.Cyan("==================================================================================")
 		color.Cyan("")
 
-		if (patchflag & GAME_IWAD) != 0 {
-			color.Cyan("To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Peter Vaskovics:")
-			color.Cyan("• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip")
-			color.Cyan("• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_SHAREWARE) != 0 {
-			color.Cyan("Your Shareware version of Doom is outdated. Please get the latest version below :")
-			color.Cyan("|-> https://www.doomworld.com/idgames/idstuff/doom/doom19s")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_FREEDOOM) != 0 {
-			color.Cyan("Your version of FreeDOOM/FreeDM is outdated. Please get the latest one below :")
-			color.Cyan("|-> https://github.com/freedoom/freedoom/releases")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_HACX) != 0 {
-			color.Cyan("Your version of HacX is outdated. Please get the latest one below :")
-			color.Cyan("|-> http://www.drnostromo.com/hacx/page.php?content=download")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_CHEX_QUEST_3) != 0 {
-			color.Cyan("Your version of Chex Quest 3 is outdated. Please get the latest one below :")
-			color.Cyan("|-> http://www.chucktropolis.com/gamers.htm")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_STRIFE_VE) != 0 {
-			color.Cyan("Your version of Strife: Veteran Edition is outdated.")
-			color.Cyan("• If you bought it on Steam, S:VE should be updated automatically.")
-			color.Cyan("• If you bought it on GOG, you will need to redownload it (Latest version is 1.2) or to use GOG Galaxy")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_SIGIL) != 0 {
-			color.Cyan("Your version of SIGIL is outdated. Please get the latest one below :")
-			color.Cyan("|-> https://romero.com/sigil")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_SIGIL_2) != 0 {
-			color.Cyan("Your version of SIGIL II is outdated. Please get the latest one below :")
-			color.Cyan("|-> https://romero.com/sigil")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_REKKR) != 0 {
-			color.Cyan("Your version of REKKR is outdated. Please get the latest one below :")
-			color.Cyan("|-> http://manbitesshark.com/")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_KEXDOOM2024) != 0 {
-			color.Cyan("The wad used in Doom + Doom II looks outdated. Please update your binaries to the latest version on STEAM or GOG.")
-			color.Cyan("")
-		}
-		if (patchflag & GAME_KEXHEREXEN2025) != 0 {
-			color.Cyan("The wad used in Heretic + Hexen looks outdated. Please update your binaries to the latest version on STEAM or GOG.")
-			color.Cyan("")
+		// Loop through all messages
+		// Loop through all messages
+		for _, msg := range messages {
+			if patchflag&msg.flag != 0 {
+				color.Cyan(msg.msg)
+			}
 		}
 		color.Cyan("==================================================================================")
+	}
+
+	if bFoundUnknownWAD {
+		color.Red("If you noticed some WADs entries were missing, please create an issue : https://github.com/Ch0wW/wadverifier/issues/")
 	}
 
 	if iErrors == 1 {
