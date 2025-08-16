@@ -46,9 +46,10 @@ WADverifier can identify these IWADs:
 * DOOM 3 XBOX
 * DOOM/DOOM2 XBLA
 * DOOM 3 BFG (+ NERVE.WAD)
-* DOOM 64 (NightDive Studios)
+* DOOM 64 (2020 re-release)
 * DOOM & DOOM II - Unity versions
-* DOOM & DOOM II - OdaKEX/KexDoom re-release (2024)
+* DOOM & DOOM II - OdaKEX/KexDoom re-release (2024 re-release)
+* Heretic + Hexen - KEXen re-release (2025)
 * And many many more !
 
 ### Latest version detection
@@ -83,6 +84,7 @@ MD5 is the hash format that is checked by all known DOOM sourceports. We might s
 - [ ] A small database of PWADs with revision changes could be nice.
 - [ ] Support an online database that can be read upon launching the program.
 - [ ] Get missing entries of many, many IWADs.
+- [ ] DOOM + DOOM II - Check for WAD omissions ?
 
 # Huge thanks to 
 * Mike Swanson (Chungy) for adding several IWADs to the list !
