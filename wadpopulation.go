@@ -1,42 +1,42 @@
 package main
 
 const (
-	AddentumMPDowngrade = `
+	AddendumMPDowngrade = `
 If you want to use it on multiplayer source ports, you'll need to patch it using Peter Vaskovics's tool, available below:
 	• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip
 	• Source code: https://github.com/petervas/iwadpatcher`
 
-	AddentumDoomBethesda = `This WAD is incompatible with sourceports due to major differences with its original files.
+	AddendumDoomBethesda = `This WAD is incompatible with sourceports due to major differences with its original files.
 • You need to use the original WAD instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\DOOM.WAD" for the Steam version,
 	- "<bethesdafolder>\games\Ultimate Doom\base\DOOM.WAD" for the Bethesda Launcher version.`
 
-	AddentumDoomIIBethesda = `This WAD is incompatible with sourceports due to major differences with its original files.
+	AddendumDoomIIBethesda = `This WAD is incompatible with sourceports due to major differences with its original files.
 • You need to use the original WAD instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\DOOM 2\base\DOOM2.WAD" for the Steam version,
 	- "<bethesdafolder>\games\Doom 2\base\DOOM2.WAD" for the Bethesda Launcher version.`
 
-	AddentumDoomKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
+	AddendumDoomKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
 • You need to use the original WAD instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\DOOM.WAD" for the Steam version,
 	- "<installfolder>\base\DOOM.WAD" for the GOG version.`
 
-	AddentumDoomIIKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
+	AddendumDoomIIKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
 • You need to use the original WAD instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\doom2\DOOM2.WAD",
 	- "<installfolder>\base\doom2\DOOM2.WAD" for the GOG version`
 
-	AddentumTNTKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
+	AddendumTNTKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
 • You need to use the original WAD instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\tnt\TNT.WAD",
 	- "<installfolder>\base\tnt\TNT.WAD" for the GOG version`
 
-	AddentumPLUTONIAKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
+	AddendumPLUTONIAKexDoom = `This WAD is incompatible with sourceports due to major differences with its original files.
 • You need to use the original WAD instead, found in the following directory:
 	- "<yoursteamfolder>\steamapps\common\Ultimate DOOM\base\plutonia\PLUTONIA.WAD",
 	- "<installfolder>\base\plutonia\PLUTONIA.WAD" for the GOG version`
 
-	AddentumKexHeretic = `This WAD is incompatible with sourceports that supports either Heretic or Hexen due to major differences with its original files.
+	AddendumKexHeretic = `This WAD is incompatible with sourceports that supports either Heretic or Hexen due to major differences with its original files.
 • You will have to use the original WADs instead, found in the following sub-directories from:
 	- STEAM: "<yoursteamfolder>\steamapps\common\Heretic + Hexen\dos\base\",
 	- GOG: "<installfolder>\dos\base\" `
@@ -227,21 +227,21 @@ func Populate_Doom() {
 			Name:       "The Ultimate DOOM (XBox Version)",
 			Game:       GAME_IWAD,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumMPDowngrade,
+			Additional: AddendumMPDowngrade,
 		},
 		{
 			MD5Hash:    "72286ddc680d47b9138053dd944b2a3d",
 			Version:    "The Ultimate DOOM (XBox Live Arcade version)",
 			Game:       GAME_IWAD,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumMPDowngrade,
+			Additional: AddendumMPDowngrade,
 		},
 		{
 			MD5Hash:    "fb35c4a5a9fd49ec29ab6e900572c524",
 			Version:    "The Ultimate DOOM (Doom 3 - BFG Edition)",
 			Game:       GAME_IWAD,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumMPDowngrade,
+			Additional: AddendumMPDowngrade,
 		},
 		{
 			MD5Hash:    "8517c4e8f0eef90b82852667d345eb86",
@@ -250,7 +250,7 @@ func Populate_Doom() {
 			Game:       GAME_DOOMUNITY,
 			Status:     IS_FINAL,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumDoomBethesda,
+			Additional: AddendumDoomBethesda,
 		},
 		{
 			MD5Hash:    "3b37188f6337f15718b617c16e6e7a9c",
@@ -259,7 +259,7 @@ func Populate_Doom() {
 			Game:       GAME_KEXDOOM2024,
 			Status:     IS_FINAL,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumDoomKexDoom,
+			Additional: AddendumDoomKexDoom,
 		},
 	}
 }
@@ -327,7 +327,7 @@ func Populate_DoomII() {
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumMPDowngrade,
+			Additional: AddendumMPDowngrade,
 		},
 		{
 			MD5Hash:    "43c2df32dc6c740cb11f34dc5ab693fa",
@@ -336,7 +336,7 @@ func Populate_DoomII() {
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumMPDowngrade,
+			Additional: AddendumMPDowngrade,
 		},
 		{
 			MD5Hash:    "c3bea40570c23e511a7ed3ebcd9865f7",
@@ -344,7 +344,7 @@ func Populate_DoomII() {
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumMPDowngrade,
+			Additional: AddendumMPDowngrade,
 		},
 		{
 			MD5Hash: "f617591a6c5d07037eb716dc4863e26b",
@@ -366,7 +366,7 @@ func Populate_DoomII() {
 			Game:       GAME_IWAD,
 			Status:     IS_FINAL,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumDoomIIBethesda,
+			Additional: AddendumDoomIIBethesda,
 		},
 		{
 			MD5Hash:    "64a4c88a871da67492aaa2020a068cd8",
@@ -374,7 +374,7 @@ func Populate_DoomII() {
 			Version:    "Update 1",
 			Game:       GAME_KEXDOOM2024,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumDoomKexDoom,
+			Additional: AddendumDoomKexDoom,
 		},
 	}
 }
@@ -393,8 +393,8 @@ func Populate_FinalDOOM() {
 			Name:       "Final DOOM: The Plutonia Experiment",
 			Version:    "id Anthology release",
 			Game:       GAME_IWAD,
-			Flags:      FL_RERELEASE,
 			Status:     IS_UNKNOWN,
+			Flags:      FL_RERELEASE,
 			Additional: "It is unknown if this version is fully compatible with online servers or demos",
 		},
 		{
@@ -408,8 +408,8 @@ func Populate_FinalDOOM() {
 			Name:       "Final DOOM: TNT: Evilution",
 			Version:    "id Anthology release",
 			Game:       GAME_IWAD,
-			Flags:      FL_RERELEASE,
 			Status:     IS_UNKNOWN,
+			Flags:      FL_RERELEASE,
 			Additional: "It is unknown if this version is fully compatible with online servers or demos",
 		},
 		{
@@ -425,7 +425,7 @@ func Populate_FinalDOOM() {
 			Version:    "Update 1",
 			Game:       GAME_IWAD,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumTNTKexDoom,
+			Additional: AddendumTNTKexDoom,
 		},
 		{
 			MD5Hash:    "e47cf6d82a0ccedf8c1c16a284bb5937",
@@ -433,7 +433,7 @@ func Populate_FinalDOOM() {
 			Version:    "Update 1",
 			Game:       GAME_KEXDOOM2024,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumPLUTONIAKexDoom,
+			Additional: AddendumPLUTONIAKexDoom,
 		},
 	}
 }
@@ -568,7 +568,7 @@ func Populate_HereticHexen() {
 			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Game:       GAME_KEXHEREXEN2025,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumKexHeretic,
+			Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash: "aa50f3cf21d1bcf15241b8310d67e316",
@@ -590,7 +590,7 @@ func Populate_HereticHexen() {
 			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Game:       GAME_KEXHEREXEN2025,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumKexHeretic,
+			Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash:    "4a354d6575382dca17f580bdf5c67f66",
@@ -606,7 +606,7 @@ func Populate_HereticHexen() {
 			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Game:       GAME_KEXHEREXEN2025,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumKexHeretic,
+			Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash: "e0ba5039f3baf750714d845c992a5331",
@@ -621,8 +621,9 @@ func Populate_HereticHexen() {
 			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Game:       GAME_KEXHEREXEN2025,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumKexHeretic,
-		}, {
+			Additional: AddendumKexHeretic,
+		},
+		{
 			MD5Hash: "335336b45cb3e99f6f35b46418d8e31f",
 			Name:    "Hexen: Deathkings of the Dark Citadel Extras (Heretic + Hexen)",
 			Version: "1.0.4575 - 46e45cbd (Jul 17, 2025)",
@@ -635,7 +636,7 @@ func Populate_HereticHexen() {
 			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Game:       GAME_KEXHEREXEN2025,
 			Flags:      FL_RERELEASE,
-			Additional: AddentumKexHeretic,
+			Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash:    "aee441fadfaa8bf9c06bd39d6abd6775",
@@ -643,7 +644,7 @@ func Populate_HereticHexen() {
 			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Game:       GAME_KEXHEREXEN2025,
 			Flags:      FL_RERELEASE | FL_HIDDEN,
-			Additional: AddentumKexHeretic,
+			Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash: "2fca43a18a535511efa8c7c27e202c12",
@@ -1202,16 +1203,16 @@ func Populate_Misc() {
 			Name:         "SIGIL",
 			Version:      "1.0",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_NOTFINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 		{
 			MD5Hash:      "a775262ca0e423468196803b71a57a43",
 			Name:         "SIGIL (Compatibility WAD)",
 			Version:      "1.0",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_NOTFINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 
 		{
@@ -1219,16 +1220,16 @@ func Populate_Misc() {
 			Name:         "SIGIL",
 			Version:      "1.1",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_NOTFINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 		{
 			MD5Hash:      "c04912beab6aa82c114a19c976ec8c0d",
 			Name:         "SIGIL (Compatibility WAD)",
 			Version:      "1.1",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_NOTFINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 
 		{
@@ -1236,16 +1237,16 @@ func Populate_Misc() {
 			Name:         "SIGIL",
 			Version:      "1.2",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_NOTFINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 		{
 			MD5Hash:      "9285e9cc2dbd87d238baab37d700c644",
 			Name:         "SIGIL (Compatibility WAD)",
 			Version:      "1.2",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_NOTFINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 
 		{
@@ -1253,30 +1254,30 @@ func Populate_Misc() {
 			Name:         "SIGIL",
 			Version:      "1.21",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_FINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 		{
 			MD5Hash:      "573f3f178c76709f512089ed15484391",
 			Name:         "SIGIL (Compatibility WAD)",
 			Version:      "1.21",
 			Game:         GAME_SIGIL,
-			PWADRequires: "The Ultimate Doom v1.9",
 			Status:       IS_FINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
 		},
 		{
 			MD5Hash:      "b424dcf46ae55a496c34ac37cce32646",
 			Name:         "SIGIL - BucketHead soundtrack",
 			Game:         GAME_SIGIL,
-			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
 			Flags:        FL_HIDDEN,
+			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
 		},
 		{
 			MD5Hash:      "343faa815928c58faa08939a4502d5d2",
 			Name:         "SIGIL - BucketHead soundtrack (Compatibility WAD)",
 			Game:         GAME_SIGIL,
-			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
 			Flags:        FL_HIDDEN,
+			PWADRequires: "SIGIL & The Ultimate DOOM v1.9",
 		},
 		{
 			MD5Hash:    "08ee05388c137db5f5d7996e89425b95",
@@ -1319,8 +1320,8 @@ func Populate_Misc() {
 			Name:         "REKKR (PWAD Version)",
 			Version:      "1.16",
 			Game:         GAME_REKKR,
+			Status:   	  IS_FINAL,
 			PWADRequires: "DOOM.WAD or Freedoom - Phase 1",
-			Status:       IS_FINAL,
 			Additional:   "May require the DEHacked file if playing on a source port based on Chocolate Doom.",
 		},
 		{
