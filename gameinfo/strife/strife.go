@@ -57,11 +57,19 @@ func BuildSharewareInfo() []wad.Entry {
 func BuildConsolePortInfo() []wad.Entry {
 	return []wad.Entry{
 		{
+			MD5Hash:   "c4d07b9ff4bfeffca1cdb8478c50fd75",
+			Name:      "Strife: Veteran Edition",
+			Version:   "1.3",
+			Patchinfo: games.STRIFE_VETERAN_EDITION,
+			Status:    status.FINAL,
+			Flags:     flags.RERELEASE,
+		},
+		{
 			MD5Hash:   "47958a4fea8a54116e4b51fc155799c0",
 			Name:      "Strife: Veteran Edition",
 			Version:   "1.2",
 			Patchinfo: games.STRIFE_VETERAN_EDITION,
-			Status:    status.FINAL,
+			Status:    status.NOTFINAL,
 			Flags:     flags.RERELEASE,
 		},
 		{
@@ -78,6 +86,13 @@ func BuildConsolePortInfo() []wad.Entry {
 			Version:   "1.0",
 			Patchinfo: games.STRIFE_VETERAN_EDITION,
 			Status:    status.NOTFINAL,
+			Flags:     flags.RERELEASE,
+		},
+		{
+			MD5Hash:   "76fe460d9a981fa47d9cc4eb8ac4bb94",
+			Name:      "Strife: Veteran Edition (Nintendo Switch version)",
+			Version:   "1.0",
+			Patchinfo: games.NONE,
 			Flags:     flags.RERELEASE,
 		},
 	}
