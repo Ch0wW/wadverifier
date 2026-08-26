@@ -91,6 +91,7 @@ MD5 is the hash format that has been used by all DOOM sourceports for a very lon
 
 # Huge thanks to 
 * Mike Swanson (Chungy) for adding several IWADs to the list !
+*
 
 # Licence
 This program is licenced under GPLv3.

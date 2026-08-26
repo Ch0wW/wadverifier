@@ -14,6 +14,11 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"wadverifier/gameinfo"
+	"wadverifier/wad"
+	"wadverifier/wad/flags"
+	"wadverifier/wad/games"
+	"wadverifier/wad/status"
 
 	emoji "github.com/enescakir/emoji"
 	"github.com/fatih/color"
@@ -28,7 +33,7 @@ const (
 )
 
 var (
-	patchflag        GPatch
+	patchflag        games.PatchType
 	noenter          bool
 	customdata       CustomData
 	bFoundUnknownWAD bool
@@ -125,29 +130,27 @@ func isWADvalid(filepath string) bool {
 	return true
 }
 
-func CompIWADData(data []WadInfo, hash string) (WadInfo, error) {
-	for i := range data {
-		if hash == data[i].MD5Hash {
-			return data[i], nil
-		}
+func CompIWADData(data wad.Entry, hash string) (wad.Entry, error) {
+	if hash == data.MD5Hash {
+		return data, nil
 	}
-	return WadInfo{}, errors.New("unknown WAD")
+	return wad.Entry{}, errors.New("unknown WAD")
 }
 
-func OutputVersion(b GStatus, f GFlags) string {
+func OutputVersion(b status.Status, f flags.Flags) string {
 	red := color.New(color.FgRed).SprintFunc()
 	green := color.New(color.FgGreen).SprintFunc()
 	magenta := color.New(color.FgMagenta).SprintFunc()
 
-	if b == IS_FINAL {
-		if f&FL_RERELEASE == 1 {
+	if b.IsFinal() {
+		if f.IsRerelease() {
 			return fmt.Sprintf("%v %s", emoji.CheckMark, green("Latest version"))
 		} else {
 			return fmt.Sprintf("%v%v %s", emoji.CheckMark, emoji.CheckMark, green("Latest Original release"))
 		}
 
 	}
-	if b == IS_NOTFINAL {
+	if b.IsNotFinal() {
 		return fmt.Sprintf("%v %s", emoji.CrossMark, red("Outdated release"))
 	}
 
@@ -156,18 +159,7 @@ func OutputVersion(b GStatus, f GFlags) string {
 
 func CheckIWAD(filename string, hash string) bool {
 
-	iwadOrder := [][]WadInfo{
-		IWADInfo_Doom,
-		IWADInfo_Doom2,
-		IWADInfo_FinalDoom,
-		IWADInfo_MasterLevels,
-		IWADInfo_Heretic,
-		IWADInfo_Hexen,
-		IWADInfo_Strife,
-		IWADInfo_SVE,
-		IWADInfo_FreeDoom,
-		IWADInfo_Misc,
-	}
+	iwadlist := gameinfo.PopulateWadInfo()
 
 	yellow := color.New(color.FgYellow).SprintFunc()
 	green := color.New(color.FgGreen).SprintFunc()
@@ -175,10 +167,10 @@ func CheckIWAD(filename string, hash string) bool {
 
 	fmt.Println("Checking file :", filename)
 
-	var IWAD WadInfo
+	var IWAD wad.Entry
 	var err error
 
-	for _, wadlist := range iwadOrder {
+	for _, wadlist := range iwadlist {
 		IWAD, err = CompIWADData(wadlist, hash)
 		if err == nil {
 			break // Success, exit loop
@@ -186,11 +178,11 @@ func CheckIWAD(filename string, hash string) bool {
 	}
 
 	// Check the other mods
-	if err != nil {
+	/*if err != nil {
 		if len(PWADInfo_Custom) > 0 {
 			IWAD, err = CompIWADData(PWADInfo_Custom, hash)
 		}
-	}
+	}*/
 
 	// STILL NOTHING??? UGH. OK. ERROR TIME.
 	if err != nil {
@@ -218,21 +210,21 @@ func CheckIWAD(filename string, hash string) bool {
 	}
 
 	// Add an error count if it's not the final version of a wad.
-	if IWAD.Status == IS_NOTFINAL {
+	if IWAD.Patchinfo != games.NONE && IWAD.Status.IsNotFinal() {
 		iErrors += 1
-		patchflag |= IWAD.Game // Now, flag our messages if our IWAD is older
+		patchflag |= IWAD.Patchinfo // Now, flag our messages if our IWAD is older
 	}
 
 	// Hide information if unnecessary to the end-user.
-	if IWAD.Flags&FL_RERELEASE == 1 {
+	if IWAD.Flags&flags.RERELEASE == 1 {
 		color.Yellow("  - This WAD is from a Commercial Re-release/Remakster and should not be used in sourceports !")
 	}
-	if IWAD.Flags&FL_PRERELEASE == 1 {
-		color.Yellow("  - This WAD is from a beta release.")
+	if IWAD.Flags&flags.PRERELEASE == 1 {
+		color.Yellow("  - This WADw is from a pre-release.")
 	}
 
-	// Don't output the versioning status if it's a Pre-Release...
-	if IWAD.Flags&FL_PRERELEASE == 0 && IWAD.Flags&FL_HIDDEN == 0 {
+	// Don't output the versioning status if the wad is not recognized...
+	if IWAD.Patchinfo != games.NONE || IWAD.Flags&flags.HIDDEN == 0 {
 		ansi.Println("Status: ", OutputVersion(IWAD.Status, IWAD.Flags))
 	}
 
@@ -284,7 +276,6 @@ func main() {
 	}
 
 	// Initialize IWAD/Addon lists
-	PopulateIWADInfos()
 
 	// Put the colors
 	color.Output = ansi.NewAnsiStdout()
@@ -337,23 +328,25 @@ func main() {
 	if patchflag != 0 {
 
 		type flagMessage struct {
-			flag GPatch
+			flag games.PatchType
 			msg  string
 		}
 
 		// Define all flag-message pairs
 		messages := []flagMessage{
-			{GAME_IWAD, "To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Peter Vaskovics:\n• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip\n• Source code: http://downloads.zdaemon.org/iwadpatcher-1.2.zip"},
-			{GAME_SHAREWARE, "Your Shareware version of Doom is outdated. Please get the latest version below :\n|-> https://www.doomworld.com/idgames/idstuff/doom/doom19s"},
-			{GAME_FREEDOOM, "Your version of FreeDOOM/FreeDM is outdated. Please get the latest one below :\n|-> https://github.com/freedoom/freedoom/releases"},
-			{GAME_HACX, "Your version of HacX is outdated. Please get the latest one below :\n|-> http://www.drnostromo.com/hacx/page.php?content=download"},
-			{GAME_CHEX_QUEST_3, "Your version of Chex Quest 3 is outdated. Please get the latest one below :\n|-> http://www.chucktropolis.com/gamers.htm"},
-			{GAME_STRIFE_VE, "Your version of Strife: Veteran Edition is outdated.\n• If you bought it on Steam, S:VE should be updated automatically.\n• If you bought it on GOG, you will need to redownload it (Latest version is 1.2) or to use GOG Galaxy"},
-			{GAME_SIGIL, "Your version of SIGIL is outdated. Please get the latest one below :\n|-> https://romero.com/sigil"},
-			{GAME_SIGIL_2, "Your version of SIGIL II is outdated. Please get the latest one below :\n|-> https://romero.com/sigil"},
-			{GAME_REKKR, "Your version of REKKR is outdated. Please get the latest one below :\n|-> http://manbitesshark.com/"},
-			{GAME_KEXDOOM2024, "The wad used in Doom + Doom II looks outdated. Please update your binaries to the latest version on STEAM or GOG."},
-			{GAME_KEXHEREXEN2025, "The wad used in Heretic + Hexen looks outdated. Please update your binaries to the latest version on STEAM or GOG."},
+			{games.IWAD, "To patch your IWAD to the latest version, please use IWADPatcher 1.2 by Peter Vaskovics:\n• Windows binaries: http://downloads.zdaemon.org/iwadpatcher-1.2-bin.zip\n• Source code: https://github.com/petervas/iwadpatcher"},
+			{games.DOOM_SHAREWARE, "Your Shareware version of Doom is outdated. Please get the latest version below :\n|-> https://www.doomworld.com/idgames/idstuff/doom/doom19s"},
+			{games.FREEDOOM, "Your version of FreeDOOM/FreeDM is outdated. Please get the latest one below :\n|-> https://github.com/freedoom/freedoom/releases"},
+			{games.HACX, "Your version of HacX is outdated. Please get the latest one below :\n|-> http://www.drnostromo.com/hacx/page.php?content=download"},
+			{games.CHEX_QUEST_3, "Your version of Chex Quest 3 is outdated. Please get the latest one below :\n|-> http://www.chucktropolis.com/gamers.htm"},
+			{games.STRIFE_SHAREWARE, "Download the latest shareware of Strife at https://www.doomworld.com/idgames/roguestuff/strife11"},
+			{games.STRIFE_VETERAN_EDITION, "Your version of Strife: Veteran Edition is outdated.\n• If you bought it on Steam, S:VE should be updated automatically.\n• If you bought it on GOG, you will need to redownload it (Latest version is 1.2) or to use GOG Galaxy"},
+			{games.SIGIL, "Your version of SIGIL is outdated. Please get the latest one below :\n|-> https://romero.com/sigil"},
+			{games.SIGIL_2, "Your version of SIGIL II is outdated. Please get the latest one below :\n|-> https://romero.com/sigil"},
+			{games.REKKR, "Your version of REKKR is outdated. Please get the latest one below :\n|-> http://manbitesshark.com/"},
+			{games.KEX_DOOM2024, "The wad used in Doom + Doom II looks outdated. Please update your binaries to the latest version on STEAM or GOG."},
+			{games.KEX_HERETIC_HEXEN2025, "The wad used in Heretic + Hexen looks outdated. Please update your binaries to the latest version on STEAM or GOG."},
+			{games.DOOM_UNITY, "DOOM Unity is outdated. It is greatly recommended to install the Nightdive Studio's updated port instead (free upgrade)"},
 		}
 		color.Cyan("==================================================================================")
 		color.Cyan("")
