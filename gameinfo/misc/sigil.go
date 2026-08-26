@@ -66,7 +66,7 @@ func BuildSIGILInfo() []wad.Entry {
 			Name:         "SIGIL",
 			Version:      "1.21",
 			Patchinfo:    games.SIGIL,
-			Status:       status.FINAL,
+			Status:       status.NOTFINAL,
 			PWADRequires: "The Ultimate Doom v1.9",
 		},
 		{
@@ -74,9 +74,27 @@ func BuildSIGILInfo() []wad.Entry {
 			Name:         "SIGIL (Compatibility WAD)",
 			Version:      "1.21",
 			Patchinfo:    games.SIGIL,
+			Status:       status.NOTFINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
+		},
+
+		{
+			MD5Hash:      "edd5c3dfd3fb1c981cf7390c5c14454e",
+			Name:         "SIGIL",
+			Version:      "1.23",
+			Patchinfo:    games.SIGIL,
 			Status:       status.FINAL,
 			PWADRequires: "The Ultimate Doom v1.9",
 		},
+		{
+			MD5Hash:      "e4c5ab58e226bfcc8761f35204aeb3fc",
+			Name:         "SIGIL (Compatibility WAD)",
+			Version:      "1.23",
+			Patchinfo:    games.SIGIL,
+			Status:       status.FINAL,
+			PWADRequires: "The Ultimate Doom v1.9",
+		},
+
 		{
 			MD5Hash:      "b424dcf46ae55a496c34ac37cce32646",
 			Name:         "SIGIL - BucketHead soundtrack",
