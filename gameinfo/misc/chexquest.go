@@ -2,6 +2,7 @@ package misc
 
 import (
 	"wadverifier/wad"
+	"wadverifier/wad/flags"
 	"wadverifier/wad/games"
 	"wadverifier/wad/status"
 )
@@ -15,6 +16,12 @@ func BuildChexQuestInfo() []wad.Entry {
 			Patchinfo:  games.IWAD,
 			Status:     status.FINAL,
 			Additional: "May require the DEHacked file if playing on a source port, available at https://www.doomworld.com/idgames/utils/exe_edit/patches/chexdeh",
+		},
+		{
+			MD5Hash:   "f428a9a226f143a01b5782af611a83dd",
+			Name:      "Chex Quest (Prototype)",
+			Patchinfo: games.NONE,
+			Flags:     flags.PRERELEASE,
 		},
 
 		{
