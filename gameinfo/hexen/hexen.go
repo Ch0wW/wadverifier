@@ -103,11 +103,13 @@ func BuildConsolePortInfo() []wad.Entry {
 			//Additional: AddendumKexHeretic,
 		},
 		{
-			MD5Hash:   "e0ba5039f3baf750714d845c992a5331",
-			Name:      "Hexen Extras (Heretic + Hexen)",
-			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
+			MD5Hash:   "c078b329f53378044b8fc28d60db8e51",
+			Name:      "Hexen: Deathkings of the Dark Citadel (Heretic + Hexen)",
+			Version:   "Update 1 (Sep 26, 2025)",
 			Patchinfo: games.KEX_HERETIC_HEXEN2025,
+			Status:    status.FINAL,
 			Flags:     flags.RERELEASE,
+			//Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash:   "2bb0f56ab1f98000990524c1b67e8759",
@@ -119,13 +121,6 @@ func BuildConsolePortInfo() []wad.Entry {
 			//Additional: AddendumKexHeretic,
 		},
 		{
-			MD5Hash:   "335336b45cb3e99f6f35b46418d8e31f",
-			Name:      "Hexen: Deathkings of the Dark Citadel Extras (Heretic + Hexen)",
-			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
-			Patchinfo: games.KEX_HERETIC_HEXEN2025,
-			Flags:     flags.RERELEASE,
-		},
-		{
 			MD5Hash:   "aee983213be00b2e5e02c09675dc608f",
 			Name:      "Hexen: Vestiges of Grandeur (Heretic + Hexen)",
 			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
@@ -133,6 +128,11 @@ func BuildConsolePortInfo() []wad.Entry {
 			Flags:     flags.RERELEASE,
 			//Additional: AddendumKexHeretic,
 		},
+	}
+}
+
+func BuildExtraWADInfo() []wad.Entry {
+	return []wad.Entry{
 		{
 			MD5Hash:   "aee441fadfaa8bf9c06bd39d6abd6775",
 			Name:      "Hexen: Test WAD (Heretic + Hexen)",
@@ -156,6 +156,29 @@ func BuildConsolePortInfo() []wad.Entry {
 			Flags:      flags.RERELEASE | flags.HIDDEN,
 			Additional: "OST remade by Andrew Hulshault.",
 		},
+		{
+			MD5Hash:   "e0ba5039f3baf750714d845c992a5331",
+			Name:      "Hexen Extras (Heretic + Hexen)",
+			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
+			Patchinfo: games.KEX_HERETIC_HEXEN2025,
+			Flags:     flags.RERELEASE,
+		},
+		{
+			MD5Hash:   "b7d98538d46dd96e36ee60aa41e8fb4b",
+			Name:      "Hexen: Deathkings of the Dark Citadel Extras (Heretic + Hexen)",
+			Version:   "Update 1 (Sep 26, 2025)",
+			Patchinfo: games.KEX_HERETIC_HEXEN2025,
+			Status:    status.FINAL,
+			Flags:     flags.RERELEASE,
+		},
+		{
+			MD5Hash:   "335336b45cb3e99f6f35b46418d8e31f",
+			Name:      "Hexen: Deathkings of the Dark Citadel Extras (Heretic + Hexen)",
+			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
+			Patchinfo: games.KEX_HERETIC_HEXEN2025,
+			Status:    status.NOTFINAL,
+			Flags:     flags.RERELEASE,
+		},
 	}
 }
 
@@ -164,5 +187,6 @@ func Populate() []wad.Entry {
 	list = append(list, BuildPrototypeInfo()...)
 	list = append(list, BuildShareWareInfo()...)
 	list = append(list, BuildConsolePortInfo()...)
+	list = append(list, BuildExtraWADInfo()...)
 	return list
 }
