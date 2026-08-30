@@ -125,14 +125,15 @@ func BuildSIGIL_2_Info() []wad.Entry {
 			PWADRequires: "The Ultimate Doom v1.9",
 			Additional:   "You will need a limit-removing source port to be able to run this.",
 		},
+
+		// Doom + Doom II
 		{
-			MD5Hash:    "953f65cf079d0ba9a25be2c407da7ec1",
-			Name:       "SIGIL II (Doom + Doom II)",
-			Version:    "Update 3",
-			Patchinfo:  games.KEX_DOOM2024,
-			Status:     status.FINAL,
-			Flags:      flags.RERELEASE,
-			Additional: "File is not identical to the original release of SIGIL II and won't be compatible with multiplayer sourceports.",
+			MD5Hash:   "953f65cf079d0ba9a25be2c407da7ec1",
+			Name:      "SIGIL II (Doom + Doom II)",
+			Version:   "Update 3",
+			Patchinfo: games.KEX_DOOM2024,
+			Status:    status.FINAL,
+			Flags:     flags.RERELEASE,
 		},
 	}
 }
