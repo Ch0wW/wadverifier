@@ -28,3 +28,31 @@ func GenerateJSONFile(list []wad.Entry, resultfile string) {
 	result, _ := json.MarshalIndent(buildfile, "", "    ")
 	os.WriteFile(resultfile, result, os.ModePerm)
 }
+
+func LoadCustomPWADFile(filename string) (error, JSONGeneratedWADList) {
+
+	var retvalue JSONGeneratedWADList
+
+	cfg, err := os.Open(filename)
+	if err != nil {
+		return err, retvalue
+	}
+
+	err = json.NewDecoder(cfg).Decode(&retvalue)
+	if err != nil {
+		return err, JSONGeneratedWADList{}
+	}
+
+	cfg.Close()
+
+	// Check its API
+	if retvalue.APIVersion < API_VERSION {
+		return fmt.Errorf("this file uses an outdated API (Has %d, Requires %d)", retvalue.APIVersion, API_VERSION), JSONGeneratedWADList{}
+	}
+
+	if len(retvalue.WadEntries) == 0 {
+		return fmt.Errorf("file doesn't contain any PWAD entry"), JSONGeneratedWADList{}
+	}
+
+	return nil, retvalue
+}

@@ -2,14 +2,8 @@ package main
 
 import (
 	"bufio"
-	"crypto/md5"
-	"encoding/binary"
-	"encoding/hex"
-	"encoding/json"
-	"errors"
 	"flag"
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -19,6 +13,7 @@ import (
 	"wadverifier/wad/flags"
 	"wadverifier/wad/games"
 	"wadverifier/wad/status"
+	"wadverifier/wadapi"
 
 	emoji "github.com/enescakir/emoji"
 	"github.com/fatih/color"
@@ -27,7 +22,8 @@ import (
 
 const (
 	mRelease      = 0
-	mPointRelease = 7
+	mPointRelease = 8
+	mMinorRelease = 0
 	IWADbytes     = 1145132873
 	PWADbytes     = 1145132880
 )
@@ -35,26 +31,9 @@ const (
 var (
 	patchflag        games.PatchType
 	noenter          bool
-	customdata       CustomData
+	PWADDefinitions  []wad.Entry
 	bFoundUnknownWAD bool
 )
-
-func CustomData_Init(filename string) (error, bool) {
-
-	cfg, err := os.Open(filename)
-	if err != nil {
-		return err, false
-	}
-
-	err = json.NewDecoder(cfg).Decode(&customdata)
-	if err != nil {
-		return err, true
-	}
-
-	cfg.Close()
-
-	return nil, false
-}
 
 // Just a quick function to require the user to press ENTER.
 // Now, it only happens on Windows. (for the drag & drop feature)
@@ -66,75 +45,6 @@ func PressEnter() {
 
 	fmt.Print("Press 'Enter' to continue...")
 	bufio.NewReader(os.Stdin).ReadBytes('\n')
-}
-
-func hash_file_md5(filePath string) (string, error) {
-	//Initialize variable returnMD5String now in case an error has to be returned
-	var returnMD5String string
-
-	//Open the passed argument and check for any error
-	file, err := os.Open(filePath)
-	if err != nil {
-		return returnMD5String, err
-	}
-
-	//Tell the program to call the following function when the current function returns
-	defer file.Close()
-
-	//Open a new hash interface to write to
-	hash := md5.New()
-
-	//Copy the file in the hash interface and check for any error
-	if _, err := io.Copy(hash, file); err != nil {
-		return returnMD5String, err
-	}
-
-	//Get the 16 bytes hash
-	hashInBytes := hash.Sum(nil)[:16]
-
-	//Convert the bytes to a string
-	returnMD5String = hex.EncodeToString(hashInBytes)
-
-	return returnMD5String, nil
-
-}
-
-// Adapted from https://github.com/XerTheSquirrel/go2it/blob/master/wad.go
-// We only need the first Long.
-func isWADvalid(filepath string) bool {
-
-	// Opening it AGAIN
-	file, err := os.Open(filepath)
-	if err != nil {
-		return false
-	}
-
-	// And AGAIN, don't forget to close it !
-	defer file.Close()
-
-	data := make([]byte, 4)
-	_, err = io.ReadFull(file, data)
-	if err != nil {
-		return false
-	}
-
-	// Close the file as it is not needed anymore
-	file.Close()
-
-	// Need the magic number
-	magic := binary.LittleEndian.Uint32(data[0:4])
-	if magic != IWADbytes && magic != PWADbytes {
-		return false
-	}
-
-	return true
-}
-
-func CompIWADData(data wad.Entry, hash string) (wad.Entry, error) {
-	if hash == data.MD5Hash {
-		return data, nil
-	}
-	return wad.Entry{}, errors.New("unknown WAD")
 }
 
 func OutputVersion(b status.Status, f flags.Flags) string {
@@ -157,9 +67,7 @@ func OutputVersion(b status.Status, f flags.Flags) string {
 	return magenta("❔ Unknown release")
 }
 
-func CheckIWAD(filename string, hash string) bool {
-
-	iwadlist := gameinfo.PopulateWadInfo()
+func CheckIWAD(filename string, hash wad.HashInfo, wadlist []wad.Entry) bool {
 
 	yellow := color.New(color.FgYellow).SprintFunc()
 	green := color.New(color.FgGreen).SprintFunc()
@@ -167,11 +75,11 @@ func CheckIWAD(filename string, hash string) bool {
 
 	fmt.Println("Checking file :", filename)
 
-	var IWAD wad.Entry
+	var WAD wad.Entry
 	var err error
 
-	for _, wadlist := range iwadlist {
-		IWAD, err = CompIWADData(wadlist, hash)
+	for _, wadlist := range wadlist {
+		WAD, err = CompIWADData(wadlist, hash)
 		if err == nil {
 			break // Success, exit loop
 		}
@@ -187,50 +95,51 @@ func CheckIWAD(filename string, hash string) bool {
 	// STILL NOTHING??? UGH. OK. ERROR TIME.
 	if err != nil {
 		// At this point, we should dissect the first bytes of the WAD to make sure it's a PWAD.
-		// Then, check against the known Addons/Extensions (Hexen:DotDC / NervE)
+		// Then, check against the known Addons/Extensions (HEXDD / Nerve)
 		// If still nothing, we assume this WAD is unknown.
 		iErrors = iErrors + 1
 		color.Red("Wad is currently unknown to the database!")
-		color.Red("MD5 Hash of file: %s", hash)
+		color.Red("MD5 Hash : %s / SHA-1 Hash: %s", hash.MD5, hash.SHA1)
 
 		fmt.Println("")
 		return true
 	}
 
 	// However we are lucky
-	fmt.Println("MD5:", IWAD.MD5Hash)
-	if IWAD.Version != "" {
-		ansi.Println("WAD :", green(IWAD.Name), cyan(fmt.Sprintf("(%s)", IWAD.Version)))
+	fmt.Printf("MD5: %s / SHA-1: %s\n", hash.MD5, hash.SHA1)
+
+	if WAD.Version != "" {
+		ansi.Println("WAD :", green(WAD.Name), cyan(fmt.Sprintf("(%s)", WAD.Version)))
 	} else {
-		ansi.Println("WAD :", green(IWAD.Name))
+		ansi.Println("WAD :", green(WAD.Name))
 	}
 
-	if IWAD.PWADRequires != "" {
-		ansi.Println("WAD Requires:", yellow(IWAD.PWADRequires))
+	if WAD.PWADRequires != "" {
+		ansi.Println("WAD Requires:", yellow(WAD.PWADRequires))
 	}
 
 	// Add an error count if it's not the final version of a wad.
-	if IWAD.Patchinfo != games.NONE && IWAD.Status.IsNotFinal() {
+	if WAD.Patchinfo != games.NONE && WAD.Status.IsNotFinal() {
 		iErrors += 1
-		patchflag |= IWAD.Patchinfo // Now, flag our messages if our IWAD is older
+		patchflag |= WAD.Patchinfo // Now, flag our messages if our IWAD is older
 	}
 
 	// Hide information if unnecessary to the end-user.
-	if IWAD.Flags&flags.RERELEASE == 1 {
-		color.Yellow("  - This WAD is from a Commercial Re-release/Remakster and should not be used in sourceports !")
+	if WAD.Flags&flags.RERELEASE == 1 {
+		color.Yellow("  - This WAD comes from a Re-release and might not be sourceport-compatible or retro-compatible with the original file!")
 	}
-	if IWAD.Flags&flags.PRERELEASE == 1 {
-		color.Yellow("  - This WADw is from a pre-release.")
-	}
-
-	// Don't output the versioning status if the wad is not recognized...
-	if IWAD.Patchinfo != games.NONE || IWAD.Flags&flags.HIDDEN == 0 {
-		ansi.Println("Status: ", OutputVersion(IWAD.Status, IWAD.Flags))
+	if WAD.Flags&flags.PRERELEASE == 1 {
+		color.Yellow("  - This WAD comes from a pre-release.")
 	}
 
-	// If the IWAD has an additionnal message, please write it so.
-	if IWAD.Additional != "" {
-		ansi.Println("Additional info :", cyan(IWAD.Additional))
+	// Don't output the versioning status if the WAD is not recognized...
+	if WAD.Patchinfo != games.NONE || WAD.Flags&flags.HIDDEN == 0 {
+		ansi.Println("Status: ", OutputVersion(WAD.Status, WAD.Flags))
+	}
+
+	// If the WAD has an additionnal message, please write it so.
+	if WAD.Additional != "" {
+		ansi.Println("Additional info:", cyan(WAD.Additional))
 	}
 
 	fmt.Println("")
@@ -239,18 +148,17 @@ func CheckIWAD(filename string, hash string) bool {
 
 func main() {
 
-	color.Cyan("WAD Verifier %d.%d", mRelease, mPointRelease)
+	color.Cyan("WAD Verifier %d.%d.%d", mRelease, mPointRelease, mMinorRelease)
 	color.Cyan("https://github.com/ch0ww/wadverifier")
 	color.Cyan("---------------------------------------")
 	fmt.Println("")
 
-	var nocheck, verbose bool
-	var filename string
+	var verbose bool
+	var customjson string
 
-	flag.BoolVar(&verbose, "v", false, "Be more verbose")
+	flag.BoolVar(&verbose, "v", false, "Add verbose messages")
 	flag.BoolVar(&noenter, "no-enter", false, "Remove the need to press ENTER at the end of the program.")
-	flag.BoolVar(&nocheck, "offline", false, "Check the Github project for the latest release")
-	flag.StringVar(&filename, "resfile", "pwaddata.json", "opens a custom WAD resources file.")
+	flag.StringVar(&customjson, "resfile", "pwaddata.json", "specify a custom json file containing custom PWAD definitions.")
 	flag.Parse()
 
 	// Get the arguments
@@ -268,55 +176,70 @@ func main() {
 		return
 	}
 
-	err, errtype := CustomData_Init(filename)
-	if err != nil {
-		if errtype {
-			color.Yellow("Unable to open or read %s. Make sure it's a properly formatted JSON file.", filename)
+	// Initialize IWAD/Addon lists
+	iwadlist := gameinfo.PopulateWadInfo()
+	if customjson != "" {
+		err, PWADList := wadapi.LoadCustomPWADFile(customjson)
+		if err != nil {
+			color.Yellow("Unable to open or read %s (%s)", customjson, err)
+		} else {
+			iwadlist = append(iwadlist, PWADList.WadEntries...)
 		}
 	}
-
-	// Initialize IWAD/Addon lists
 
 	// Put the colors
 	color.Output = ansi.NewAnsiStdout()
 
-	for i := range args {
+	for _, fFile := range args {
 
 		// Check if the user omitted the extension.
 		// If so, assume the file is a .wad
 		// ToDo: Check later for .pk3 files !
-		if filepath.Ext(strings.ToLower(args[i])) == "" {
-			args[i] = fmt.Sprintf("%s.wad", args[i])
-			fmt.Println(args[i])
+		if filepath.Ext(strings.ToLower(fFile)) == "" {
+			fFile = fmt.Sprintf("%s.wad", fFile)
+			fmt.Println(fFile)
 		}
 
 		// Try to check if file is a .wad
-		if filepath.Ext(strings.ToLower(args[i])) != ".wad" {
+		if filepath.Ext(strings.ToLower(fFile)) != ".wad" {
 
 			if verbose {
-				color.Yellow("%s is not a .wad file ! Ignoring...", args[i])
+				color.Yellow("%s is not a .wad file! Skipping...", fFile)
 				fmt.Println("")
 			}
 			continue
 		}
 
-		valid := isWADvalid(args[i])
+		valid := OpenCheckWADValid(fFile)
 		if !valid {
-			color.Yellow("%s is not a valid WAD file !", args[i]) // Need to call SPA 1-800-388-PIR8 ?! Memories...
+			color.Yellow("%s is not a valid WAD file! Skipping...", fFile) // Need to call SPA 1-800-388-PIR8 ?! Memories...
 			iErrors = iErrors + 1
 			continue
 		}
 
 		// Now, try to get the MD5 hash from the file
-		hash, err := hash_file_md5(args[i])
+		hash_md5, err := wad.GetMD5Hash(fFile)
 		if err != nil {
-			color.Yellow("Error getting the MD5 hash: Skipping... (%s)", err)
+			color.Yellow("Error getting the MD5 hash (Reason: %s). Skipping... ", err)
 			iErrors = iErrors + 1
 			fmt.Println("")
 			continue
 		}
 
-		bValue := CheckIWAD(args[i], hash)
+		hash_sha1, err := wad.GetSHA1Hash(fFile)
+		if err != nil {
+			color.Yellow("Error getting the MD5 hash (Reason: %s). Skipping... ", err)
+			iErrors = iErrors + 1
+			fmt.Println("")
+			continue
+		}
+
+		hashes := wad.HashInfo{
+			MD5:  hash_md5,
+			SHA1: hash_sha1,
+		}
+
+		bValue := CheckIWAD(fFile, hashes, iwadlist)
 
 		if !bFoundUnknownWAD && bValue {
 			bFoundUnknownWAD = true
@@ -366,11 +289,11 @@ func main() {
 	}
 
 	if iErrors == 1 {
-		color.Red("1 error has been found.")
+		color.Red("1 outdated or unknown WAD has been found.")
 	} else if iErrors > 1 {
-		color.Red("%d errors have been found.", iErrors)
+		color.Red("%d outdated or unknown WADs have been found.", iErrors)
 	} else {
-		color.Green("Everything looks fine. Have fun!")
+		color.Green("No problem detected. Have fun!")
 	}
 
 	PressEnter()

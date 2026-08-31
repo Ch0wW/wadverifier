@@ -7,6 +7,13 @@ import (
 	"wadverifier/wad/status"
 )
 
+const (
+	AddendumKexHeretic = `This WAD is incompatible with sourceports that supports either Heretic or Hexen due to major differences with its original files.
+• You will have to use the original WADs instead, found in the following sub-directories from:
+	- STEAM: "<yoursteamfolder>\steamapps\common\Heretic + Hexen\dos\base\",
+	- GOG: "<installfolder>\dos\base\" `
+)
+
 func BuildReleaseInfo() []wad.Entry {
 	return []wad.Entry{
 		{
@@ -95,38 +102,38 @@ func BuildPrototypeInfo() []wad.Entry {
 func BuildConsolePortInfo() []wad.Entry {
 	return []wad.Entry{
 		{
-			MD5Hash:   "a66ae0448436a990b3aecd018bc2708a",
-			Name:      "Hexen (Heretic + Hexen)",
-			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
-			Patchinfo: games.KEX_HERETIC_HEXEN2025,
-			Flags:     flags.RERELEASE,
-			//Additional: AddendumKexHeretic,
+			MD5Hash:    "a66ae0448436a990b3aecd018bc2708a",
+			Name:       "Hexen (Heretic + Hexen)",
+			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
+			Patchinfo:  games.KEX_HERETIC_HEXEN2025,
+			Flags:      flags.RERELEASE,
+			Additional: AddendumKexHeretic,
 		},
 		{
-			MD5Hash:   "c078b329f53378044b8fc28d60db8e51",
-			Name:      "Hexen: Deathkings of the Dark Citadel (Heretic + Hexen)",
-			Version:   "Update 1 (Sep 26, 2025)",
-			Patchinfo: games.KEX_HERETIC_HEXEN2025,
-			Status:    status.FINAL,
-			Flags:     flags.RERELEASE,
-			//Additional: AddendumKexHeretic,
+			MD5Hash:    "c078b329f53378044b8fc28d60db8e51",
+			Name:       "Hexen: Deathkings of the Dark Citadel (Heretic + Hexen)",
+			Version:    "Update 1 (Sep 26, 2025)",
+			Patchinfo:  games.KEX_HERETIC_HEXEN2025,
+			Status:     status.FINAL,
+			Flags:      flags.RERELEASE,
+			Additional: AddendumKexHeretic,
 		},
 		{
-			MD5Hash:   "2bb0f56ab1f98000990524c1b67e8759",
-			Name:      "Hexen: Deathkings of the Dark Citadel (Heretic + Hexen)",
-			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
-			Patchinfo: games.KEX_HERETIC_HEXEN2025,
-			Status:    status.NOTFINAL,
-			Flags:     flags.RERELEASE,
-			//Additional: AddendumKexHeretic,
+			MD5Hash:    "2bb0f56ab1f98000990524c1b67e8759",
+			Name:       "Hexen: Deathkings of the Dark Citadel (Heretic + Hexen)",
+			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
+			Patchinfo:  games.KEX_HERETIC_HEXEN2025,
+			Status:     status.NOTFINAL,
+			Flags:      flags.RERELEASE,
+			Additional: AddendumKexHeretic,
 		},
 		{
-			MD5Hash:   "aee983213be00b2e5e02c09675dc608f",
-			Name:      "Hexen: Vestiges of Grandeur (Heretic + Hexen)",
-			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
-			Patchinfo: games.KEX_HERETIC_HEXEN2025,
-			Flags:     flags.RERELEASE,
-			//Additional: AddendumKexHeretic,
+			MD5Hash:    "aee983213be00b2e5e02c09675dc608f",
+			Name:       "Hexen: Vestiges of Grandeur (Heretic + Hexen)",
+			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
+			Patchinfo:  games.KEX_HERETIC_HEXEN2025,
+			Flags:      flags.RERELEASE,
+			Additional: AddendumKexHeretic,
 		},
 	}
 }
@@ -139,7 +146,6 @@ func BuildExtraWADInfo() []wad.Entry {
 			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Patchinfo: games.KEX_HERETIC_HEXEN2025,
 			Flags:     flags.EXTRADATA | flags.HIDDEN,
-			//Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash:   "2fca43a18a535511efa8c7c27e202c12",

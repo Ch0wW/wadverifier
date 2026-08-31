@@ -7,6 +7,13 @@ import (
 	"wadverifier/wad/status"
 )
 
+const (
+	AddendumKexHeretic = `This WAD is incompatible with sourceports that supports either Heretic or Hexen due to major differences with its original files.
+• You will have to use the original WADs instead, found in the following sub-directories from:
+	- STEAM: "<yoursteamfolder>\steamapps\common\Heretic + Hexen\dos\base\",
+	- GOG: "<installfolder>\dos\base\" `
+)
+
 func BuildReleaseInfo() []wad.Entry {
 	return []wad.Entry{
 
@@ -71,12 +78,12 @@ func BuildShareWareInfo() []wad.Entry {
 func BuildConsolePortInfo() []wad.Entry {
 	return []wad.Entry{
 		{
-			MD5Hash:   "a5de95a3162e71b5ffc568ba2343cd46",
-			Name:      "Heretic (Heretic + Hexen)",
-			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
-			Patchinfo: games.KEX_HERETIC_HEXEN2025,
-			Flags:     flags.RERELEASE,
-			//Additional: AddendumKexHeretic,
+			MD5Hash:    "a5de95a3162e71b5ffc568ba2343cd46",
+			Name:       "Heretic (Heretic + Hexen)",
+			Version:    "1.0.4575 - 46e45cbd (Jul 17, 2025)",
+			Patchinfo:  games.KEX_HERETIC_HEXEN2025,
+			Flags:      flags.RERELEASE,
+			Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash:   "aa50f3cf21d1bcf15241b8310d67e316",
@@ -98,7 +105,6 @@ func BuildConsolePortInfo() []wad.Entry {
 			Version:   "1.0.4575 - 46e45cbd (Jul 17, 2025)",
 			Patchinfo: games.KEX_HERETIC_HEXEN2025,
 			Flags:     flags.RERELEASE | flags.HIDDEN,
-			//Additional: AddendumKexHeretic,
 		},
 		{
 			MD5Hash:    "4a354d6575382dca17f580bdf5c67f66",
